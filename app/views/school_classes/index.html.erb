@@ -1,0 +1,7 @@
+<h1>Your classes</h1>
+
+<% @school_classes.each do |school_class| %>
+  <p><%= link_to school_class.name, school_class_path(school_class) %></p>
+<% end %>
+
+<h2>Create a new class <%=link_to "here", new_school_class_path %></h2>
