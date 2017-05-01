@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'classes#index'
+  root to: 'school_classes#index'
   devise_for :users
-  resources :classes
+  resources :school_classes
   resources :students
   # resources :assignments
   # resources :grades, only: [ :create, :update, :destroy ]
