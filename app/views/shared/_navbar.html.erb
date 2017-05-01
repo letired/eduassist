@@ -13,15 +13,7 @@
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-eduassist-item navbar-eduassist-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
-
+    <!-- Do we need this ? -->
     <% else %>
 
       <!-- Login text link -->
@@ -30,7 +22,7 @@
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-eduassist-item navbar-eduassist-button btn" %>
+    <%= link_to t(".top_call_to_action", default: "Add Student"), "#", class: "navbar-eduassist-item navbar-eduassist-button btn" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
