@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ul>
+        <% @students.each do |student| %>
+        <li><%= student.first_name %> <%= student.last_name %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
