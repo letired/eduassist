@@ -1,17 +1,10 @@
-<h2>Let's add students to <%= @school_class.name %></h2>
+<p>Let's add students to <%= @school_class.name %></p>
 <%= render 'form', school_class: @school_class, student: @student %>
 
-<%= link_to "Done!", @school_class, class: "btn btn-primary" %>
-
 <ol>
-<div id="student">
-<% if  %>
-  <% @school_class.students.blank? %>
-  <p>You still need to add students!</p>
-<% else %>
-<% @students.each do |student| %>
-  <%= render 'students/indexshow', student: student %>
-<% end %>
-<% end %>
-</div>
+  <div id="student">
+    <% @students.each do |student| %>
+      <%= render 'students/indexshow', student: student %>
+    <% end %>
+  </div>
 </ol>
