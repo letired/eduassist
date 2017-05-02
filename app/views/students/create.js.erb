@@ -1,0 +1,8 @@
+<% if @student.errors.any? %>
+  $('#new_student').html("<%= j render 'students/form', school_class: @school_class, student: @student %>");
+<% else %>
+  var new_student = $("<%= j render 'students/indexshow', student: @student %>").hide();
+  $("#student").prepend(new_student);
+  new_student.slideDown();
+  $('#new_student').html("<%= j render 'students/form', school_class: @school_class, student: Student.new %>");
+<% end %>
