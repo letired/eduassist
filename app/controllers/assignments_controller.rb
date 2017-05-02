@@ -6,8 +6,9 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
+    @grades = @assignment.grades
   end
-  
+
   def new
     @school_class = SchoolClass.find(params[:school_class_id])
     @assignment = Assignment.new
