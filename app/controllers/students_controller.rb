@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @students = Student.where(school_class_id: SchoolClass.find(params[:school_class_id]))
+    @students = Student.where(school_class_id: params[:school_class_id])
   end
 
   def show
