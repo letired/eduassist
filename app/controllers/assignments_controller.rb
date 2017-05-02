@@ -1,5 +1,13 @@
 class AssignmentsController < ApplicationController
+  def index
+    @school_class = SchoolClass.find(params[:school_class_id])
+    @assignments = Assignment.where(school_class_id: @school_class).order(date: :asc)
+  end
 
+  def show
+    @assignment = Assignment.find(params[:id])
+  end
+  
   def new
     @school_class = SchoolClass.find(params[:school_class_id])
     @assignment = Assignment.new
