@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'assignments/index'
-
-  get 'assignments/show'
-
   root to: 'school_classes#index'
   devise_for :users
   resources :school_classes do
