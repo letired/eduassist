@@ -20,6 +20,6 @@ class StudentPolicy < ApplicationPolicy
   private
 
   def user_is_owner_or_admin?
-    record.school_class.user == user
+    record.school_class.user == user || user.admin
   end
 end
