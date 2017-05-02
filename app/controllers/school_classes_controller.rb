@@ -48,4 +48,9 @@ class SchoolClassesController < ApplicationController
   def new_school_class_params
     params.require(:school_class).permit( :name, :description )
   end
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to access this class."
+    redirect_to(root_path)
+  end
 end
