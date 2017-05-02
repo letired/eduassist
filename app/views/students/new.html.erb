@@ -1,0 +1,10 @@
+<p>Let's add students to <%= @school_class.name %></p>
+<%= render 'form', school_class: @school_class, student: @student %>
+
+<ol>
+  <div id="student">
+    <% @students.each do |student| %>
+      <%= render 'students/indexshow', student: student %>
+    <% end %>
+  </div>
+</ol>
