@@ -3,9 +3,12 @@
     <div class="col-xs-12">
       <ul>
         <% @students.each do |student| %>
+        <%= link_to student do %>
         <li><%= student.first_name %> <%= student.last_name %></li>
+        <% end %>
       <% end %>
       </ul>
+      <%= link_to "Add a student to this class", new_school_class_student_path(@school_class)  %>
     </div>
   </div>
 </div>

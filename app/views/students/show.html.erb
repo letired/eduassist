@@ -1,0 +1,7 @@
+<ul class="list-inline">
+  <li><%= @student.first_name + " " + @student.last_name %></li>
+  <li><%= link_to edit_student_path(@student) do %> <i class="fa fa-pencil" aria-hidden="true"></i> <% end %></li>
+</ul>
+
+<%= link_to "Grades", "#", class: "btn btn-primary" %>
+<%= link_to "Attendance", "#", class: "btn btn-success" %>

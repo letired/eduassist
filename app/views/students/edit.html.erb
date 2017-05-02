@@ -1,0 +1,9 @@
+<%= simple_form_for @student do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :bio %>
+  <%= f.input :birthday %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to "Delete", @student, method: :delete, class: "btn btn-danger"  %>
