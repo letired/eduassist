@@ -1,0 +1,7 @@
+<%= simple_form_for([school_class, student], remote: true) do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :bio %>
+  <%= f.input :birthday %>
+  <%= f.button :submit %>
+<% end %>
