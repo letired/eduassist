@@ -2,21 +2,25 @@ class SchoolClassesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @school_classes = SchoolClass.all
+    @school_classes = policy_scope(SchoolClass)
   end
 
   def show
     @school_class = SchoolClass.find(params[:id])
+    authorize @school_class
   end
 
   def new
     @school_class = SchoolClass.new
+    authorize @school_class
   end
 
   def create
     @user = User.find(current_user.id)
     @school_class = SchoolClass.new(new_school_class_params)
     @school_class.user = @user
+    authorize @school_class
+
     if @school_class.save
       redirect_to school_class_path(@school_class)
     else
@@ -25,15 +29,18 @@ class SchoolClassesController < ApplicationController
   end
 
   def edit
-    
+    # after @school_class is defined:
+    authorize @school_class
   end
 
   def update
-
+    # after @school_class is defined:
+    authorize @school_class
   end
 
   def destroy
-
+    # after @school_class is defined:
+    authorize @school_class
   end
 
   private

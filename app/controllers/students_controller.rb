@@ -2,19 +2,23 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @students = Student.where(school_class_id: params[:school_class_id])
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    @students = @school_class.students
   end
 
   def show
-    @student = Student.find[:id]
+    @student = Student.find(params[:id])
+    authorize @student
   end
 
   def new
     @student = Student.new
+    authorize @student
   end
 
   def create
     @student = Student.new(new_student_params)
+    authorize @student
   end
 
   def edit

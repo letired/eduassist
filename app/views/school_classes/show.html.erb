@@ -2,10 +2,14 @@
 
 <h2>Class statistics</h2>
 <ol>
-  <li><h3><%= link_to "#{@school_class.name} students", "" %> </h3>
-  </li>
-    <li> <h3>Average grades... </h3><br>
-    <%= link_to "View more", "" %>
+  <% if policy(Student).index? %>
+    <li>
+      <h3><%= link_to "#{@school_class.name} students", "" %></h3>
+    </li>
+  <% end %>
+    <li>
+      <h3>Average grades... </h3><br>
+      <%= link_to "View more", "" %>
     </li>
   </li>
 </ol>
@@ -15,3 +19,5 @@
 <h3><%= link_to "Gradebook", "" %></h3>
 <hr>
 <h3>(<%= link_to "Other feature...", "" %>)</h3>
+
+
