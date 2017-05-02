@@ -1,2 +1,13 @@
-<h1>Assignments#show</h1>
-<p>Find me in app/views/assignments/show.html.erb</p>
+<h3><%= @assignment.name %></h3>
+<h4><%= @assignment.category %></h4>
+<ul class="list-unstyled">
+<% @grades.each do |grade| %>
+  <li>
+    <%= grade.student.first_name %>
+    <div class="pull-right">
+      <%= "#{grade.earned_points} / #{@assignment.max_points}" %>
+    </div>
+  </li>
+  <hr>
+<% end %>
+</ul>
