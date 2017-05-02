@@ -1,14 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <ul>
-        <% @assignments.each do |assignment| %>
-          <%= link_to assignment do %>
-            <li><%= assignment.name %> <%= assignment.category %></li>
-          <% end %>
-        <% end %>
-      </ul>
-      <%= link_to "Add an assignment to this class", new_school_class_assignment_path(@school_class)  %>
-    </div>
-  </div>
-</div>
+<ul>
+  <% @assignments.each do |assignment| %>
+    <%= link_to assignment do %>
+      <li><%= assignment.name %> <%= assignment.category %></li>
+    <% end %>
+  <% end %>
+</ul>
+<%= link_to "Add an assignment to this class", new_school_class_assignment_path(@school_class)  %>
