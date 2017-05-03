@@ -1,0 +1,21 @@
+<h1>Attendances#new</h1>
+<p>Find me in app/views/attendances/new.html.erb</p>
+<% @attendances.each do |attendance| %>
+  <%= attendance.student.first_name %>
+<% end %>
+
+
+<%= form_tag school_class_attendances_path do %>
+  <% @attendances.each do |attendance| %>
+    <%= fields_for 'attendances[]', attendance do |f| %>
+      <div class="field">
+        <%= f.label :present, attendance.student.first_name %><br>
+        <%= f.text_field :present %>
+        <%= f.text_field :student_id, type: 'hidden'%>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>
