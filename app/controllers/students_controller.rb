@@ -18,8 +18,6 @@ class StudentsController < ApplicationController
     authorize @student
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     @students = @school_class.students.order(first_name: :asc)
-  rescue ActiveRecord::RecordNotFound
-    user_not_authorized
   end
 
   def create

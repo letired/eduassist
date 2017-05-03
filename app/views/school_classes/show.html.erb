@@ -1,10 +1,6 @@
 <h1>Class page for : <%= @school_class.name %>
 
-
-<h2>Class statistics</h2>
-<% if policy(Student).index? %>
-  <h3><%= link_to "Students", school_class_students_path(@school_class) %></h3>
-<% end %>
+<h3><%= link_to "Students", school_class_students_path(@school_class) %></h3>
 <hr>
 <h3><%= link_to "Attendance", "" %></h3>
 <hr>
@@ -12,6 +8,5 @@
 <hr>
 <h3><%= link_to "Class Stats", "" %></h3>
 <hr>
-<% if policy(SchoolClass).edit? %>
-  <h3><%= link_to "Edit Class", edit_school_class_path(@school_class) %></h3>
-<% end %>
+<h3><%= link_to "Edit Class", edit_school_class_path(@school_class) %></h3>
+
