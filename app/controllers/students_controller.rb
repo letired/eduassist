@@ -13,6 +13,12 @@ class StudentsController < ApplicationController
     authorize @student
   end
 
+  def show_assignments
+    @student = Student.find(params[:id])
+    @grades = @student.grades
+    authorize @student
+  end
+
   def new
     @student = Student.new
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
