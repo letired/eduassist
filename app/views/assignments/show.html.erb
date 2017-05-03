@@ -1,5 +1,8 @@
 <h3><%= @assignment.name %></h3>
 <h4><%= @assignment.category %></h4>
+<%= link_to edit_assignment_path(@assignment) do %>
+  <i class="fa fa-pencil" aria-hidden="true">Edit Assignment</i>
+<% end %>
 <ul class="list-unstyled">
   <% @grades.each do |grade| %>
     <li>

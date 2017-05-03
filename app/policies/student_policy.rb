@@ -1,7 +1,7 @@
 class StudentPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-     scope
+      scope
     end
   end
 
