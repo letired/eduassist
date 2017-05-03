@@ -1,8 +1,15 @@
 <div class="navbar-eduassist">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-eduassist-brand" do %>
+  <% if session[:current_class] %>
+    <%= link_to  school_class_path(session[:current_class]), class: "navbar-eduassist-brand" do %>
     <%= image_tag "logo.png" %>
+    <% end %>
+  <% else %>
+    <%= link_to  school_classes_path, class: "navbar-eduassist-brand" do %>
+    <%= image_tag "logo.png" %>
+    <% end %>
   <% end %>
+
 
   <div class="text-center">
     <h2>eduAssist</h2>

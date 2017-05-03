@@ -8,6 +8,7 @@ class SchoolClassesController < ApplicationController
   def show
     @school_class = SchoolClass.find(params[:id])
     authorize @school_class
+    session[:current_class] = params[:id]
   end
 
   def new
@@ -20,7 +21,6 @@ class SchoolClassesController < ApplicationController
     @school_class = SchoolClass.new(school_class_params)
     @school_class.user = @user
     authorize @school_class
-
     if @school_class.save
       redirect_to new_school_class_student_path(@school_class), notice: "School Class was created successfully. Let's add the first student."
     else
