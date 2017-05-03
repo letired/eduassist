@@ -2,22 +2,25 @@ class SchoolClassesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @school_classes = SchoolClass.all
+    @school_classes = policy_scope(SchoolClass)
   end
 
   def show
     @school_class = SchoolClass.find(params[:id])
+    authorize @school_class
     session[:current_class] = params[:id]
   end
 
   def new
     @school_class = SchoolClass.new
+    authorize @school_class
   end
 
   def create
     @user = User.find(current_user.id)
     @school_class = SchoolClass.new(school_class_params)
     @school_class.user = @user
+    authorize @school_class
     if @school_class.save
       redirect_to new_school_class_student_path(@school_class), notice: "School Class was created successfully. Let's add the first student."
     else
@@ -27,11 +30,12 @@ class SchoolClassesController < ApplicationController
 
   def edit
     @school_class = SchoolClass.find(params[:id])
+    authorize @school_class
   end
 
   def update
     @school_class = SchoolClass.find(params[:id])
-    @user = User.find(current_user.id)
+    authorize @school_class
     if @school_class.update(school_class_params)
       redirect_to school_class_path(@school_class), notice: 'School Class was updated successfully.'
     else
@@ -40,8 +44,9 @@ class SchoolClassesController < ApplicationController
   end
 
   def destroy
-    school_class = SchoolClass.find(params[:id])
-    school_class.destroy
+    @school_class = SchoolClass.find(params[:id])
+    authorize @school_class
+    @school_class.destroy
     redirect_to school_classes_path, notice: 'School Class was deleted successfully.'
   end
 
@@ -49,5 +54,10 @@ class SchoolClassesController < ApplicationController
 
   def school_class_params
     params.require(:school_class).permit( :name, :description )
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to access this class."
+    redirect_to(root_path)
   end
 end

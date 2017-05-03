@@ -2,23 +2,28 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @school_class = SchoolClass.find(params[:school_class_id])
-    @students = Student.where(school_class_id: @school_class).order(first_name: :asc)
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    @students = @school_class.students.order(first_name: :asc)
+  rescue ActiveRecord::RecordNotFound
+    user_not_authorized
   end
 
   def show
     @student = Student.find(params[:id])
+    authorize @student
   end
 
   def new
     @student = Student.new
-    @school_class = SchoolClass.find(params[:school_class_id])
-    @students = Student.where(school_class_id: @school_class).order(first_name: :asc)
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    authorize @school_class
+    @students = @school_class.students.order(first_name: :asc)
   end
 
   def create
     @student = Student.new(student_params)
-    @school_class = SchoolClass.find(params[:school_class_id])
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    authorize @school_class
     @student.school_class = @school_class
     if @student.save
       respond_to do |format|
@@ -31,14 +36,18 @@ class StudentsController < ApplicationController
         format.js
       end
     end
+  rescue ActiveRecord::RecordNotFound
+    user_not_authorized
   end
 
   def edit
     @student = Student.find(params[:id])
+    authorize @student
   end
 
   def update
     @student = Student.find(params[:id])
+    authorize @student
     if @student.update(student_params)
       redirect_to @student
     else
@@ -48,6 +57,7 @@ class StudentsController < ApplicationController
 
   def destroy
     @student = Student.find(params[:id])
+    authorize @student
     @school_class = @student.school_class
     @student.destroy
     redirect_to school_class_students_path(@school_class), notice: "This student was deleted successfully!"
@@ -57,6 +67,11 @@ class StudentsController < ApplicationController
 
   def student_params
     params.require(:student).permit( :first_name, :last_name, :bio, :birthday )
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to access this class."
+    redirect_to(root_path)
   end
 end
 
