@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'school_classes#index'
+  root 'pages#home'
   devise_for :users
   resources :school_classes do
     resources :students, only: [ :index, :new, :create ]
     resources :assignments, only: [ :index, :new, :create ]
+    resources :attendances, only: [ :index ]
   end
   resources :students, only: [ :show, :update, :destroy, :edit ]
   resources :assignments, only: [ :show, :update, :destroy, :edit ]
