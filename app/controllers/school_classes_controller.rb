@@ -47,6 +47,7 @@ class SchoolClassesController < ApplicationController
     @school_class = SchoolClass.find(params[:id])
     authorize @school_class
     @school_class.destroy
+    session.delete :current_class
     redirect_to school_classes_path, notice: 'School Class was deleted successfully.'
   end
 
