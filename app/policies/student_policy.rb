@@ -9,6 +9,10 @@ class StudentPolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
+  def create?
+    user_is_owner_or_admin?
+  end
+
   def update?
     user_is_owner_or_admin?
   end

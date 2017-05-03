@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     @students = @school_class.students.order(first_name: :asc)
   rescue ActiveRecord::RecordNotFound
-    user_not_authorized
+    user_not_authorized_to_access_class
   end
 
   def show
@@ -18,6 +18,8 @@ class StudentsController < ApplicationController
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     authorize @school_class
     @students = @school_class.students.order(first_name: :asc)
+  rescue ActiveRecord::RecordNotFound
+    user_not_authorized_to_access_class
   end
 
   def create
@@ -69,7 +71,12 @@ class StudentsController < ApplicationController
     params.require(:student).permit( :first_name, :last_name, :bio, :birthday )
   end
 
-  def user_not_authorized
+   def user_not_authorized
+    flash[:alert] = "You do not have access to this student profile."
+    redirect_to(root_path)
+  end
+
+  def user_not_authorized_to_access_class
     flash[:alert] = "You are not authorized to access this class."
     redirect_to(root_path)
   end
