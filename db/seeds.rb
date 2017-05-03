@@ -25,27 +25,30 @@ User.create(
   password_confirmation: "password!"
   )
 
+u = 1
 4.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
+    email: "test#{u}@test.com",
     password: "password!",
     password_confirmation: "password!"
     )
+  u += 1
 end
 
 puts "Users built!"
 puts "Building classes..."
 
 i = 1
-c = 4
 5.times do
-  SchoolClass.create(
-    name: "#{c}th Grade",
-    description: Faker::StarWars.quote,
-    user_id: i
-    )
+  2.times do
+    SchoolClass.create(
+      name: "#{rand(4..12)}th Grade",
+      description: Faker::StarWars.quote,
+      user_id: i
+      )
+  end
   i += 1
 end
 
@@ -54,7 +57,7 @@ puts "Classes built!"
 
 SchoolClass.all.each_with_index do |school_class, index|
   puts "Adding students to class #{index + 1}..."
-  20.times do
+  rand(18..21).times do
     Student.create(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
