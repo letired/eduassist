@@ -15,6 +15,7 @@ class StudentsController < ApplicationController
 
   def show_assignments
     @student = Student.find(params[:id])
+    @grades = @student.grades
     authorize @student
   end
 

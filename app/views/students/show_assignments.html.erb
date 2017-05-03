@@ -1,1 +1,9 @@
-<h1>Stuff...</h1>
+<h1><%= @student.first_name %></h1>
+<ul>
+  <% @grades.each do |grade| %>
+    <li>Assignment: <%= grade.assignment.name %></li>
+    <li>Category: <%= grade.assignment.category %></li>
+    <li>Max Points: <%= grade.assignment.max_points %></li>
+    <li>Earned Points: <%=grade.earned_points %> </li>
+  <% end %>
+</ul>
