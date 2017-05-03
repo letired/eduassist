@@ -58,6 +58,8 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     authorize @assignment
     @assignment.destroy
+    @school_class = @assignment.school_class
+    redirect_to school_class_assignments_path(@school_class)
   end
 
   private
