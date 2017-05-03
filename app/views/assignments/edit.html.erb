@@ -1,0 +1,9 @@
+<%= simple_form_for @assignment do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.input :date %>
+  <%= f.input :max_points %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to "Delete", @assignment, method: :delete, class: "btn btn-danger"  %>
