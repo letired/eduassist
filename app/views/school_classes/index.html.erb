@@ -6,6 +6,6 @@
 
 <h2>Create a new class
   <% if policy(SchoolClass).create? %>
-    <%=link_to "here", new_school_class_path %>
+    <%=link_to "here", new_school_class_path, class: 'btn btn-success' %>
   <% end %>
 </h2>

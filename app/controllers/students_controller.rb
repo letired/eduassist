@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
 
   def index
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
-    @students = @school_class.students
+    @students = @school_class.students.order(first_name: :asc)
   rescue ActiveRecord::RecordNotFound
     user_not_authorized
   end
@@ -16,28 +16,58 @@ class StudentsController < ApplicationController
   def new
     @student = Student.new
     authorize @student
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    @students = @school_class.students.order(first_name: :asc)
+  rescue ActiveRecord::RecordNotFound
+    user_not_authorized
   end
 
   def create
-    @student = Student.new(new_student_params)
+    @student = Student.new(student_params)
     authorize @student
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    @student.school_class = @school_class
+    if @student.save
+      respond_to do |format|
+        format.html {redirect_to new_school_class_student_path(@school_class)}
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render :new }
+        format.js
+      end
+    end
+  rescue ActiveRecord::RecordNotFound
+    user_not_authorized
   end
 
   def edit
-
+    @student = Student.find(params[:id])
+    authorize @student
   end
 
   def update
-
+    @student = Student.find(params[:id])
+    authorize @student
+    if @student.update(student_params)
+      redirect_to @student
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    @student = Student.find(params[:id])
+    authorize @student
+    @school_class = @student.school_class
+    @student.destroy
+    redirect_to school_class_students_path(@school_class), notice: "This student was deleted successfully!"
   end
 
   private
 
-  def new_student_params
+  def student_params
     params.require(:student).permit( :first_name, :last_name, :bio, :birthday )
   end
 

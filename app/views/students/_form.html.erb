@@ -1,0 +1,12 @@
+<%= simple_form_for([school_class, student], remote: true) do |f| %>
+  <%= f.input :first_name, label: false, placeholder: "First Name" %>
+  <%= f.input :last_name, label: false, placeholder: "Last Name" %>
+  <%= f.input :bio, label: false, placeholder: "Any important information about this student?" %>
+  <%= f.input :birthday,  as: :date, start_year: Date.today.year - 20,
+                              end_year: Date.today.year,
+                              order: [:day, :month, :year] %>
+  <ul class="list-inline">
+    <li><%= f.button :submit, class: "btn btn-success" %></li>
+    <li><%= link_to "Done!", @school_class, class: "btn btn-primary" %></li>
+  </ul>
+<% end %>
