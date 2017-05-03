@@ -25,14 +25,16 @@ User.create(
   password_confirmation: "password!"
   )
 
+u = 1
 4.times do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
+    email: "test#{u}@test.com",
     password: "password!",
     password_confirmation: "password!"
     )
+  u += 1
 end
 
 puts "Users built!"
@@ -40,51 +42,54 @@ puts "Building classes..."
 
 i = 1
 5.times do
-  SchoolClass.create(
-    name: Faker::StarWars.planet,
-    description: Faker::StarWars.quote,
-    user_id: i
-    )
+  2.times do
+    SchoolClass.create(
+      name: "#{rand(4..12)}th Grade",
+      description: Faker::StarWars.quote,
+      user_id: i
+      )
+  end
   i += 1
 end
 
 puts "Classes built!"
-puts "Building students..."
 
 
-100.times do
-  Student.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    bio: Faker::HarryPotter.quote,
-    birthday: Faker::Date.birthday(6, 12),
-    school_class_id: (1..5).to_a.sample
-    )
+SchoolClass.all.each_with_index do |school_class, index|
+  puts "Adding students to class #{index + 1}..."
+  rand(18..21).times do
+    Student.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      bio: Faker::HarryPotter.quote,
+      birthday: Faker::Date.birthday(6, 12),
+      school_class_id: school_class.id
+      )
+  end
+  puts "Students added!"
+
+  puts "Adding assignments to class #{index + 1}..."
+  10.times do
+    Assignment.create(
+      name: Faker::Educator.course,
+      category: ["Math", "English", "Science", "Art", "Sports"].sample,
+      date: Time.now,
+      max_points: rand(60..90),
+      weight: rand(10..100),
+      school_class_id: school_class.id
+      )
+  end
+  puts "Assignments added!"
+
+  puts "Adding a grade to each assignment for each student..."
+    Assignment.where(school_class_id: school_class.id).each do |assignment|
+      Student.where(school_class_id: school_class.id).each do |student|
+        Grade.create(
+          earned_points: rand(1..assignment.max_points),
+          student_id: student.id,
+          assignment_id: assignment.id
+          )
+      end
+    end
+  puts "Grades added!"
 end
-
-puts "Students built!"
-puts "Building Assignments..."
-
-100.times do
-  Assignment.create(
-    name: Faker::Educator.course,
-    category: Faker::Job.field,
-    date: Time.now,
-    max_points: (1..50).to_a.sample,
-    weight: (1..100).to_a.sample,
-    school_class_id: (1..5).to_a.sample
-    )
-end
-
-puts "Assignments built!"
-puts "Building Grades..."
-
-200.times do
-  Grade.create(
-    earned_points: 10,
-    student_id: (1..100).to_a.sample,
-    assignment_id: (1..100).to_a.sample
-    )
-end
-
-puts "Grades built!"
