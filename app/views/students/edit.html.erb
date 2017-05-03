@@ -1,5 +1,13 @@
-
-<%= render 'form', school_class: @school_class, student: @student %>
+<%= simple_form_for @student do |f| %>
+  <%= f.input :first_name, label: false, placeholder: "First Name"  %>
+  <%= f.input :last_name, label: false, placeholder: "Last Name" %>
+  <%= f.input :bio, label: false, placeholder: "Any important information about this student?" %>
+  <%= f.input :birthday, as: :date, start_year: Date.today.year - 20,
+                              end_year: Date.today.year,
+                              order: [:day, :month, :year] %>
+  <%= f.button :submit, class: "btn btn-success"  %>
+<% end %>
+<br>
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
   Delete Student
 </button>
@@ -18,7 +26,7 @@
         Only select 'Delete' if you really want to do this.
       </div>
       <div class="modal-footer">
-        <%= button_to "Delete Class", { action: "destroy", id: @student.id }, method: :delete, class: 'btn btn-danger' %>
+        <%= button_to "Delete Student", { action: "destroy", id: @student.id }, method: :delete, class: 'btn btn-danger' %>
       </div>
     </div>
   </div>

@@ -57,7 +57,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     authorize @student
     if @student.update(student_params)
-      redirect_to @student
+      redirect_to student_path(@student), notice: 'Student was updated successfully.'
     else
       render :edit
     end
