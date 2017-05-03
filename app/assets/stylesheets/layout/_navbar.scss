@@ -8,6 +8,7 @@
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+  color: #757171;
 }
 
 /* Optional class to fix the navbar on top */
@@ -22,6 +23,13 @@
 /* Navbar logo */
 .navbar-eduassist-brand img {
   width: 50px;
+  opacity: 0.7;
+  padding: 1px;
+  border: 1px solid white;
+}
+.navbar-eduassist-brand img:hover {
+  padding: 1px;
+  border: 1px solid #da552f;
 }
 
 /* Navbar right section (with form, links, button) */
