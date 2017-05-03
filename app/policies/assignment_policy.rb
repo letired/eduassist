@@ -9,6 +9,10 @@ class AssignmentPolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
+  def create?
+    user_is_owner_or_admin?
+  end
+
   private
 
   def user_is_owner_or_admin?

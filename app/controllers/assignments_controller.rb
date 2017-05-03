@@ -3,7 +3,7 @@ class AssignmentsController < ApplicationController
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     @assignments = Assignment.where(school_class_id: @school_class).order(date: :asc)
   rescue ActiveRecord::RecordNotFound
-    user_not_authorized
+    user_not_authorized_to_access_class
   end
 
   def show
@@ -17,6 +17,8 @@ class AssignmentsController < ApplicationController
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     authorize @school_class
     @assignment = Assignment.new
+  rescue ActiveRecord::RecordNotFound
+    user_not_authorized_to_access_class
   end
 
   def create
@@ -41,5 +43,15 @@ class AssignmentsController < ApplicationController
 
   def assignment_params
     params.require(:assignment).permit( :name, :category, :date, :max_points, :weight )
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to access this assignment."
+    redirect_to(root_path)
+  end
+
+  def user_not_authorized_to_access_class
+    flash[:alert] = "You are not authorized to access this class."
+    redirect_to(root_path)
   end
 end
