@@ -1,26 +1,30 @@
 class AssignmentsController < ApplicationController
   def index
-    @school_class = SchoolClass.find(params[:school_class_id])
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     @assignments = Assignment.where(school_class_id: @school_class).order(date: :asc)
   end
 
   def show
     @assignment = Assignment.find(params[:id])
+    authorize @assignment
     @grades = @assignment.grades
   end
 
   def new
     @school_class = SchoolClass.find(params[:school_class_id])
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    authorize @school_class
     @assignment = Assignment.new
   end
 
   def create
     @assignment = Assignment.new(assignment_params)
-    @school_class = SchoolClass.find(params[:school_class_id])
+    @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    authorize @school_class
     @assignment.school_class = @school_class
     if @assignment.save
       respond_to do |format|
-        format.html {redirect_to school_class_assignment_path(@school_class)}
+        format.html {redirect_to school_class_assignments_path(@school_class)}
         format.js
       end
     else
