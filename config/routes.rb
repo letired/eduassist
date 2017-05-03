@@ -6,7 +6,12 @@ Rails.application.routes.draw do
     resources :assignments, only: [ :index, :new, :create ]
     resources :attendances, only: [ :index ]
   end
-  resources :students, only: [ :show, :update, :destroy, :edit ]
+  resources :students, only: [ :update, :destroy, :edit ]
+  resources :students, only: [ :show ] do
+    member do
+      get 'assignments', to: 'students#show_assignments'
+    end
+  end
   resources :assignments, only: [ :show, :update, :destroy, :edit ]
   # resources :assignments
   # resources :grades, only: [ :create, :update, :destroy ]
