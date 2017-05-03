@@ -36,7 +36,6 @@ class SchoolClassesController < ApplicationController
   def update
     @school_class = SchoolClass.find(params[:id])
     authorize @school_class
-    @user = User.find(current_user.id)
     if @school_class.update(school_class_params)
       redirect_to school_class_path(@school_class), notice: 'School Class was updated successfully.'
     else

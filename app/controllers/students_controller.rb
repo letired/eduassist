@@ -15,15 +15,15 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
-    authorize @student
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    authorize @school_class
     @students = @school_class.students.order(first_name: :asc)
   end
 
   def create
     @student = Student.new(student_params)
-    authorize @student
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
+    authorize @school_class
     @student.school_class = @school_class
     if @student.save
       respond_to do |format|
