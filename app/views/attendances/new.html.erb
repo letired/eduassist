@@ -34,16 +34,39 @@
 
 
 <script>
-  $(document).ready(function(){
+  var present = function() {
     $('.present').on('click', function(){
       var id = $(this).attr('id');
       $('tr#' + id + ' input').first().val('true');
-      $('tr#' + id + ' td').last().html('<i class="fa fa-check" aria-hidden="true"></i>');
+      $('tr#' + id + ' td').last().html('<i class="fa fa-check" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
+      edit();
     });
+  };
+
+  var absent = function() {
     $('.absent').on('click', function(){
       var id = $(this).attr('id');
       $('tr#' + id + ' input').first().val('false');
-      $('tr#' + id + ' td').last().html('<i class="fa fa-times" aria-hidden="true"></i>');
+      $('tr#' + id + ' td').last().html('<i class="fa fa-times" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
+      edit();
     });
+  };
+
+  var edit = function() {
+    $('.edit-attendance').on('click', function(){
+      var id = $(this).attr('id');
+      $('tr#' + id + ' input').removeAttr('value');
+      $('tr#' + id + ' td').last().html('<ul class="list-inline">' +
+              '<li><div class="btn btn-success present" id="' + id + '">Present</div></li>' +
+              '<li><div class="btn btn-danger absent" id="' + id + '">Absent</div></li>' +
+            '</ul>');
+      present();
+      absent();
+    });
+  };
+
+  $(document).ready(function(){
+    present();
+    absent();
   });
 </script>
