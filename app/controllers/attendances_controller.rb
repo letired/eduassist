@@ -24,11 +24,31 @@ class AttendancesController < ApplicationController
     school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     authorize school_class
     params[:attendances].each do |attendance|
-      attendance = Attendance.new(strong_params(attendance))
-      attendance.date = Date.today
-      attendance.save
+      new_attendance = Attendance.new(strong_params(attendance))
+      new_attendance.date = Date.today
+      new_attendance.save
     end
     redirect_to school_class_path(school_class), notice: 'Attendance taken successfully'
+  end
+
+  def edit
+    @school_class = policy_scope(SchoolClass).find(params[:id])
+    authorize @school_class
+    @attendances = []
+    @school_class.students.each do |student|
+      @attendances << Attendance.where(student_id: student.id, date: params[:date]).first
+    end
+    @date = Date.parse(params[:date])
+  end
+
+  def update
+    school_class = policy_scope(SchoolClass).find(params[:id])
+    authorize school_class
+    params[:attendances].each do |id, params|
+      attendance = Attendance.find(id)
+      attendance.update(strong_params(params))
+    end
+    redirect_to attendance_school_class_path(id: school_class, date: params[:date])
   end
 
   private

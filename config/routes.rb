@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       get 'attendance/:date', to: 'attendances#show', as: 'attendance'
       get 'attendance/:date/edit', to: 'attendances#edit', as: 'edit_attendance'
+      patch 'attendance/:date', to: 'attendances#update', as: 'update_attendance'
     end
   end
   resources :students, only: [ :update, :destroy, :edit, :show ] do

@@ -17,6 +17,8 @@
   </tbody>
 </table>
 
+<%= link_to 'Edit', edit_attendance_school_class_path(id: @school_class, date: @date)%>
+<br>
 <%= link_to 'Previous Day',  attendance_school_class_path(id: @school_class, date: @date - 1)%>
 <br>
 <%= link_to 'Following Day',  attendance_school_class_path(id: @school_class, date: @date + 1)%>

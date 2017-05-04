@@ -1,0 +1,75 @@
+<%= form_tag path, form_options do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Student</td>
+        <td>Presence</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @attendances.each do |attendance| %>
+        <%= fields_for 'attendances[]', attendance do |f| %>
+          <tr id="<%= attendance.student.id %>">
+            <td><%= f.label :present, attendance.student.first_name %></td>
+            <td>
+              <% if attendance.present %>
+                <i class="fa fa-check" aria-hidden="true"></i> <div class="edit-attendance btn" id="<%= attendance.student_id %>">Edit</div>
+              <% elsif attendance.present == false %>
+                <i class="fa fa-times" aria-hidden="true"></i> <div class="edit-attendance btn" id="<%= attendance.student_id %>">Edit</div>
+              <% else %>
+                <ul class="list-inline">
+                  <li><div class="btn btn-success present" id="<%= attendance.student.id %>">Present</div></li>
+                  <li><div class="btn btn-danger absent" id="<%= attendance.student.id %>">Absent</div></li>
+                </ul>
+              <% end %>
+            </td>
+            <%= f.text_field :present, type: 'hidden'%>
+            <%= f.text_field :student_id, type: 'hidden'%>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <input class='btn btn-success' type="submit" value="Submit" form="attendance">
+<% end %>
+
+
+<script>
+  var present = function() {
+    $('.present').on('click', function(){
+      var id = $(this).attr('id');
+      $('tr#' + id + ' input').first().val('true');
+      $('tr#' + id + ' td').last().html('<i class="fa fa-check" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
+      edit();
+    });
+  };
+
+  var absent = function() {
+    $('.absent').on('click', function(){
+      var id = $(this).attr('id');
+      $('tr#' + id + ' input').first().val('false');
+      $('tr#' + id + ' td').last().html('<i class="fa fa-times" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
+      edit();
+    });
+  };
+
+  var edit = function() {
+    $('.edit-attendance').on('click', function(){
+      var id = $(this).attr('id');
+      $('tr#' + id + ' input').first().removeAttr('value');
+      $('tr#' + id + ' td').last().html('<ul class="list-inline">' +
+              '<li><div class="btn btn-success present" id="' + id + '">Present</div></li>' +
+              '<li><div class="btn btn-danger absent" id="' + id + '">Absent</div></li>' +
+            '</ul>');
+      present();
+      absent();
+    });
+  };
+
+  $(document).ready(function(){
+    present();
+    absent();
+    edit();
+  });
+</script>
