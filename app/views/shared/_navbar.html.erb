@@ -11,8 +11,9 @@
   <% end %>
 
 
-  <div class="text-center">
-    <h2>eduAssist</h2>
+  <div class="text-center" id="brand-name">
+    <h3>eduAssist</h3>
+    <div class="text-underline-green fadeIn"></div>
   </div>
 
   <!-- Right Navigation -->
@@ -27,16 +28,36 @@
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-eduassist-item hidden-md hidden-lg">
+  <div class="hidden-md hidden-lg">
     <div class="dropdown">
     <%= image_tag("menu.png", "data-toggle" => "dropdown", "class" => "dropdown-toggle" ) %>
       <ul class="dropdown-menu dropdown-menu-right navbar-eduassist-dropdown-menu">
         <% if user_signed_in? %>
-          <li><%= link_to "My Classes", school_classes_path, class: "navbar-eduassist-item navbar-eduassist-link" %></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: "delete", class: "navbar-eduassist-item navbar-eduassist-link" %></li>
+          <li>
+            <%= link_to school_classes_path, class: "navbar-eduassist-item navbar-eduassist-link" do %>
+              <i class="fa fa-users" aria-hidden="true"></i>
+              My Classes
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: "delete", class: "navbar-eduassist-item navbar-eduassist-link" do %>
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              Sign Out
+            <% end %>
+          </li>
         <% else %>
-          <li><%= link_to "Login", new_user_session_path, class: "navbar-eduassist-item navbar-eduassist-link" %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path, class: "navbar-eduassist-item navbar-eduassist-link" %></li>
+          <li>
+            <%= link_to new_user_session_path, class: "navbar-eduassist-item navbar-eduassist-link" do %>
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
+               Log In
+              <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path, class: "navbar-eduassist-item navbar-eduassist-link" do %>
+              <i class="fa fa-plus" aria-hidden="true"></i>
+               Sign Up
+               <% end %>
+          </li>
         <% end %>
       </ul>
     </div>

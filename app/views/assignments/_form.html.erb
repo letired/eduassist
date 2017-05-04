@@ -6,5 +6,8 @@
                               order: [:day, :month, :year] %>
   <%= f.input :max_points %>
   <%= f.input :weight %>
-  <%= f.button :submit, class: "btn btn-success" %>
+  <%= f.button :button, class: "btn edu-button" do %>
+  Add Assignment
+  <div class="text-underline-green fadeIn"></div>
+  <% end %>
 <% end %>
