@@ -1,0 +1,16 @@
+.edu-button {
+  color: black;
+  opacity: 0.7;
+  border: 1px solid dimgrey;
+  padding: 8px 15px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 1px dimgrey;
+}
+
+.edu-button-danger {
+  color: white;
+  background-color: $red;
+  padding: 8px 15px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 1px dimgrey;
+}

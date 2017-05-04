@@ -2,5 +2,10 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <ul class="list-inline">
-  <li><%= f.button :submit, class: "btn btn-success" %></li>
+  <li>
+    <%= f.button :button, class: "btn edu-button" do %>
+    Submit
+    <div class="text-underline-green"></div>
+    <% end %>
+  </li>
 <% end %>

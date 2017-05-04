@@ -3,7 +3,27 @@
  * These are examples of utilities classes
  * Feel free to change them and create your own
  * ------------------------------------- */
+// Underline Styling - put me in a div below your text, also use the class fadeIn!
 
+.text-underline-green {
+  border-bottom: 2px solid $green;
+}
+
+.text-underline-red {
+  border-bottom: 2px solid $red;
+}
+
+.text-underline-blue {
+  border-bottom: 2px solid $blue;
+}
+
+.text-underline-black {
+  border-bottom: 2px solid black;
+}
+
+.text-underline-pink {
+  border-bottom: 2px solid $pink;
+}
 // Paddings
 .padded {
   padding-top: 5em;

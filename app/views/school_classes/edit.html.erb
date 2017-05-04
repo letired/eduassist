@@ -1,5 +1,5 @@
 <%= render 'form' %>
-<li><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+<li><button type="button" class="btn edu-button-danger" data-toggle="modal" data-target="#deleteModal">
   Delete Class
 </button></li>
 </ul>
@@ -18,7 +18,7 @@
         Only select 'Delete' if you really want to do this.
       </div>
       <div class="modal-footer">
-        <%= button_to "Delete Class", { action: "destroy", id: @school_class.id }, method: :delete, class: 'btn btn-danger' %>
+        <%= button_to "Delete Class", { action: "destroy", id: @school_class.id }, method: :delete, class: 'btn edu-button-danger' %>
       </div>
     </div>
   </div>

@@ -3,5 +3,12 @@
   <li><%= link_to edit_student_path(@student) do %> <i class="fa fa-pencil" aria-hidden="true"></i> <% end %></li>
 </ul>
 
-<%= link_to "Grades", assignments_student_path, class: "btn btn-primary" %>
-<%= link_to "Attendance", "#", class: "btn btn-success" %>
+<%= link_to assignments_student_path, class: "btn edu-button" do %>
+  Grades
+  <div class="text-underline-green"></div>
+<% end %>
+
+<%= link_to "#", class: "btn edu-button" do %>
+  Attendance
+  <div class="text-underline-blue"></div>
+<% end %>
