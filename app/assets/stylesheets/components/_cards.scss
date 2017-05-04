@@ -1,0 +1,46 @@
+.card-wrapper {
+  background-color: white;
+  margin: 4vmax 2vmax 4vmax 2vmax;
+  padding: 2vmax;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  height: 85vh;
+
+  h1 {
+    font-size: 3.5vmax;
+    font-weight: bolder;
+    text-align: center;
+    color: $eduassist-gray;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 1.5vmax;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
+.card {
+  border: 1px solid $eduassist-gray;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  padding: 1.5vmax 3vmax;
+  margin: 1.7vmax 0;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: $eduassist-gray;
+  }
+
+  .bottom-border {
+    border-bottom: 2px solid $green;
+  }
+}
+.card-image {
+  width: 60%;
+  opacity: 0.6;
+  margin-bottom: 1vmax;
+}
