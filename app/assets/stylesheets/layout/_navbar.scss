@@ -1,11 +1,10 @@
 /* Main class */
 .navbar-eduassist {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
-  padding: 0px 30px;
+  padding: 0px 20px;
   align-items: center;
   justify-content: space-between;
   color: #757171;
@@ -22,8 +21,9 @@
 
 /* Navbar logo */
 .navbar-eduassist-brand img {
-  width: 50px;
-  opacity: 0.7;
+  height: 40px;
+  opacity: 0.5;
+  padding-right: 10px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -67,40 +67,6 @@
   border-color: #ac2626;
 }
 
-/* Navbar search form */
-.navbar-eduassist-search {
-  flex: 0 1 300px;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 10px;
-  position: relative;
-}
-.navbar-eduassist-search-btn {
-  line-height: 40px;
-  color: #E6E6E6;
-  border: none;
-  background: transparent;
-  position: absolute;
-  right: 14px;
-  top: -2px;
-  z-index: 1;
-}
-.navbar-eduassist-search-input {
-  flex: 0 1 300px;
-  transition: all 0.15s ease;
-  line-height: 40px;
-  font-weight: lighter;
-  color: #666666;
-  border: 1px solid #E6E6E6;
-  border-radius: 5px;
-  padding: 0 10px;
-  font-size: 14px;
-  outline: none;
-}
-.navbar-eduassist-search-input:focus  {
-  border: 1px solid #CCCCCC;
-}
-
 /* Navbar dropdown menu */
 .navbar-eduassist-dropdown-menu {
   margin-top: 15px;
@@ -133,4 +99,6 @@
 }
 .dropdown img {
   height: 30px;
+  opacity: 0.5;
+  padding-left: 10px;
 }
