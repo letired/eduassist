@@ -1,10 +1,20 @@
 <h1><%= @student.first_name %></h1>
+
 <ul>
   <% @grades.each do |grade| %>
+
     <li>Assignment: <%= grade.assignment.name %></li>
     <li>Category: <%= grade.assignment.category %></li>
     <li>Max Points: <%= grade.assignment.max_points %></li>
-    <li>Earned Points: <%=grade.earned_points %> </li>
+
+
+      <%= simple_form_for grade, url: grades_student_path(@student) do |f| %>
+      <%= f.input :earned_points %>
+      <%= f.input :id, as: :hidden, value: grade.id %>
+      <%= f.button :submit %>
+      <% end %>
     <br>
   <% end %>
 </ul>
+
+

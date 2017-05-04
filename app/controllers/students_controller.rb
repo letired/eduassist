@@ -17,6 +17,19 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @grades = @student.grades
     authorize @student
+    @assignment = Assignment.find(params[:id])
+  end
+
+  def show_grades
+    @student = Student.find(params[:id])
+    @grade = Grade.find(grade_params[:id])
+    authorize @grade
+    if @grade.update(earned_points: grade_params[:earned_points])
+      redirect_to student_path(@student), notice: "Student's grade was updated successfully."
+    else
+      render :edit
+    end
+    authorize @student
   end
 
   def new
@@ -72,6 +85,9 @@ class StudentsController < ApplicationController
   end
 
   private
+ def grade_params
+    params.require(:grade).permit( :earned_points, :id )
+  end
 
   def student_params
     params.require(:student).permit( :first_name, :last_name, :bio, :birthday )
