@@ -1,3 +1,7 @@
+<% t = Time.now %>
+
+<h2><%= t.strftime("%A, %d %B %Y") %></h2>
+
 <%= form_tag school_class_attendances_path, id: 'attendance' do %>
   <table class="table table-striped">
     <thead>
