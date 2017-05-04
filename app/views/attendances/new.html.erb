@@ -1,8 +1,6 @@
-<% t = Time.now %>
+<h2><%= Date.today.strftime("%A, %d %B %Y") %></h2>
 
-<h2><%= t.strftime("%A, %d %B %Y") %></h2>
-
-<% path = school_class_attendances_path %>
+<% path = attendances_path %>
 <% form_options = { id: 'attendance' }%>
 
 <%= render 'form', path: path, form_options: form_options %>

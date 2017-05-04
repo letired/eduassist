@@ -1,24 +1,35 @@
-<h2><%= @date %></h2>
+<h2><%= @date.strftime("%A, %d %B %Y") %></h2>
+<% unless @attendances.empty? %>
+  <%= link_to 'Edit', edit_attendance_school_class_path(id: @school_class, date: @date)%> |
+<% end %>
+<%= link_to 'Previous Day',  attendance_school_class_path(id: @school_class, date: @date - 1)%> |
+<% unless @date == Date.today %>
+  <%= link_to 'Following Day',  attendance_school_class_path(id: @school_class, date: @date + 1)%>
+<% end %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <td>Student</td>
-      <td>Presence</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @attendances.each do |attendance| %>
-        <tr id="<%= attendance.student.id %>">
-          <td><%= attendance.student.first_name %></td>
-          <td><%= attendance.present? %></td>
-        </tr>
-      <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'Edit', edit_attendance_school_class_path(id: @school_class, date: @date)%>
-<br>
-<%= link_to 'Previous Day',  attendance_school_class_path(id: @school_class, date: @date - 1)%>
-<br>
-<%= link_to 'Following Day',  attendance_school_class_path(id: @school_class, date: @date + 1)%>
+<% if @attendances.empty? %>
+  <h3>No Attendance Taken</h3>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Student</td>
+        <td>Presence</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @attendances.each do |attendance| %>
+          <tr id="<%= attendance.student.id %>">
+            <td><%= attendance.student.first_name %></td>
+            <td>
+              <% if attendance.present %>
+                <i class="fa fa-check" aria-hidden="true"></i>
+              <% else attendance.present == false %>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+<% end %>
