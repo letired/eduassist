@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
     @student.school_class = @school_class
     if @student.save
       respond_to do |format|
-        format.html {redirect_to new_school_class_student_path(@school_class)}
+        format.html {redirect_to new_school_class_student_path(@school_class)},
         format.js
       end
     else

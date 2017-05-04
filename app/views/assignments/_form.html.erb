@@ -1,8 +1,10 @@
 <%= simple_form_for([school_class, assignment]) do |f| %>
   <%= f.input :name %>
   <%= f.input :category %>
-  <%= f.input :date %>
+  <%= f.input :date, as: :date, start_year: Date.today.year - 1,
+                              end_year: Date.today.year,
+                              order: [:day, :month, :year] %>
   <%= f.input :max_points %>
   <%= f.input :weight %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "btn btn-success" %>
 <% end %>
