@@ -1,14 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <ul>
-        <% @students.each do |student| %>
-        <%= link_to student do %>
-        <li><%= student.first_name %> <%= student.last_name %></li>
-        <% end %>
-      <% end %>
-      </ul>
-      <%= link_to "Add a student to this class", new_school_class_student_path(@school_class)  %>
-    </div>
-  </div>
+<h1><%= @school_class.name %></h1>
+<ul class="list-unstyled">
+  <% @students.each do |student| %>
+  <%= link_to student do %>
+  <li><%= student.first_name %> <%= student.last_name %></li>
+  <% end %>
+<% end %>
+</ul>
+<div style="margin: 10px 0px;">
+  <%= link_to new_school_class_student_path(@school_class), class: "btn edu-button" do  %>
+    New Student?
+    <div class="text-underline-green"></div>
+  <% end %>
 </div>

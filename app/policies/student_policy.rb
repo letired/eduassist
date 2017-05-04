@@ -17,6 +17,10 @@ class StudentPolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
+  def show_grades?
+    user_is_owner_or_admin?
+  end
+
   def update?
     user_is_owner_or_admin?
   end
