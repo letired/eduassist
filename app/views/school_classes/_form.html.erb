@@ -1,5 +1,6 @@
 <%= simple_form_for @school_class do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.button :submit %>
+  <ul class="list-inline">
+  <li><%= f.button :submit, class: "btn btn-success" %></li>
 <% end %>

@@ -5,12 +5,13 @@
   <%= f.input :birthday, as: :date, start_year: Date.today.year - 20,
                               end_year: Date.today.year,
                               order: [:day, :month, :year] %>
-  <%= f.button :submit, class: "btn btn-success"  %>
+  <ul class="list-inline">
+    <li><%= f.button :submit, class: "btn btn-success" %></li>
+    <li>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Student</button>
+    </li>
+  </ul>
 <% end %>
-<br>
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-  Delete Student
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

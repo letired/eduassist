@@ -48,7 +48,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     authorize @assignment
     if @assignment.update(assignment_params)
-      redirect_to @assignment
+      redirect_to @assignment, notice: 'Assignment was updated successfully.'
     else
       render :edit
     end
