@@ -1,0 +1,24 @@
+<h2><%= @date %></h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Student</td>
+      <td>Presence</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendances.each do |attendance| %>
+        <tr id="<%= attendance.student.id %>">
+          <td><%= attendance.student.first_name %></td>
+          <td><%= attendance.present? %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_attendance_school_class_path(id: @school_class, date: @date)%>
+<br>
+<%= link_to 'Previous Day',  attendance_school_class_path(id: @school_class, date: @date - 1)%>
+<br>
+<%= link_to 'Following Day',  attendance_school_class_path(id: @school_class, date: @date + 1)%>
