@@ -1,17 +1,19 @@
+<div class="margin">
 <%= simple_form_for @student do |f| %>
   <%= f.input :first_name, label: false, placeholder: "First Name"  %>
   <%= f.input :last_name, label: false, placeholder: "Last Name" %>
-  <%= f.input :bio, label: false, placeholder: "Any important information about this student?" %>
+  <%= f.input :bio, placeholder: "Any important information about this student?" %>
   <%= f.input :birthday, as: :date, start_year: Date.today.year - 20,
                               end_year: Date.today.year,
                               order: [:day, :month, :year] %>
   <ul class="list-inline">
     <li><%= f.button :button, class: "btn edu-button" do %> Update Student<div class="text-underline-blue"></div><% end %></li>
     <li>
-      <button type="button" class="btn edu-button" data-toggle="modal" data-target="#deleteModal">Delete Student <div class="text-underline-red"></div></button>
+      <button type="button" class="btn edu-button-danger" data-toggle="modal" data-target="#deleteModal">Delete Student <div class="text-underline-red"></div></button>
     </li>
   </ul>
 <% end %>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -27,7 +29,7 @@
         Only select 'Delete' if you really want to do this.
       </div>
       <div class="modal-footer">
-        <%= button_to "Delete Student", { action: "destroy", id: @student.id }, method: :delete, class: 'btn edu-button' %>
+        <%= button_to "Delete Student", { action: "destroy", id: @student.id }, method: :delete, class: 'btn edu-button-danger' %>
       </div>
     </div>
   </div>
