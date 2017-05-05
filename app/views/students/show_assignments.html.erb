@@ -1,21 +1,26 @@
 <div class="card-wrapper list-wrapper">
-<h1><%= @student.first_name %></h1>
+  <h1><%= @student.first_name %></h1>
 
-<ul>
   <% @grades.each do |grade| %>
-
-    <li>Assignment: <%= grade.assignment.name %></li>
-    <li>Category: <%= grade.assignment.category %></li>
-    <li>Max Points: <%= grade.assignment.max_points %></li>
-
+    <ul class="list-unstyled">
+      <li>Assignment: <%= grade.assignment.name %></li>
+      <li>Category: <%= grade.assignment.category %></li>
+      <li>Max Points: <%= grade.assignment.max_points %></li>
+    </ul>
 
       <%= simple_form_for grade, url: grades_student_path(@student) do |f| %>
       <%= f.input :earned_points %>
       <%= f.input :id, as: :hidden, value: grade.id %>
-      <%= f.button :submit %>
+      <ul class="list-inline">
+        <li>
+          <%= f.button :button, class: "btn edu-button" do %>
+            Edit Grade
+            <div class="text-underline-green"></div>
+          <% end %>
+        </li>
       <% end %>
-    <br>
-  <% end %>
-</ul>
+      <hr>
+    <% end %>
+
 </div>
 

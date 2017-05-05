@@ -1,6 +1,6 @@
 <%= simple_form_for @school_class do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
+  <%= f.input :name, label: false, placeholder: "Class name" %>
+  <%= f.input :description, label: false, placeholder: "Class description" %>
   <ul class="list-inline">
   <li>
     <%= f.button :button, class: "btn edu-button" do %>
