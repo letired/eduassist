@@ -1,0 +1,51 @@
+<h1><%= @student.first_name %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Assignment</td>
+      <td>Earned Points</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @grades.each do |grade| %>
+    <tr>
+      <td>
+        Title: <%= grade.assignment.name %><br>
+        Category: <%= grade.assignment.category %><br>
+        Max Points: <%= grade.assignment.max_points %><br>
+      </td>
+      <td>
+        <%= grade.earned_points %>
+        <div class="edit-points btn" id="<%= grade.id %>">Edit</div>
+        <div class="hidden form" id="<%= grade.id %>">
+          <%= form_for grade, url: grade_path, method: :patch do |f| %>
+          <%= f.text_field :earned_points %>
+          <%= f.hidden_field :id %>
+          <%= f.submit "Update" %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+  $(document).ready(function() {
+    $('.edit-points').on('click', function() {
+      console.log("works");
+      var id = $(this).attr('id');
+      $('#' + id + '.form').removeClass("hidden");
+      console.log(id);
+    });
+  });
+</script>
+
+
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>

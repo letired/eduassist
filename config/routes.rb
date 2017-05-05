@@ -14,12 +14,11 @@ Rails.application.routes.draw do
   end
   resources :students, only: [ :update, :destroy, :edit, :show ] do
     member do
-      get 'assignments', to: 'students#show_assignments'
-      get 'grades', to: 'students#show_grades'
-      patch 'grades', to: 'students#show_grades'
+      get 'assignments', to: 'assignments#index_students'
     end
   end
   resources :assignments, only: [ :show, :update, :destroy, :edit ]
+  resources :grades, only: [ :update ]
   # resources :assignments
   # resources :grades, only: [ :create, :update, :destroy ]
   # resources :attendances,

@@ -1,16 +1,11 @@
 class GradesController < ApplicationController
-  def show
-    @student = Student.find(params[:id])
-    authorize @student
-    @grade = @student.grades.find(params[:id])
-  end
-
   def update
-    @student = Student.find(params[:id])
-    @grade = @student.grades.find(params[:id])
+    @grade = Grade.find(params[:grade][:id])
     authorize @grade
+    @student = @grade.student
+    authorize @student
     if @grade.update(grade_params)
-      redirect_to student_path(@student), notice: "Student's grade was updated successfully."
+      redirect_to assignments_student_path(@student), notice: "Student's grade was updated successfully."
     else
       render :edit
     end
@@ -18,7 +13,9 @@ class GradesController < ApplicationController
 
   private
 
-  def grade_param
-    params.require(:grade).permit( :earned_points )
+
+
+  def grade_params
+    params.require( :grade ).permit( :earned_points )
   end
 end

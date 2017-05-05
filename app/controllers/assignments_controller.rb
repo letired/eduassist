@@ -12,6 +12,12 @@ class AssignmentsController < ApplicationController
     @grades = @assignment.grades
   end
 
+  def index_students
+    @student = Student.find(params[:id])
+    authorize @student
+    @grades = @student.grades
+  end
+
   def new
     @school_class = SchoolClass.find(params[:school_class_id])
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
