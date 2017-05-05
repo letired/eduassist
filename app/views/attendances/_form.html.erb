@@ -75,9 +75,37 @@
     });
   };
 
+  var swipe_present = function() {
+    $('td').hammer().bind("swiperight", function(event){
+      var id = $(this).parent().attr('id');
+      console.log(id);
+      $('tr#' + id + ' input').first().val('true');
+      $('tr#' + id + ' td').last().html('<i class="fa fa-check" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
+      var $student = $('tr#' + id);
+      $student.detach();
+      $student.appendTo('tbody');
+      edit();
+    });
+  };
+
+  var swipe_absent = function(){
+    $('td').hammer().bind("swipeleft", function(event){
+      var id = $(this).parent().attr('id');
+      console.log(id);
+      $('tr#' + id + ' input').first().val('false');
+      $('tr#' + id + ' td').last().html('<i class="fa fa-times" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
+      var $student = $('tr#' + id);
+      $student.detach();
+      $student.appendTo('tbody');
+      edit();
+    });
+  };
+
   $(document).ready(function(){
     present();
     absent();
+    swipe_present();
+    swipe_absent();
     edit();
   });
 </script>
