@@ -1,8 +1,21 @@
-<ul>
-  <% @assignments.each do |assignment| %>
-    <%= link_to assignment do %>
-      <li><%= assignment.name %> <%= assignment.category %></li>
+<div class="card-wrapper list-wrapper">
+  <h1><%= @school_class.name %> Assignments</h1>
+  <ul class="list-group">
+    <% @assignments.each do |assignment| %>
+      <%= link_to assignment do %>
+        <li class= "list-group-item">
+          <div class="item-name">
+            <%= assignment.name %>
+          </div>
+          <div class="item-attribute" id="assignment-category">
+            <%= assignment.category %>
+          </div>
+        </li>
+      <% end %>
     <% end %>
+  </ul>
+  <%= link_to new_school_class_assignment_path(@school_class), class: "btn edu-button" do  %>
+  New Assignment?
+  <div class="text-underline-green"></div>
   <% end %>
-</ul>
-<%= link_to "Add an assignment to this class", new_school_class_assignment_path(@school_class)  %>
+</div>

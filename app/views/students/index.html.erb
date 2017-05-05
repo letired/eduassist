@@ -1,14 +1,18 @@
-<h1><%= @school_class.name %></h1>
-<ul class="list-unstyled">
-  <% @students.each do |student| %>
-  <%= link_to student do %>
-  <li><%= student.first_name %> <%= student.last_name %></li>
+<div class="card-wrapper list-wrapper">
+  <h1><%= @school_class.name %></h1>
+  <ul class="list-group">
+    <% @students.each do |student| %>
+    <%= link_to student do %>
+      <li class= "list-group-item">
+        <%= student.first_name %> <%= student.last_name %>
+      </li>
+    <% end %>
   <% end %>
-<% end %>
-</ul>
-<div style="margin: 10px 0px;">
-  <%= link_to new_school_class_student_path(@school_class), class: "btn edu-button" do  %>
-    New Student?
-    <div class="text-underline-green"></div>
-  <% end %>
+  </ul>
+  <div style="margin: 10px 0px;">
+    <%= link_to new_school_class_student_path(@school_class), class: "btn edu-button" do  %>
+      New Student?
+      <div class="text-underline-green"></div>
+    <% end %>
+  </div>
 </div>

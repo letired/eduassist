@@ -1,0 +1,66 @@
+.list-wrapper {
+  padding: 20px;
+
+  .list-group {
+    margin: 20px 0;
+  }
+
+  .list-group-item {
+    margin-bottom: -2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2.2vmax;
+  }
+
+  .list-group-item:hover{
+    background-color: lightgray;
+  }
+  h3 {
+    margin: 5px 0
+  }
+
+  h4 {
+    text-align: center;
+    color: $eduassist-gray;
+    font-size: 2.2vmax;
+    margin-bottom: 0;
+  }
+
+  a {
+    color: $eduassist-gray;
+    text-decoration: none;
+    font-size: 2.2vmax;
+  }
+
+  ul > a:first-child {
+    li {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+  }
+
+  ul > a:last-child {
+    li {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+
+  .item-name {
+    flex: 2 1 auto;
+  }
+
+  .item-attribute {
+    flex: 0 1 20%;
+  }
+}
+
+#assignment-category {
+  text-align:center;
+}
+
+#student-grade {
+  text-align: right;
+}
+
