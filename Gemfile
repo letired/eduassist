@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'pundit'
 gem 'redis'
+gem 'jquery-ui-rails'
 
 gem 'sass-rails'
 gem 'jquery-rails'
