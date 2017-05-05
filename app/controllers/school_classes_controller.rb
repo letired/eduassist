@@ -22,6 +22,7 @@ class SchoolClassesController < ApplicationController
     @school_class.user = @user
     authorize @school_class
     if @school_class.save
+      session[:current_class] = @school_class.id
       redirect_to new_school_class_student_path(@school_class), notice: "School Class was created successfully. Let's add the first student."
     else
       render :new
