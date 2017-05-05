@@ -17,7 +17,6 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @grades = @student.grades
     authorize @student
-    @assignment = Assignment.find(params[:id])
   end
 
   def show_grades
