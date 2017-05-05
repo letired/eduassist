@@ -1,1 +1,1 @@
-<li><%= "#{student.first_name} #{student.last_name}" %></li>
+<li><%= "#{student.first_name} #{student.last_name}" %> <%= link_to edit_student_path(student) do %> <i class="fa fa-pencil" aria-hidden="true"></i> <% end %></li>
