@@ -17,7 +17,7 @@
   </div>
 
   <!-- Right Navigation -->
-  <div class="navbar-eduassist-right hidden-xs hidden-sm">
+  <div class="navbar-eduassist-right hidden-xs hidden-sm hidden-md">
     <% if user_signed_in? %>
       <%= link_to "My Classes", school_classes_path, class: "navbar-eduassist-item navbar-eduassist-link" %>
       <%= link_to "Sign Out", destroy_user_session_path, method: "delete", class: "navbar-eduassist-item navbar-eduassist-link" %>
@@ -28,7 +28,7 @@
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="hidden-md hidden-lg">
+  <div class="hidden-lg">
     <div class="dropdown">
     <%= image_tag("menu.png", "data-toggle" => "dropdown", "class" => "dropdown-toggle" ) %>
       <ul class="dropdown-menu dropdown-menu-right navbar-eduassist-dropdown-menu">
