@@ -13,24 +13,6 @@ class StudentsController < ApplicationController
     authorize @student
   end
 
-  def show_assignments
-    @student = Student.find(params[:id])
-    @grades = @student.grades
-    authorize @student
-  end
-
-  def show_grades
-    @student = Student.find(params[:id])
-    @grade = Grade.find(grade_params[:id])
-    authorize @grade
-    if @grade.update(earned_points: grade_params[:earned_points])
-      redirect_to student_path(@student), notice: "Student's grade was updated successfully."
-    else
-      render :edit
-    end
-    authorize @student
-  end
-
   def new
     @student = Student.new
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])

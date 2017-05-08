@@ -13,7 +13,7 @@ class StudentPolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
-  def show_assignments?
+  def index_students?
     user_is_owner_or_admin?
   end
 
