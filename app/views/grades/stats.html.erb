@@ -21,14 +21,16 @@
       <td>
         <%= assignment.category %>
       </td>
-      <td>
+      <td data-id="<%= assignment.id %>" >
         <% total = [] %>
         <% assignment.grades.each do |pts| %>
         <% total << pts.earned_points %>
         <% end %>
         <% av = total.reduce(:+) %>
         <% size = total.length %>
-        <%= av / size.to_f %>
+        <div class="toggle-views" id="points" data-id="<%= assignment.max_points %>" >
+          <%= av / size.to_f %>
+        </div>
 
       </td>
       <td><%= assignment.max_points %></td> <!-- Makes Table too wide -->
@@ -42,6 +44,14 @@
 
 <script>
   $(document).ready(function() {
-
+    $('.toggle-views').on('click', function() {
+      console.log('select worx');
+      var percent = $(this).text();
+      var max = $(this).attr("data-id");
+      console.log(max);
+      percent = Math.floor((percent / max) * 100);
+      var toggle = $(this).html(percent + ' %');
+      console.log(percent);
+    });
   });
 </script>
