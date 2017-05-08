@@ -9,7 +9,7 @@ class AssignmentsController < ApplicationController
   def show
     @assignment = Assignment.find(params[:id])
     authorize @assignment
-    @grades = @assignment.grades
+    @grades = @assignment.grades.joins(:student).order("students.first_name")
   end
 
   def index_students

@@ -13,7 +13,7 @@
       <%= link_to student_path(grade.student.id) do %>
         <li class= "list-group-item">
           <div class="item-name">
-            <%= grade.student.first_name + " " + grade.student.last_name%>
+            <%= grade.student.first_name + " " + grade.student.last_name %>
           </div>
           <div class="item-attribute" id="student-grade">
             <%= "#{grade.earned_points} / #{@assignment.max_points}" %>

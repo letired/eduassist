@@ -3,13 +3,14 @@
     <li><%= @student.first_name + " " + @student.last_name %></li>
     <li><%= link_to edit_student_path(@student) do %> <i class="fa fa-pencil" aria-hidden="true"></i> <% end %></li>
   </ul>
-  <%= link_to '#', id: "about-info" do %><p>About: <i class="fa fa-expand" aria-hidden="true"></i></p><% end %>
-  <div class="bio-info hidden">
-    <h4>Important Information:</h4>
-    <p><%= @student.bio %></p>
-    <h4>Student's Birthday</h4>
-    <p><%= @student.birthday %></p>
-  </div>
+  <%= link_to '#', id: "about-info" do %><p>About: <i class="fa fa-expand" aria-hidden="true"></i></p>
+    <div class="bio-info hidden">
+      <h4>Important Information:</h4>
+      <p><%= @student.bio %></p>
+      <h4>Student's Birthday</h4>
+      <p><%= @student.birthday %></p>
+    </div>
+  <% end %>
   <div class="grade-attendance padded">
     <%= link_to assignments_student_path, class: "btn edu-button" do %>
       Grades
