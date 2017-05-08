@@ -6,6 +6,7 @@
       <td>Name</td>
       <td>Category</td>
       <td>Average Grade</td>
+      <td>Max Points</td>
     </tr>
   </thead>
   <tbody>
@@ -28,8 +29,11 @@
         <% av = total.reduce(:+) %>
         <% size = total.length %>
         <%= av / size.to_f %>
+
       </td>
+      <td><%= assignment.max_points %></td>
     <% end %>
+
     </tr>
 
   </tbody>
