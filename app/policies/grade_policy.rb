@@ -13,7 +13,7 @@ class GradePolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
-  def show_grades?
+  def stats?
     user_is_owner_or_admin?
   end
 
