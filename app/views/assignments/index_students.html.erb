@@ -1,44 +1,57 @@
+<div class="card-wrapper list-wrapper">
 <h1><%= @student.first_name %></h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <td>Assignment</td>
-      <td>Earned Points</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @grades.each do |grade| %>
-    <tr data-id="<%= grade.id %>">
-      <td>
-        Title: <%= grade.assignment.name %><br>
-        Category: <%= grade.assignment.category %><br>
-        Max Points: <%= grade.assignment.max_points %><br>
-      </td>
-      <td>
-        <div class="current-points">
-          <%= grade.earned_points %>
-        </div>
-        <div class="edit-points btn">Edit</div>
-        <div class="hidden form">
-          <%= form_for grade, url: grade_path, method: :patch do |f| %>
-          <%= f.text_field :earned_points %>
-          <%= f.hidden_field :id %>
-          <%= f.submit "Update" %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Assignment</td>
+        <td>Earned Points</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @grades.each do |grade| %>
+      <tr data-id="<%= grade.id %>">
+        <td>
+          Title: <%= grade.assignment.name %><br>
+          Category: <%= grade.assignment.category %><br>
+          Max Points: <%= grade.assignment.max_points %><br>
+        </td>
+        <td>
+          <div class="current-points">
+            <%= grade.earned_points %>
+          </div>
+          <div class="edit-points btn">Edit</div>
+          <div class="hidden form">
+          <%= simple_form_for grade, url: grade_path do |f| %>
+            <%= f.input :earned_points %>
+            <%= f.input :id, as: :hidden, value: grade.id %>
+            <ul class="list-inline">
+              <li>
+                <%= f.button :button, class: "btn edu-button" do %>
+                  Edit Grade
+                  <div class="text-underline-green"></div>
+                <% end %>
+              </li>
+            </ul>
+            <hr>
           <% end %>
-        </div>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <script>
   $(document).ready(function() {
     $('.edit-points').on('click', function() {
       var id = $(this).parent().parent().attr('data-id');
-      $('#' + id + '.form').removeClass("hidden");
-      $('#' + id + '.edit-points').addClass("hidden");
+      console.log(id);
+      $('[data-id=' + id + '] .form' ).removeClass("hidden");
+      $('[data-id=' + id + '] .current-points').toggleClass("hidden");
+      $('[data-id=' + id + '] .edit-points').toggleClass("hidden");
+
     });
   });
 </script>

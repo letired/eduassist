@@ -41,13 +41,15 @@ puts "Users built!"
 puts "Building classes..."
 
 i = 1
+g = 1
 5.times do
   2.times do
     SchoolClass.create(
-      name: "#{rand(4..12)}th Grade",
+      name: "Grade #{g}",
       description: Faker::StarWars.quote,
       user_id: i
       )
+    g += 1
   end
   i += 1
 end
@@ -93,3 +95,33 @@ SchoolClass.all.each_with_index do |school_class, index|
     end
   puts "Grades added!"
 end
+
+date_range = []
+i = 0
+10.times do
+  date_range << Date.today - i
+  i += 1
+end
+
+puts "For all classes but first: Adding an attendance for each student for past 10 days..."
+SchoolClass.last(9).each do |school_class|
+  Student.where(school_class_id: school_class.id).each do |student|
+    date_range.each do |date|
+      new_attendance = Attendance.new(student_id: student.id, date: date)
+      new_attendance.present = [true, true, true, false].sample
+      new_attendance.save
+    end
+  end
+end
+puts "Attendances added for all classes but first!"
+
+puts "For 'Grade 1' (@first test user) only!! Adding an attendance for each student for past 10 days except today..."
+school_class = SchoolClass.first
+Student.where(school_class_id: school_class.id).each do |student|
+  date_range.last(9).each do |date|
+    new_attendance = Attendance.new(student_id: student.id, date: date)
+    new_attendance.present = [true, true, true, false].sample
+    new_attendance.save
+  end
+end
+puts "Attendances added for 'Grade 1'!"

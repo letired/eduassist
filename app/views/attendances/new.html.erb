@@ -1,8 +1,8 @@
-<% t = Time.now %>
+<div class="card-wrapper list-wrapper">
+  <h2><%= Date.today.strftime("%A, %d %B %Y") %></h2>
 
-<h2><%= t.strftime("%A, %d %B %Y") %></h2>
+  <% path = attendances_path %>
+  <% form_options = { id: 'attendance' }%>
 
-<% path = school_class_attendances_path %>
-<% form_options = { id: 'attendance' }%>
-
-<%= render 'form', path: path, form_options: form_options %>
+  <%= render 'form', path: path, form_options: form_options %>
+</div>

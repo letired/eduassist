@@ -1,19 +1,25 @@
-<h3><%= @assignment.name %></h3>
-<h4><%= @assignment.category %></h4>
-<%= link_to edit_assignment_path(@assignment) do %>
-  <i class="fa fa-pencil" aria-hidden="true">Edit Assignment</i>
-<% end %>
-<ul class="list-unstyled">
-  <% @grades.each do |grade| %>
-    <%= link_to student_path(grade.student.id) do %>
-      <li>
-        <%= grade.student.first_name + " " + grade.student.last_name%>
+<div class="card-wrapper list-wrapper">
+  <h1><%= @assignment.name %>
+    <%= link_to edit_assignment_path(@assignment) do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
     <% end %>
-        <div class="pull-right">
-          <%= "#{grade.earned_points} / #{@assignment.max_points}" %>
-        </div>
-      </li>
-      <hr>
+  </h1>
+  <h3><%= @assignment.category %></h3>
+  <h4><%= @assignment.date %></h4>
 
-  <% end %>
-</ul>
+
+  <ul class="list-group">
+    <% @grades.each do |grade| %>
+      <%= link_to student_path(grade.student.id) do %>
+        <li class= "list-group-item">
+          <div class="item-name">
+            <%= grade.student.first_name + " " + grade.student.last_name%>
+          </div>
+          <div class="item-attribute" id="student-grade">
+            <%= "#{grade.earned_points} / #{@assignment.max_points}" %>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

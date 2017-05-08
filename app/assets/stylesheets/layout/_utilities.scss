@@ -26,11 +26,28 @@
 }
 // Paddings
 .padded {
-  padding-top: 5em;
-  padding-bottom: 5em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+// Margin
+.margin {
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 // Backgrounds
+body {
+  background: #f7f7f7;
+}
+
+.attendance-green {
+  background: #D2DCB5;
+}
+
+.attendance-red {
+  background: #E7ADAD;
+}
 
 .bg-black {
   background: #4a4a4a;

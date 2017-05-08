@@ -2,20 +2,29 @@
   <h1><%= @school_class.name %></h1>
   <div class="container">
     <div class="row">
-      <div class="col-xs-6 col-sm-4">
 
+      <div class="col-xs-12">
+        <div class="class-description">
+          <p><%= @school_class.description %></p>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
         <div class="card">
+        <h4>Struggling student #1: Philipp</h4>
+        <h4>Struggling student #2: Boris</h4>
+        <h4>Struggling student #3: Alex</h4>
           <%= link_to school_class_students_path(@school_class) do %>
-            <%= image_tag "students.png", class: "card-image" %>
-            <p>Students</p>
+
+            <p>View All Students</p>
             <div class="bottom-border"></div>
           <% end %>
         </div>
       </div>
 
-      <div class="col-xs-6 col-sm-4">
+      <div class="col-xs-6">
         <div class="card">
-          <%= link_to new_school_class_attendance_path(@school_class) do %>
+          <%= link_to new_attendance_path(@school_class) do %>
             <%= image_tag "attendance.png", class: "card-image" %>
             <p>Attendance</p>
             <div class="bottom-border"></div>
@@ -23,7 +32,7 @@
         </div>
       </div>
 
-      <div class="col-xs-6 col-sm-4">
+      <div class="col-xs-6">
         <div class="card">
           <%= link_to school_class_assignments_path(@school_class) do %>
             <%= image_tag "gradebook.png", class: "card-image" %>
@@ -33,7 +42,7 @@
         </div>
       </div>
 
-      <div class="col-xs-6 col-sm-4">
+      <div class="col-xs-6">
         <div class="card">
           <%= link_to "" do %>
             <%= image_tag "class-stats.png", class: "card-image" %>
@@ -43,7 +52,7 @@
         </div>
       </div>
 
-      <div class="col-xs-6 col-sm-4">
+      <div class="col-xs-6">
         <div class="card">
           <%= link_to edit_school_class_path(@school_class) do %>
             <%= image_tag "edit-class.png", class: "card-image" %>

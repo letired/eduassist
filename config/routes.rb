@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   resources :school_classes do
     resources :students, only: [ :index, :new, :create ]
     resources :assignments, only: [ :index, :new, :create ]
-    resources :attendances, only: [ :index, :new, :create ]
     member do
-      get 'stats', to: 'grades#stats', as: 'stats'
+      resources :attendances, only: [ :new, :create ]
       get 'attendance/:date', to: 'attendances#show', as: 'attendance'
       get 'attendance/:date/edit', to: 'attendances#edit', as: 'edit_attendance'
       patch 'attendance/:date', to: 'attendances#update', as: 'update_attendance'

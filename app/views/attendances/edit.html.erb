@@ -1,4 +1,8 @@
-<% path = update_attendance_school_class_path %>
-<% form_options = { method: :patch, id: 'attendance' } %>
+<div class="card-wrapper list-wrapper">
+  <h2><%= @date.strftime("%A, %d %B %Y") %></h2>
 
-<%= render 'form', path: path, form_options: form_options %>
+  <% path = update_attendance_school_class_path %>
+  <% form_options = { method: :patch, id: 'attendance' } %>
+
+  <%= render 'form', path: path, form_options: form_options %>
+</div>
