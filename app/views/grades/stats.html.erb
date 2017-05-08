@@ -6,7 +6,7 @@
       <td>Name</td>
       <td>Category</td>
       <td>Average Grade</td>
-      <td>Max Points</td>
+      <td>Max Points</td> <!-- Do we need this? -->
     </tr>
   </thead>
   <tbody>
@@ -31,10 +31,17 @@
         <%= av / size.to_f %>
 
       </td>
-      <td><%= assignment.max_points %></td>
+      <td><%= assignment.max_points %></td> <!-- Makes Table too wide -->
     <% end %>
 
     </tr>
 
   </tbody>
 </table>
+
+
+<script>
+  $(document).ready(function() {
+
+  });
+</script>
