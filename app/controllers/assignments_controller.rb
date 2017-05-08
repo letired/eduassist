@@ -33,8 +33,11 @@ class AssignmentsController < ApplicationController
     authorize @school_class
     @assignment.school_class = @school_class
     if @assignment.save
+      @school_class.students.each do |student|
+        Grade.create(assignment: @assignment, student: student)
+      end
       respond_to do |format|
-        format.html {redirect_to school_class_assignments_path(@school_class)}
+        format.html {redirect_to @assignment}
         format.js
       end
     else

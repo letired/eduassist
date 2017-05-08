@@ -3,14 +3,32 @@
     <li><%= @student.first_name + " " + @student.last_name %></li>
     <li><%= link_to edit_student_path(@student) do %> <i class="fa fa-pencil" aria-hidden="true"></i> <% end %></li>
   </ul>
+  <%= link_to '#', id: "about-info" do %><p>About: <i class="fa fa-expand" aria-hidden="true"></i></p><% end %>
+  <div class="bio-info hidden">
+    <h4>Important Information:</h4>
+    <p><%= @student.bio %></p>
+    <h4>Student's Birthday</h4>
+    <p><%= @student.birthday %></p>
+  </div>
+  <div class="grade-attendance padded">
+    <%= link_to assignments_student_path, class: "btn edu-button" do %>
+      Grades
+      <div class="text-underline-green"></div>
+    <% end %>
 
-  <%= link_to assignments_student_path, class: "btn edu-button" do %>
-    Grades
-    <div class="text-underline-green"></div>
-  <% end %>
-
-  <%= link_to "#", class: "btn edu-button" do %>
-    Attendance
-    <div class="text-underline-blue"></div>
-  <% end %>
+    <%= link_to "#", class: "btn edu-button" do %>
+      Attendance
+      <div class="text-underline-blue"></div>
+    <% end %>
+  </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $("#about-info").on("click", function(event){
+    event.preventDefault();
+    console.log("cool");
+    $(".bio-info").toggleClass("hidden");
+  });
+});
+</script>
