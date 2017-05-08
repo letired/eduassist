@@ -9,16 +9,18 @@
   </thead>
   <tbody>
     <% @grades.each do |grade| %>
-    <tr>
+    <tr data-id="<%= grade.id %>">
       <td>
         Title: <%= grade.assignment.name %><br>
         Category: <%= grade.assignment.category %><br>
         Max Points: <%= grade.assignment.max_points %><br>
       </td>
       <td>
-        <%= grade.earned_points %>
-        <div class="edit-points btn" id="<%= grade.id %>">Edit</div>
-        <div class="hidden form" id="<%= grade.id %>">
+        <div class="current-points">
+          <%= grade.earned_points %>
+        </div>
+        <div class="edit-points btn">Edit</div>
+        <div class="hidden form">
           <%= form_for grade, url: grade_path, method: :patch do |f| %>
           <%= f.text_field :earned_points %>
           <%= f.hidden_field :id %>
@@ -34,8 +36,9 @@
 <script>
   $(document).ready(function() {
     $('.edit-points').on('click', function() {
-      var id = $(this).attr('id');
+      var id = $(this).parent().parent().attr('data-id');
       $('#' + id + '.form').removeClass("hidden");
+      $('#' + id + '.edit-points').addClass("hidden");
     });
   });
 </script>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :assignments, only: [ :index, :new, :create ]
     resources :attendances, only: [ :index, :new, :create ]
     member do
+      get 'stats', to: 'grades#stats', as: 'stats'
       get 'attendance/:date', to: 'attendances#show', as: 'attendance'
       get 'attendance/:date/edit', to: 'attendances#edit', as: 'edit_attendance'
       patch 'attendance/:date', to: 'attendances#update', as: 'update_attendance'
