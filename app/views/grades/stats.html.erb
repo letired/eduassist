@@ -3,6 +3,61 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <td>Category</td>
+      <td>Average</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% categories = [] %>
+    <% @assignments.each do |assignment| %>
+      <% categories << assignment.category %>
+    <% end %>
+    <tr>
+      <td>
+        <% categories.uniq.each do |c|%>
+          <%= link_to c do %>
+          <%= c %><br>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+
+      <% @assignments.each do |assignment| %>
+        <% total = [] %>
+        <% assignment.grades.each do |pts| %>
+        <% total << pts.earned_points %>
+        <% end %>
+        <% av = total.reduce(:+) %>
+        <% size = total.length %>
+        <%= av / size.to_f %>
+      <% end %>
+
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
       <td>Name</td>
       <td>Category</td>
       <td>Average Grade</td>

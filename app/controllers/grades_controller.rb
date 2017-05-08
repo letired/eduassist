@@ -13,8 +13,8 @@ class GradesController < ApplicationController
 
   def stats
     @school_class = policy_scope(SchoolClass).find(params[:id])
-
-    @assignment = Assignment.find(params[:id])
+    # we don't need this variable
+    @assignment = Assignment.where('school_class_id = @school_class AND')
     @assignments = Assignment.where(school_class_id: @school_class).order(date: :asc)
 
     @grades = Grade.where(school_class_id: @school_class).order(date: :asc)
@@ -33,3 +33,4 @@ class GradesController < ApplicationController
     redirect_to(root_path)
   end
 end
+
