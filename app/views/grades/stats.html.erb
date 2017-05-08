@@ -28,8 +28,16 @@
         <% end %>
         <% av = total.reduce(:+) %>
         <% size = total.length %>
-        <div class="toggle-views" id="points" data-id="<%= assignment.max_points %>" >
-          <%= av / size.to_f %>
+
+        <div class="toggle-views" data-id="<%= assignment.id %>" >
+          <div class="points">
+            <%= av / size.to_f %>
+          </div>
+
+          <div  class="ppoints hidden"  >
+            <%= ((((av / size.to_f) / assignment.max_points) * 100).floor).to_s + " %"%>
+          </div>
+
         </div>
 
       </td>
@@ -46,12 +54,9 @@
   $(document).ready(function() {
     $('.toggle-views').on('click', function() {
       console.log('select worx');
-      var percent = $(this).text();
-      var max = $(this).attr("data-id");
-      console.log(max);
-      percent = Math.floor((percent / max) * 100);
-      var toggle = $(this).html(percent + ' %');
-      console.log(percent);
+      var id = $(this).attr('data-id');
+      $('[data-id=' + id + '] .ppoints').toggleClass("hidden");
+      $('[data-id=' + id + '] .points').toggleClass("hidden");
     });
   });
 </script>
