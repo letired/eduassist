@@ -1,9 +1,27 @@
 class AttendancesController < ApplicationController
-  before_action :set_and_authorize_school_class
+  before_action :set_and_authorize_school_class, except: :index_students
 
   def show
     @attendances = Attendance.joins(:student).where(date: params[:date], student_id: @school_class.students.ids).order('first_name')
     @date = Date.parse(params[:date])
+  end
+
+  def index_students
+    # @school_class = policy_scope(SchoolClass).find(@student.school_class.id)
+    # authorize @school_class
+    @student = Student.find(params[:id])
+    authorize @student
+    @attendances = @student.attendances
+
+    @events = []
+    @attendances.each do |attendance|
+      event = {}
+      event[:title] = attendance.present.to_s
+      event[:start] = attendance.date.to_s
+      event[:rendering] = "background"
+      attendance.present ? event[:backgroundColor] = "#9EB25D" : event[:backgroundColor] = "#CC4B4B"
+      @events << event
+    end
   end
 
   def new

@@ -4,4 +4,6 @@
 //= require jquery-ui
 //= require hammer.min
 //= require jquery.hammer
+//= require moment
+//= require fullcalendar
 //= require_tree .

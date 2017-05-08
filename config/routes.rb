@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :students, only: [ :update, :destroy, :edit, :show ] do
     member do
       get 'assignments', to: 'assignments#index_students'
+      get 'attendances', to: 'attendances#index_students'
     end
   end
   resources :assignments, only: [ :show, :update, :destroy, :edit ]

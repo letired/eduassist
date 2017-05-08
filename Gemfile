@@ -10,6 +10,8 @@ gem 'devise'
 gem 'pundit'
 gem 'redis'
 gem 'jquery-ui-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 gem 'sass-rails'
 gem 'jquery-rails'
