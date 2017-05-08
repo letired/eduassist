@@ -1,0 +1,7 @@
+
+$('[data-id=<%= @grade.id %>]').html("Grade Successfully Updated!");
+
+setTimeout(function(){
+  $('[data-id=<%= @grade.id %>]').html("<%= j render 'grades/gradeshow', grade: @grade %>");
+}, 2000);
+
