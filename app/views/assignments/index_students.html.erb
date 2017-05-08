@@ -22,9 +22,10 @@
           </div>
           <div class="edit-points btn">Edit</div>
           <div class="hidden form">
-          <%= simple_form_for grade, url: grade_path do |f| %>
+          <%= simple_form_for grade, remote: true, url: grade_path do |f| %>
             <%= f.input :earned_points %>
             <%= f.input :id, as: :hidden, value: grade.id %>
+            <%= f.hidden_field :redirect_to, value: "/students/#{@student.id}/assignments" %>
             <ul class="list-inline">
               <li>
                 <%= f.button :button, class: "btn edu-button" do %>
@@ -51,7 +52,6 @@
       $('[data-id=' + id + '] .form' ).removeClass("hidden");
       $('[data-id=' + id + '] .current-points').toggleClass("hidden");
       $('[data-id=' + id + '] .edit-points').toggleClass("hidden");
-
     });
   });
 </script>
