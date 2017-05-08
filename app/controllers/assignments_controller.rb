@@ -37,7 +37,7 @@ class AssignmentsController < ApplicationController
         Grade.create(assignment: @assignment, student: student)
       end
       respond_to do |format|
-        format.html {redirect_to school_class_assignments_path(@school_class)}
+        format.html {redirect_to @assignment}
         format.js
       end
     else
