@@ -71,6 +71,9 @@
               '<li><div class="btn edu-button present" id="' + id + '">Present<div class="text-underline-green stretchRight"></div</div></li>' +
               '<li><div class="btn edu-button absent" id="' + id + '">Absent<div class="text-underline-red stretchLeft"></div</div></li>' +
             '</ul>');
+      var $student = $('tr#' + id);
+      $student.children().removeClass("attendance-red");
+      $student.children().removeClass("attendance-green");
       present();
       absent();
     });
@@ -79,30 +82,30 @@
   var swipe_present = function() {
     $('td').hammer().bind("swiperight", function(event){
       var id = $(this).parent().attr('id');
-      console.log(id);
       $('tr#' + id + ' input').first().val('true');
       var $student = $('tr#' + id);
+      $student.children().removeClass("attendance-red");
       $student.children().addClass("attendance-green");
       $student.children().hide("slide", {direction: "right"}, 200, function(){
         $($student).detach().appendTo('tbody');
         $('tr#' + id + ' td').last().html('<i class="fa fa-check" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
+        edit();
       });
-      edit();
     });
   };
 
   var swipe_absent = function(){
     $('td').hammer().bind("swipeleft", function(event){
       var id = $(this).parent().attr('id');
-      console.log(id);
       $('tr#' + id + ' input').first().val('false');
       var $student = $('tr#' + id);
+      $student.children().removeClass("attendance-green");
       $student.children().addClass("attendance-red");
       $student.children().hide("slide", {direction: "left"}, 200, function(){
         $($student).detach().appendTo('tbody');
         $('tr#' + id + ' td').last().html('<i class="fa fa-times" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
+        edit();
       });
-      edit();
     });
   };
 
