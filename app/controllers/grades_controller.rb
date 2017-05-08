@@ -13,8 +13,6 @@ class GradesController < ApplicationController
 
   private
 
-
-
   def grade_params
     params.require( :grade ).permit( :earned_points )
   end
