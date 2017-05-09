@@ -14,7 +14,7 @@
   }
 
   .list-group-item:hover{
-    background-color: lightgray;
+    background-color: #f7f4f4;
   }
   h3 {
     margin: 5px 0
@@ -64,3 +64,26 @@
   text-align: right;
 }
 
+#student-index {
+  display: block;
+  i {
+    padding-left: 10px;
+    color: $eduassist-gray;
+  }
+
+  h4 {
+    font-size: 1.9vmax;
+    text-align: left;
+    margin-top: 0.9vmax;
+  }
+
+  p {
+    margin-top: 0.9vmax;
+  }
+  .btn {
+    padding: 7px 7px;
+    font-size: 1.5vmax;
+    width: 10vmax;
+    margin-top: 10px;
+  }
+}

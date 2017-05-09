@@ -8,11 +8,6 @@ class StudentsController < ApplicationController
     user_not_authorized_to_access_class
   end
 
-  def show
-    @student = Student.find(params[:id])
-    authorize @student
-  end
-
   def new
     @student = Student.new
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
@@ -50,8 +45,9 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     authorize @student
+    school_class = @student.school_class
     if @student.update(student_params)
-      redirect_to student_path(@student), notice: 'Student was updated successfully.'
+      redirect_to school_class_students_path(school_class), notice: 'Student was updated successfully.'
     else
       render :edit
     end
