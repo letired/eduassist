@@ -17,26 +17,7 @@
           Max Points: <%= grade.assignment.max_points %><br>
         </td>
         <td>
-          <div class="current-points">
-            <%= grade.earned_points %>
-          </div>
-          <div class="edit-points btn">Edit</div>
-          <div class="hidden form">
-          <%= simple_form_for grade, remote: true, url: grade_path do |f| %>
-            <%= f.input :earned_points %>
-            <%= f.input :id, as: :hidden, value: grade.id %>
-            <%= f.hidden_field :redirect_to, value: "/students/#{@student.id}/assignments" %>
-            <ul class="list-inline">
-              <li>
-                <%= f.button :button, class: "btn edu-button" do %>
-                  Edit Grade
-                  <div class="text-underline-green"></div>
-                <% end %>
-              </li>
-            </ul>
-            <hr>
-          <% end %>
-          </div>
+         <%= render 'grades/gradeform', grade: grade %>
         </td>
       </tr>
       <% end %>
@@ -45,14 +26,17 @@
 </div>
 
 <script>
-  $(document).ready(function() {
-    $('.edit-points').on('click', function() {
-      var id = $(this).parent().parent().attr('data-id');
+var edit = function() {
+    $('.earned-points').on("focus", function(event){
+      var id = $(this).parent().parent().parent().parent().parent().attr('data-id');
       console.log(id);
-      $('[data-id=' + id + '] .form' ).removeClass("hidden");
-      $('[data-id=' + id + '] .current-points').toggleClass("hidden");
-      $('[data-id=' + id + '] .edit-points').toggleClass("hidden");
+      $('.submit-button').addClass('hidden');
+      $('[data-id=' + id + '] .submit-button' ).removeClass("hidden");
     });
+  };
+
+  $(document).ready(function(){
+    edit();
   });
 </script>
 

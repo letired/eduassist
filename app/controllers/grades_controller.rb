@@ -6,7 +6,7 @@ class GradesController < ApplicationController
     authorize @student
     if @grade.update(grade_params)
       respond_to do |format|
-        format.html {redirect_to params[:grade][:redirect_to], notice: "Student's grade was updated successfully."}
+        format.html {redirect_to assignment_path(@grade.assignment), notice: "Student's grade was updated successfully."}
         format.js
       end
     else

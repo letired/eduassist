@@ -10,7 +10,17 @@
 
   <ul class="list-group">
     <% @grades.each do |grade| %>
-      <%= render 'grades/gradeshow', grade: grade %>
+      <li class= "list-group-item" data-id="<%= grade.id %>">
+        <%= link_to student_path(grade.student.id) do %>
+          <div class="item-name">
+            <%= grade.student.first_name + " " + grade.student.last_name %>
+          </div>
+        <% end %>
+        <%= render 'grades/gradeform', grade: grade %>
+        <div class="item-attribute">
+          / <%= grade.assignment.max_points %>
+        </div>
+      </li>
     <% end %>
   </ul>
 </div>

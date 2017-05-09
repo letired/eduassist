@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
   def index
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
-    @assignments = Assignment.where(school_class_id: @school_class).order(date: :asc)
+    @assignments = Assignment.where(school_class_id: @school_class).order(date: :desc)
   rescue ActiveRecord::RecordNotFound
     user_not_authorized_to_access_class
   end
