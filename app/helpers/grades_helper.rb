@@ -11,7 +11,7 @@ module GradesHelper
       pos_points += assignment.max_points
     end
 
-    average = (points / pos_points.to_f) * 100
+    average = ((points / pos_points.to_f) * 100).round(2).to_s + " %"
   end
 
   def show_lowest_scoring(school_class)
