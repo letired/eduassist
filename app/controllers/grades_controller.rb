@@ -54,6 +54,9 @@ class GradesController < ApplicationController
           maxPoints += as3.max_points
           amount2 += 1
         end
+        if amount > 1
+          amount = amount - 1
+        end
         allPoints = (maxPoints/amount2).to_f
         av = ((points / amount) / allPoints * 100).floor
         @answer[cat] = av
