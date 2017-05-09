@@ -20,6 +20,7 @@
     font-size: 2.5vmax;
     text-align: center;
     color: $eduassist-gray;
+    font-weight: bold;
   }
 
   p {
@@ -45,7 +46,7 @@
     color: $eduassist-gray;
   }
 
-   p {
+  p {
     margin-bottom: 0;
     font-size: 2.5vmax;
     text-align: center;
@@ -53,6 +54,15 @@
 
   .bottom-border {
     border-bottom: 2px solid $green;
+  }
+}
+#struggling-students {
+  font-size: 2.2vmax;
+  text-align: left;
+  color: $eduassist-gray;
+  i {
+    padding-right: 20px;
+    color: $red;
   }
 }
 .card-image {
