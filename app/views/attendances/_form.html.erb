@@ -3,7 +3,7 @@
   <div class="attendance">
     <% @attendances.each do |attendance| %>
       <%= fields_for 'attendances[]', attendance do |f| %>
-        <div class="attendance-card" data-id="<%= attendance.student.id %>">
+        <div class="attendance-card <%= set_background_color(attendance) %>" data-id="<%= attendance.student.id %>">
           <div class="student-name">
             <h4><%= attendance.student.first_name %> <%= attendance.student.last_name.first %>.</h4>
           </div>
@@ -11,10 +11,10 @@
             <% if attendance.present %>
               <div class="student-present"><i class="fa fa-check color-green" aria-hidden="true"></i></div>
             <% elsif attendance.present == false %>
-              <div class="student-present"><i class="fa fa-times color-red" aria-hidden="true"></i></div>
+              <div class="student-absent"><i class="fa fa-times color-red" aria-hidden="true"></i></div>
             <% else %>
-              <div class="swipe-instructions-left"><i class="fa fa-arrow-left color-red floating" aria-hidden="true"></i></div>
-              <div class="swipe-instructions-right"><i class="fa fa-arrow-right color-green floating" aria-hidden="true"></i></div>
+              <div class="swipe-instructions-left"><i class="fa fa-hand-o-left color-red floating-horizontal-left" aria-hidden="true"></i></i></div>
+              <div class="swipe-instructions-right"><i class="fa fa-hand-o-right color-green floating-horizontal-right" aria-hidden="true"></i></div>
             <% end %>
           </div>
           <%= f.text_field :present, type: 'hidden'%>
@@ -23,7 +23,9 @@
       <% end %>
     <% end %>
   </div>
-  <input class='btn edu-button' type="submit" value="Submit" form="attendance" style="margin-bottom: 15px;">
+  <div class="sticky-footer">
+    <input class='btn edu-button' type="submit" value="Submit" form="attendance">
+  </div>
 <% end %>
 
 
@@ -49,7 +51,7 @@
       var $student = $('[data-id=' + id + '].attendance-card');
       $student.removeClass("attendance-green");
       $student.addClass("attendance-red");
-      $('[data-id=' + id + '] .attendance-status').html('<div class="student-present"><i class="fa fa-times color-red" aria-hidden="true"></i></div>');
+      $('[data-id=' + id + '] .attendance-status').html('<div class="student-absent"><i class="fa fa-times color-red" aria-hidden="true"></i></div>');
       $student.hide("slide", {direction: "left"}, 200, function(){
         $student.appendTo('.attendance').show();
       });

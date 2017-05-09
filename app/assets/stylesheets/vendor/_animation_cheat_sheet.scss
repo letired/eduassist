@@ -794,6 +794,75 @@ floating
   }
 }
 
+.floating-horizontal-right{
+  animation-name: floating-horizontal-right;
+  -webkit-animation-name: floating-horizontal-right;
+
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating-horizontal-right {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(8%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes floating-horizontal-right {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  50% {
+    -webkit-transform: translateX(8%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+
+.floating-horizontal-left{
+  animation-name: floating-horizontal-left;
+  -webkit-animation-name: floating-horizontal-left;
+
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating-horizontal-left {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-8%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes floating-horizontal-left {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  50% {
+    -webkit-transform: translateX(-8%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
 /*
 ==============================================
 tossing
