@@ -35,7 +35,7 @@ class GradesController < ApplicationController
     if @categories
       @categories.each do |cat|
         points = 0
-        amount = 0
+        amount = 1
         maxPoints = 0
         amount2 = 0
         ass2 = @assignments.where(category: cat)
