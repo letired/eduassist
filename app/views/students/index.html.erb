@@ -1,4 +1,4 @@
-<div class="card-wrapper list-wrapper">
+<div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
   <h1><%= @school_class.name %></h1>
   <ul class="list-group">
     <% @students.each do |student| %>
@@ -44,7 +44,9 @@
       </li>
     <% end %>
   </ul>
-  <div style="margin: 10px 0px;">
+</div>
+<div class="sticky-footer">
+  <div>
     <%= link_to new_school_class_student_path(@school_class), class: "btn edu-button" do  %>
       New Student?
       <div class="text-underline-green"></div>
