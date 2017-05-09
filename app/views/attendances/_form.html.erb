@@ -1,119 +1,63 @@
 <%= form_tag path, form_options do %>
 <h4>Swipe left for absent, swipe right for present!</h4>
-  <table class="table table-striped">
-    <colgroup>
-       <col span="1" style="width: 50%;">
-       <col span="1" style="width: 50%;">
-    </colgroup>
-    <thead>
-      <tr>
-        <td>Student</td>
-        <td>Presence</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @attendances.each do |attendance| %>
-        <%= fields_for 'attendances[]', attendance do |f| %>
-          <tr id="<%= attendance.student.id %>">
-            <td><%= f.label :present, attendance.student.first_name %></td>
-            <td>
-              <% if attendance.present %>
-                <i class="fa fa-check" aria-hidden="true"></i> <div class="edit-attendance btn" id="<%= attendance.student_id %>">Edit</div>
-              <% elsif attendance.present == false %>
-                <i class="fa fa-times" aria-hidden="true"></i> <div class="edit-attendance btn" id="<%= attendance.student_id %>">Edit</div>
-              <% else %>
-                <ul class="list-inline">
-                <li>
-                  <div class="btn edu-button present" id="<%= attendance.student.id %>">Present<div class="text-underline-green stretchRight"></div></div>
-                </li>
-                <li>
-                  <div class="btn edu-button absent" id="<%= attendance.student.id %>">Absent<div class="text-underline-red stretchLeft"></div></div>
-                </li>
-              </ul>
-              <% end %>
-            </td>
-            <%= f.text_field :present, type: 'hidden'%>
-            <%= f.text_field :student_id, type: 'hidden'%>
-          </tr>
-        <% end %>
+  <div class="attendance">
+    <% @attendances.each do |attendance| %>
+      <%= fields_for 'attendances[]', attendance do |f| %>
+        <div class="attendance-card" data-id="<%= attendance.student.id %>">
+          <div class="student-name">
+            <h4><%= attendance.student.first_name %> <%= attendance.student.last_name.first %>.</h4>
+          </div>
+          <div class="attendance-status">
+            <% if attendance.present %>
+              <div class="student-present"><i class="fa fa-check color-green" aria-hidden="true"></i></div>
+            <% elsif attendance.present == false %>
+              <div class="student-present"><i class="fa fa-times color-red" aria-hidden="true"></i></div>
+            <% else %>
+              <div class="swipe-instructions-left"><i class="fa fa-arrow-left color-red floating" aria-hidden="true"></i></div>
+              <div class="swipe-instructions-right"><i class="fa fa-arrow-right color-green floating" aria-hidden="true"></i></div>
+            <% end %>
+          </div>
+          <%= f.text_field :present, type: 'hidden'%>
+          <%= f.text_field :student_id, type: 'hidden'%>
+        </div>
       <% end %>
-    </tbody>
-  </table>
-
+    <% end %>
+  </div>
   <input class='btn edu-button' type="submit" value="Submit" form="attendance" style="margin-bottom: 15px;">
 <% end %>
 
 
 <script>
-  var present = function() {
-    $('.present').on('click', function(){
-      var id = $(this).attr('id');
-      $('tr#' + id + ' input').first().val('true');
-      $('tr#' + id + ' td').last().html('<i class="fa fa-check" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
-      edit();
-    });
-  };
-
-  var absent = function() {
-    $('.absent').on('click', function(){
-      var id = $(this).attr('id');
-      $('tr#' + id + ' input').first().val('false');
-      $('tr#' + id + ' td').last().html('<i class="fa fa-times" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
-      edit();
-    });
-  };
-
-  var edit = function() {
-    $('.edit-attendance').on('click', function(){
-      var id = $(this).attr('id');
-      $('tr#' + id + ' input').first().removeAttr('value');
-      $('tr#' + id + ' td').last().html('<ul class="list-inline">' +
-              '<li><div class="btn edu-button present" id="' + id + '">Present<div class="text-underline-green stretchRight"></div</div></li>' +
-              '<li><div class="btn edu-button absent" id="' + id + '">Absent<div class="text-underline-red stretchLeft"></div</div></li>' +
-            '</ul>');
-      var $student = $('tr#' + id);
-      $student.children().removeClass("attendance-red");
-      $student.children().removeClass("attendance-green");
-      present();
-      absent();
-    });
-  };
-
   var swipe_present = function() {
-    $('td').hammer().bind("swiperight", function(event){
-      var id = $(this).parent().attr('id');
-      $('tr#' + id + ' input').first().val('true');
-      var $student = $('tr#' + id);
-      $student.children().removeClass("attendance-red");
-      $student.children().addClass("attendance-green");
-      $student.children().hide("slide", {direction: "right"}, 200, function(){
-        $($student).detach().appendTo('tbody');
-        $('tr#' + id + ' td').last().html('<i class="fa fa-check" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
-        edit();
+    $('.attendance-card').hammer().bind("swiperight", function(event){
+      var id = $(this).attr('data-id');
+      $('[data-id=' + id + '] input').first().val('true');
+      var $student = $('[data-id=' + id + '].attendance-card');
+      $student.removeClass("attendance-red");
+      $student.addClass("attendance-green");
+      $('[data-id=' + id + '] .attendance-status').html('<div class="student-present"><i class="fa fa-check color-green" aria-hidden="true"></i></div>');
+      $student.hide("slide", {direction: "right"}, 200, function(){
+        $student.appendTo('.attendance').show();
       });
     });
   };
 
   var swipe_absent = function(){
-    $('td').hammer().bind("swipeleft", function(event){
-      var id = $(this).parent().attr('id');
-      $('tr#' + id + ' input').first().val('false');
-      var $student = $('tr#' + id);
-      $student.children().removeClass("attendance-green");
-      $student.children().addClass("attendance-red");
-      $student.children().hide("slide", {direction: "left"}, 200, function(){
-        $($student).detach().appendTo('tbody');
-        $('tr#' + id + ' td').last().html('<i class="fa fa-times" aria-hidden="true"></i> <div class="edit-attendance btn" id="' + id + '">Edit</div>'  );
-        edit();
+    $('.attendance-card').hammer().bind("swipeleft", function(event){
+      var id = $(this).attr('data-id');
+      $('[data-id=' + id + '] input').first().val('false');
+      var $student = $('[data-id=' + id + '].attendance-card');
+      $student.removeClass("attendance-green");
+      $student.addClass("attendance-red");
+      $('[data-id=' + id + '] .attendance-status').html('<div class="student-present"><i class="fa fa-times color-red" aria-hidden="true"></i></div>');
+      $student.hide("slide", {direction: "left"}, 200, function(){
+        $student.appendTo('.attendance').show();
       });
     });
   };
 
   $(document).ready(function(){
-    present();
-    absent();
     swipe_present();
     swipe_absent();
-    edit();
   });
 </script>

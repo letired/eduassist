@@ -1,3 +1,7 @@
+.wrapper-with-sticky-footer {
+  margin-bottom: 13vmax;
+}
+
 .card-wrapper {
   background-color: white;
   margin: 2vmax 1vmax;
@@ -55,6 +59,80 @@
   width: 60%;
   margin-bottom: 1vmax;
 }
-.wrapper-with-sticky-footer {
-  margin-bottom: 13vmax;
+
+.attendance-card-show {
+  position: relative;
+  height: 6vh;
+  border: 1px solid $eduassist-gray;
+  border-radius: 8px;
+  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 1.5vmax 3vmax;
+  margin: .8vmax 0;
+
+  .student-name {
+    position: absolute;
+    top: 1vh;
+    left: 1vh;
+    font-size: 3vmax;
+  }
+
+  .student-present {
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    font-size: 3vmax;
+  }
+}
+
+.attendance-card {
+  position: relative;
+  height: 20vh;
+  border: 1px solid $eduassist-gray;
+  border-radius: 8px;
+  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 1.5vmax 3vmax;
+  margin: 1.7vmax 0;
+
+  .student-name {
+    position: absolute;
+    top: 10%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%);
+    color: $eduassist-gray;
+
+    h4 {
+      font-size: 4vmax;
+    }
+  }
+
+  .student-present {
+    position: absolute;
+    bottom: 1vh;
+    right: 1vh;
+    font-size: 10vmax;
+  }
+
+  .swipe-instructions-left {
+    position: absolute;
+    bottom: 2vh;
+    left: 1vh;
+    font-size: 3vmax;
+
+    i {
+      font-size: 8vmax;
+      text-shadow: 1px 1px 2px $red;
+    }
+  }
+
+  .swipe-instructions-right {
+    position: absolute;
+    bottom: 2vh;
+    right: 1vh;
+    font-size: 3vmax;
+
+    i {
+      font-size: 8vmax;
+      text-shadow: 1px 1px 2px $green;
+    }
+  }
 }
