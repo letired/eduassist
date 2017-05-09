@@ -3,8 +3,15 @@
  * These are examples of utilities classes
  * Feel free to change them and create your own
  * ------------------------------------- */
-// Underline Styling - put me in a div below your text, also use the class fadeIn!
+// Text Colors
+.color-green {
+  color: $green;
+}
 
+.color-red {
+  color: $red;
+}
+// Underline Styling - put me in a div below your text, also use the class fadeIn!
 .text-underline-green {
   border-bottom: 2px solid $green;
 }
