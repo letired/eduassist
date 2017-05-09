@@ -13,9 +13,34 @@ class GradesController < ApplicationController
 
   def stats
     @school_class = policy_scope(SchoolClass).find(params[:id])
-    # we don't need this variable
-    @assignment = Assignment.where('school_class_id = @school_class AND')
+
+
     @assignments = Assignment.where(school_class_id: @school_class).order(date: :asc)
+
+    @categories = []
+    @answer = {}
+
+     @assignments.each do |ass|
+       @categories <<  ass.category
+
+    end
+    @categories = @categories.uniq!
+
+    @categories.each do |cat|
+      points = 0
+      amount = 0
+      ass2 = @assignments.where(category: cat)
+      ass2.each do |as2|
+           as2.grades.each do |gra|
+                points += gra.earned_points
+                amount += 1
+              end
+           end
+       ave = points / amount
+       @answer[cat] = ave
+      end
+
+
 
     @grades = Grade.where(school_class_id: @school_class).order(date: :asc)
     rescue ActiveRecord::RecordNotFound

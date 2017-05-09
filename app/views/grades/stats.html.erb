@@ -4,64 +4,33 @@
   <thead>
     <tr>
       <td>Category</td>
-      <td>Average</td>
+      <td>Overall Average</td>
     </tr>
   </thead>
   <tbody>
-    <% categories = [] %>
-    <% @assignments.each do |assignment| %>
-      <% categories << assignment.category %>
-    <% end %>
+    <% @answer.each do |k,c|%>
     <tr>
       <td>
-        <% categories.uniq.each do |c|%>
-          <%= link_to c do %>
-          <%= c %><br>
-          <% end %>
+        <%= link_to k do %>
+        <%= k %><br>
         <% end %>
       </td>
       <td>
-
-      <% @assignments.each do |assignment| %>
-        <% total = [] %>
-        <% assignment.grades.each do |pts| %>
-        <% total << pts.earned_points %>
-        <% end %>
-        <% av = total.reduce(:+) %>
-        <% size = total.length %>
-        <%= av / size.to_f %>
-      <% end %>
-
+      <%= c %>
       </td>
     </tr>
-
+    <% end %>
   </tbody>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <td>Name</td>
+      <td>Assignmnet Name</td>
       <td>Category</td>
       <td>Average Grade</td>
-      <td>Max Points</td> <!-- Do we need this? -->
+     <!-- <td>Max Points</td>  How could we display this? -->
     </tr>
   </thead>
   <tbody>
@@ -96,7 +65,7 @@
         </div>
 
       </td>
-      <td><%= assignment.max_points %></td> <!-- Makes Table too wide -->
+      <!-- <td><%= assignment.max_points %></td>  Makes Table too wide -->
     <% end %>
 
     </tr>
