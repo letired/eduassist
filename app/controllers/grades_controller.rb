@@ -5,15 +5,21 @@ class GradesController < ApplicationController
     @student = @grade.student
     authorize @student
     if @grade.update(grade_params)
-      redirect_to assignments_student_path(@student), notice: "Student's grade was updated successfully."
+      respond_to do |format|
+        format.html {redirect_to assignment_path(@grade.assignment), notice: "Student's grade was updated successfully."}
+        format.js
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render :new }
+        format.js
+      end
     end
   end
 
   private
 
   def grade_params
-    params.require( :grade ).permit( :earned_points )
+    params.require( :grade ).permit( :earned_points)
   end
 end
