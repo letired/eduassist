@@ -9,4 +9,18 @@ class Student < ApplicationRecord
   end
 
   validates :first_name, presence: true
+
+  def average
+    earned_points = 0
+    self.grades.each do |grade|
+      earned_points += grade.earned_points
+    end
+
+    possible_points = 0
+    self.assignments.each do |assignment|
+      possible_points += assignment.max_points
+    end
+
+    (earned_points / possible_points.to_f) * 100
+  end
 end
