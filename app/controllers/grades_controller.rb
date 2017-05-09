@@ -35,7 +35,7 @@ class GradesController < ApplicationController
     if @categories
       @categories.each do |cat|
         points = 0
-        amount = 0
+        amount = 1
         maxPoints = 0
         amount2 = 0
         ass2 = @assignments.where(category: cat)
@@ -53,6 +53,9 @@ class GradesController < ApplicationController
         ass3.each do |as3|
           maxPoints += as3.max_points
           amount2 += 1
+        end
+        if amount > 1
+          amount = amount - 1
         end
         allPoints = (maxPoints/amount2).to_f
         av = ((points / amount) / allPoints * 100).floor
