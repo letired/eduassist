@@ -2,12 +2,47 @@
   <h1><%= @school_class.name %></h1>
   <ul class="list-group">
     <% @students.each do |student| %>
-    <%= link_to student do %>
-      <li class= "list-group-item">
+      <li class= "list-group-item" id="student-index">
         <%= student.first_name %> <%= student.last_name %>
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <div class="student-info hidden">
+            <ul class="list-inline">
+            <li><h4>Birthday:</h4></li>
+              <% if student.birthday %>
+                <li><p><%= student.birthday.strftime("%B %-d, %Y") %></p></li>
+              <% else %>
+                <li><p> not provided </p></li>
+                <% end %>
+            </ul>
+            <h4>Important Information:</h4>
+              <% if student.bio %>
+                <p><%= student.bio %></p>
+              <% else %>
+                <p> not provided </p>
+              <% end %>
+            <ul class="list-inline text-center">
+              <li>
+                <%= link_to assignments_student_path(student), class: "btn edu-button" do %>
+                  Grades
+                  <div class="text-underline-green"></div>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to attendances_student_path(student), class: "btn edu-button" do %>
+                  Attendance
+                  <div class="text-underline-blue"></div>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_student_path(student), class: "btn edu-button" do %>
+                  Edit
+                  <div class="text-underline-black"></div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
       </li>
     <% end %>
-  <% end %>
   </ul>
   <div style="margin: 10px 0px;">
     <%= link_to new_school_class_student_path(@school_class), class: "btn edu-button" do  %>
@@ -16,3 +51,16 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('li').on("click", function(event){
+      event.preventDefault();
+      $('li').not(this).find('.student-info').addClass("hidden");
+      $(this).find('.student-info').toggleClass("hidden");
+    });
+    $('a').on("click", function(event){
+      event.stopPropagation();
+    });
+  });
+</script>
