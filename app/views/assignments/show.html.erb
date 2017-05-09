@@ -10,16 +10,32 @@
 
   <ul class="list-group">
     <% @grades.each do |grade| %>
-      <%= link_to student_path(grade.student.id) do %>
-        <li class= "list-group-item">
+      <li class= "list-group-item" data-id="<%= grade.id %>">
+        <%= link_to student_path(grade.student.id) do %>
           <div class="item-name">
-            <%= grade.student.first_name + " " + grade.student.last_name%>
+            <%= grade.student.first_name + " " + grade.student.last_name %>
           </div>
-          <div class="item-attribute" id="student-grade">
-            <%= "#{grade.earned_points} / #{@assignment.max_points}" %>
-          </div>
-        </li>
-      <% end %>
+        <% end %>
+        <%= render 'grades/gradeform', grade: grade %>
+        <div class="item-attribute">
+          / <%= grade.assignment.max_points %>
+        </div>
+      </li>
     <% end %>
   </ul>
 </div>
+
+<script>
+  var edit = function() {
+    $('.earned-points').on("focus", function(event){
+      var id = $(this).parent().parent().parent().parent().attr('data-id');
+      console.log(id);
+      $('.submit-button').addClass('hidden');
+      $('[data-id=' + id + '] .submit-button' ).removeClass("hidden");
+    });
+  };
+
+  $(document).ready(function(){
+    edit();
+  });
+</script>
