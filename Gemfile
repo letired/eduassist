@@ -12,6 +12,7 @@ gem 'redis'
 gem 'jquery-ui-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem "chartkick"
 
 gem 'sass-rails'
 gem 'jquery-rails'

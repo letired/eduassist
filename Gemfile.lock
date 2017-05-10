@@ -53,6 +53,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
+    chartkick (2.2.3)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     debug_inspector (0.0.2)
@@ -198,6 +199,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  chartkick
   devise
   faker
   figaro
