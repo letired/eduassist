@@ -1,5 +1,5 @@
 meta_product_name: "eduAssist.me"
 meta_title: "eduAssist.me - Mobile Education Software"
 meta_description: "Helping teachers in the developing world use their phones to perform basic classroom tasks!"
-meta_image: "eduassist.png"                       # should exist in `app/assets/images/`
+meta_image: "eduAssist.png"                       # should exist in `app/assets/images/`
 twitter_account: "@eduAssistme"   # required for Twitter Cards
