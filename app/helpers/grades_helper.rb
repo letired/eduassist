@@ -16,7 +16,18 @@ module GradesHelper
     return scores.first(3).join(tag(:br)).html_safe
   end
 
-  def show_assignments_missed(school_class)
+  def show_assignments_missed(student)
+    missed = []
+    student.grades.each do |ass|
+      if ass.earned_points == nil
+        missed << h(ass.assignment.name)
+      end
+    end
 
+    if missed.length > 1
+      return missed.join(tag(:br)).html_safe
+    else
+      return missed.join
+    end
   end
 end

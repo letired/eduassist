@@ -1,9 +1,13 @@
+<% content_for(:title_tag) do %>
+  All of your students in <%= @school_class.name %> on eduAssist.me
+<% end %>
+
 <div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
   <h1><%= @school_class.name %></h1>
   <ul class="list-group">
     <% @students.each do |student| %>
       <li class= "list-group-item" id="student-index">
-        <%= student.first_name %> <%= student.last_name %>
+        <%= student.first_name %> <%= display_last_name(student) %>
           <i class="fa fa-caret-down" aria-hidden="true"></i>
           <div class="student-info hidden">
             <ul class="list-inline">
