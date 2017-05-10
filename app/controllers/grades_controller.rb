@@ -42,8 +42,13 @@ class GradesController < ApplicationController
         ass2.each do |as2|
           as2.grades.each do |gra|
             if gra.earned_points
-              points += gra.earned_points
-              amount += 1
+              if as2.weight > 1
+                points += gra.earned_points * as2.weight
+                amount += 1
+              else
+                points += gra.earned_points
+                amount += 1
+              end
             else
               gra.earned_points = 0
             end
@@ -51,8 +56,13 @@ class GradesController < ApplicationController
         end
         ass3 = @assignments.where(category: cat)
         ass3.each do |as3|
-          maxPoints += as3.max_points
-          amount2 += 1
+          if as3.weight > 1
+            maxPoints += as3.max_points * as3.weight
+            amount2 += 1
+          else
+            maxPoints += as3.max_points
+            amount2 += 1
+          end
         end
         if amount > 1
           amount = amount - 1
