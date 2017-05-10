@@ -2,7 +2,7 @@ module GradesHelper
   def student_average(student)
     student_average = {}
     name = h(student.first_name + ' ' + student.last_name)
-    student_average[:average] = student.average.round(2).to_s + " %"
+    student_average[:average] = student.average nil? "no average available" : student.average.round(2).to_s + " %"
     student_average[:name] = name
     student_average[:id] = student.id
     return student_average
