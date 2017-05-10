@@ -11,11 +11,14 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
 
   def average
-    earned_points = 0
 
     if self.grades.earned_points
+
+      earned_points = 0
       self.grades.each do |grade|
-        earned_points += grade.earned_points
+        if grade.earned_points
+          earned_points += grade.earned_points
+        end
       end
 
       possible_points = 0
