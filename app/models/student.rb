@@ -12,21 +12,22 @@ class Student < ApplicationRecord
 
   def average
 
-    if self.grades.earned_points
-
-      earned_points = 0
-      self.grades.each do |grade|
-        if grade.earned_points
-          earned_points += grade.earned_points
+    unless self.grades.empty?
+      unless self.assignments.empty?
+        earned_points = 0
+        self.grades.each do |grade|
+          if grade.earned_points
+            earned_points += grade.earned_points
+          end
         end
-      end
 
-      possible_points = 0
-      self.assignments.each do |assignment|
-        possible_points += assignment.max_points
-      end
+        possible_points = 0
+        self.assignments.each do |assignment|
+          possible_points += assignment.max_points
+        end
 
-      (earned_points / possible_points.to_f) * 100
+        (earned_points / possible_points.to_f) * 100
+      end
     end
   end
 end
