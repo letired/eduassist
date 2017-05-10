@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  Edit <%= @student.first_name %>'s details on eduAssist.me
+<% end %>
+
 <div class="card-wrapper form-wrapper">
   <%= simple_form_for @student do |f| %>
     <%= f.input :first_name, label: false, placeholder: "First Name"  %>

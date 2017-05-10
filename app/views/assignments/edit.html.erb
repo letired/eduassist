@@ -1,4 +1,6 @@
-
+<% content_for(:title_tag) do %>
+  Edit <%= @assignment.name %> on eduAssist.me
+<% end %>
 <div class="card-wrapper form-wrapper">
   <%= simple_form_for @assignment do |f| %>
     <%= f.input :name %>

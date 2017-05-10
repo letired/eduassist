@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  View attendance for <%= @date.strftime("%A, %d %B %Y") %> on eduAssist.me
+<% end %>
+
 <div class="card-wrapper list-wrapper">
   <h2><%= @date.strftime("%A, %d %B %Y") %></h2>
   <% unless @attendances.empty? %>

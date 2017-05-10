@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  Grades for <%= @assignment.name %> on eduAssist.me
+<% end %>
+
 <div class="card-wrapper list-wrapper">
   <h1><%= @assignment.name %>
     <%= link_to edit_assignment_path(@assignment) do %>

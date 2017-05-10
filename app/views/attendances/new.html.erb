@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  Take attendance for <%= Date.today.strftime("%A, %d %B %Y") %> on eduAssist.me
+<% end %>
+
 <div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
   <h2><%= Date.today.strftime("%A, %d %B %Y") %></h2>
 
