@@ -12,8 +12,7 @@
         <% @answer.each do |k, v|%>
         <tr>
           <td>
-            <%= k %><br>
-          </td>
+            <%= k %><br>          </td>
           <td class="to-right">
             <%= v.to_s + ' %' %>
           </td>
@@ -22,6 +21,7 @@
       <% else %>
         <tr>
           <td class="to-right"> nothing here to view yet! </td>
+          <td> </td>
         </tr>
       <% end %>
     </tbody>
@@ -32,9 +32,14 @@
   <table class="table table-curved">
     <thead>
       <tr>
+      <% if @run %>
         <td>Name</td>
         <td>Category</td>
         <td>Average Grade</td>
+      <% else %>
+        <td>Name</td>
+        <td class="to-right">Average Grade</td>
+      <% end %>
       </tr>
     </thead>
     <tbody>
@@ -67,7 +72,7 @@
                 <% end %>
               </div>
 
-              <div  class="ppoints hidden"  >
+              <div  class="ppoints hidden" >
                 <% if av %>
                   <%= ((((av / size.to_f) / assignment.max_points) * 100).floor).to_s + " %"%>
                 <% else %>
@@ -81,7 +86,8 @@
         </tr>
       <% else %>
         <tr>
-          <td> nothing here to view yet! </td>
+          <td class="to-right" > nothing here to view yet! </td>
+          <td> </td>
         </tr>
       <% end %>
     </tbody>
