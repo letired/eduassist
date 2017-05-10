@@ -6,6 +6,7 @@ class Student < ApplicationRecord
 
   before_save do |student|
     student.first_name.capitalize!
+    student.last_name.capitalize!
   end
 
   validates :first_name, presence: true
