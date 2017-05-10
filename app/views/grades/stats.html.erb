@@ -1,14 +1,10 @@
-<% content_for(:title_tag) do %>
-  View stats for <%= @school_class.name %> on eduAssist.me
-<% end %>
-
- <div class="card-wrapper list-wrapper">
+ <div class="card-wrapper list-table-wrapper">
   <h1><%= @school_class.name %></h1>
-  <table class="table table-striped">
+  <table class="table table-curved">
     <thead>
       <tr>
         <td>Category</td>
-        <td>Overall Average</td>
+        <td class="to-right">Overall Average</td>
       </tr>
     </thead>
     <tbody>
@@ -16,26 +12,24 @@
         <% @answer.each do |k, v|%>
         <tr>
           <td>
-            <%= link_to k do %>
             <%= k %><br>
-            <% end %>
           </td>
-          <td>
-          <%= v.to_s + ' %' %>
+          <td class="to-right">
+            <%= v.to_s + ' %' %>
           </td>
         </tr>
         <% end %>
       <% else %>
         <tr>
-          <td><p> nothing here to view yet! </p></td>
+          <td class="to-right"> nothing here to view yet! </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 
-<div class="card-wrapper list-wrapper">
-  <table class="table table-striped">
+<div class="card-wrapper list-table-wrapper">
+  <table class="table table-curved">
     <thead>
       <tr>
         <td>Name</td>
@@ -87,7 +81,7 @@
         </tr>
       <% else %>
         <tr>
-          <td><p> nothing here to view yet! </p></td>
+          <td> nothing here to view yet! </td>
         </tr>
       <% end %>
     </tbody>
