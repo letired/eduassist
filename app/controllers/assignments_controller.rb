@@ -13,6 +13,7 @@ class AssignmentsController < ApplicationController
     @grades = @assignment.grades.joins(:student).order("students.first_name")
 
     unless @assignment.nil?
+      # @graph = graph_array(@grades.to_a)
       @graph = []
       @grades.each do |grade|
         if grade.earned_points
@@ -68,9 +69,15 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     authorize @assignment
     if @assignment.update(assignment_params)
-      redirect_to @assignment, notice: 'Assignment was updated successfully.'
+      respond_to do |format|
+        format.html {redirect_to @assignment, notice: 'Assignment was updated successfully.'}
+        format.js
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.js
+      end
     end
   end
 

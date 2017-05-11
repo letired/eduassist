@@ -14,7 +14,7 @@
         <h4><%= @assignment.date.strftime("%A, %d %B %Y") %></h4>
         <h4 id="class-average">Class Average: <%= average(@assignment) %> / <%= @assignment.max_points %></h4>
         <% if @graph.first %>
-          <%= column_chart(@graph,height: "150px", max: @max_points) %>
+          <%= column_chart(@graph, height: "150px", max: @max_points) %>
         <% end %>
         <ul class="list-group">
           <% @grades.each do |grade| %>
