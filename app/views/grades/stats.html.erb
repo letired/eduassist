@@ -74,14 +74,14 @@
                       <% size = total.length %>
 
                       <div class="toggle-views" data-id="<%= assignment.id %>" >
-                        <div class="points">
+                        <div class="ppoints">
                           <% if av %>
                             <%= ((((av / size.to_f) / assignment.max_points) * 100).floor).to_s + " %"%>
                           <% else %>
                             <p> not enough data yet! </p>
                           <% end %>
                         </div>
-                        <div  class="ppoints hidden"  >
+                        <div  class="points hidden"  >
                           <% if av %>
                             <%= (av / size.to_f).round(2).to_s + " / " + (assignment.max_points).to_s %>
                           <% else %>
@@ -108,10 +108,9 @@
 <script>
   $(document).ready(function() {
     $('.toggle-views').on('click', function() {
-      console.log('select worx');
       var id = $(this).attr('data-id');
-      $('[data-id=' + id + '] .ppoints').toggleClass("hidden");
       $('[data-id=' + id + '] .points').toggleClass("hidden");
+      $('[data-id=' + id + '] .ppoints').toggleClass("hidden");
     });
   });
 </script>
