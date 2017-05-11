@@ -11,7 +11,7 @@
           <div class="col-xs-12">
             <div class="card" id="struggling-students">
               <% if @assignment %>
-              <p>Lowest 3 scores on <%= @assignment.name %></p>
+              <p>Lowest scores on <%= @assignment.name %></p>
               <%= column_chart(@graph_array,height: "150px", max: @max_points, colors: ['#9EB25D']) %>
               <% end %>
               <br>
