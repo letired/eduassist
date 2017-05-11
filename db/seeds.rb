@@ -103,47 +103,95 @@ puts "Students added!"
 
 assignment_attributes = [
   {
-    name: "Homework 1",
+    name: "Multiplication Worksheet",
     category: "Math",
-    date: Time.now,
+    date: Faker::Date.backward(14),
     max_points: 30,
     weight: 1,
     school_class: class1
     },
   {
-    name: "Homework 2",
+    name: "Division Worksheet",
     category: "Math",
-    date: Time.now,
+    date: Faker::Date.backward(14),
     max_points: 30,
     weight: 1,
     school_class: class1
   },
   {
-    name: "Test 1",
+    name: "Multiplication Test",
     category: "Math",
-    date: Time.now,
+    date: Faker::Date.backward(14),
     max_points: 100,
     weight: 1,
     school_class: class1
   },
   {
-    name: "Worksheet 1",
+    name: "Grammar Homework 1",
     category: "English",
-    date: Time.now,
+    date: Faker::Date.between(10.days.ago, 9.days.ago),
     max_points: 40,
     weight: 1,
     school_class: class1
   },
   {
-    name: "Worksheet 2",
+    name: "Grammar Homework 2",
     category: "English",
-    date: Time.now,
+    date: Faker::Date.between(8.days.ago, 7.days.ago),
     max_points: 40,
     weight: 1,
     school_class: class1
   },
   {
-    name: "Midterm Eval",
+    name: "Grammar Homework 3",
+    category: "English",
+    date: Faker::Date.between(6.days.ago, 5.days.ago),
+    max_points: 40,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Grammar Homework 4",
+    category: "English",
+    date: Faker::Date.between(4.days.ago, 3.days.ago),
+    max_points: 40,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Physics Experiment",
+    category: "Science",
+    date: Faker::Date.backward(14),
+    max_points: 40,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Chemistry Worksheet",
+    category: "Science",
+    date: Faker::Date.backward(14),
+    max_points: 40,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Chemistry Experiment",
+    category: "Science",
+    date: Faker::Date.backward(14),
+    max_points: 50,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Chemistry Test",
+    category: "Science",
+    date: Faker::Date.backward(14),
+    max_points: 100,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Midterm Test",
     category: "Math",
     date: Time.now,
     max_points: 200,
@@ -160,7 +208,7 @@ puts "Adding a grade to each assignment for each student..."
 Assignment.where(school_class: class1).each do |assignment|
   Student.where(school_class: class1).each do |student|
     Grade.create(
-      earned_points: rand(10..assignment.max_points),
+      earned_points: rand(20..assignment.max_points),
       student_id: student.id,
       assignment_id: assignment.id
       )
