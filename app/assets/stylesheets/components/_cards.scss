@@ -5,18 +5,22 @@
   border-radius: 8px;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 
-  h1 {
-    font-size: 3.5vmax;
-    font-weight: bolder;
+  h1, h2, h3 {
+    font-weight: bold;
     text-align: center;
     color: $eduassist-gray;
   }
 
+  h1 {
+    font-size: 3.5vmax;
+  }
+
+  h2 {
+    font-size: 3vmax;
+  }
+
   h3 {
     font-size: 2.5vmax;
-    text-align: center;
-    color: $eduassist-gray;
-    font-weight: bold;
   }
 
   p {

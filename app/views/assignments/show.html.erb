@@ -1,32 +1,38 @@
-<% content_for(:title_tag) do %>
-  Grades for <%= @assignment.name %> on eduAssist.me
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        Grades for <%= @assignment.name %> on eduAssist.me
+      <% end %>
 
-<div class="card-wrapper list-wrapper">
-  <h1><%= @assignment.name %>
-    <%= link_to edit_assignment_path(@assignment) do %>
-      <i class="fa fa-pencil" aria-hidden="true"></i>
-    <% end %>
-  </h1>
-  <h3><%= @assignment.category %></h3>
-  <h4><%= @assignment.date %></h4>
+      <div class="card-wrapper list-wrapper">
+        <h1><%= @assignment.name %>
+          <%= link_to edit_assignment_path(@assignment) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+        </h1>
+        <h3><%= @assignment.category %></h3>
+        <h4><%= @assignment.date %></h4>
 
 
-  <ul class="list-group">
-    <% @grades.each do |grade| %>
-      <li class= "list-group-item" data-id="<%= grade.id %>">
-        <%= link_to student_path(grade.student.id) do %>
-          <div class="item-name">
-            <%= grade.student.first_name + " " + grade.student.last_name %>
-          </div>
-        <% end %>
-        <%= render 'grades/gradeform', grade: grade %>
-        <div class="item-attribute">
-          / <%= grade.assignment.max_points %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+        <ul class="list-group">
+          <% @grades.each do |grade| %>
+            <li class= "list-group-item" data-id="<%= grade.id %>">
+              <%= link_to student_path(grade.student.id) do %>
+                <div class="item-name">
+                  <%= grade.student.first_name + " " + grade.student.last_name %>
+                </div>
+              <% end %>
+              <%= render 'grades/gradeform', grade: grade %>
+              <div class="item-attribute">
+                / <%= grade.assignment.max_points %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>

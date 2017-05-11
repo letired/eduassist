@@ -1,32 +1,38 @@
-<% content_for(:title_tag) do %>
-  All <%= @student.first_name %>'s assignments on eduAssist.me
-<% end %>
-
-<div class="card-wrapper list-wrapper">
-<h1><%= @student.first_name %></h1>
-
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <td>Assignment</td>
-        <td>Earned Points</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @grades.each do |grade| %>
-      <tr data-id="<%= grade.id %>">
-        <td>
-          Title: <%= grade.assignment.name %><br>
-          Category: <%= grade.assignment.category %><br>
-          Max Points: <%= grade.assignment.max_points %><br>
-        </td>
-        <td>
-         <%= render 'grades/gradeform', grade: grade %>
-        </td>
-      </tr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        All <%= @student.first_name %>'s assignments on eduAssist.me
       <% end %>
-    </tbody>
-  </table>
+
+      <div class="card-wrapper list-wrapper">
+      <h1><%= @student.first_name %></h1>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>Assignment</td>
+              <td>Earned Points</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @grades.each do |grade| %>
+            <tr data-id="<%= grade.id %>">
+              <td>
+                Title: <%= grade.assignment.name %><br>
+                Category: <%= grade.assignment.category %><br>
+                Max Points: <%= grade.assignment.max_points %><br>
+              </td>
+              <td>
+               <%= render 'grades/gradeform', grade: grade %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
