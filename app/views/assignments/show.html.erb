@@ -1,50 +1,55 @@
-<% content_for(:title_tag) do %>
-  Grades for <%= @assignment.name %> on eduAssist.me
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        Grades for <%= @assignment.name %> on eduAssist.me
+      <% end %>
+      <div class="card-wrapper list-wrapper">
+        <h1><%= @assignment.name %>
+          <%= link_to edit_assignment_path(@assignment) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+        </h1>
+        <h3><%= @assignment.category %></h3>
+        <h4><%= @assignment.date.strftime("%A, %d %B %Y") %></h4>
+        <h4 id="class-average">Class Average: <%= average(@assignment) %> / <%= @assignment.max_points %></h4>
 
-<div class="card-wrapper list-wrapper">
-  <h1><%= @assignment.name %>
-    <%= link_to edit_assignment_path(@assignment) do %>
-      <i class="fa fa-pencil" aria-hidden="true"></i>
-    <% end %>
-  </h1>
-  <h3><%= @assignment.category %></h3>
-  <h4><%= @assignment.date.strftime("%A, %d %B %Y") %></h4>
-  <h4 id="class-average">Class Average: <%= average(@assignment) %> / <%= @assignment.max_points %></h4>
 
+        <ul class="list-group">
+          <% @grades.each do |grade| %>
+            <li class= "list-group-item" data-id="<%= grade.id %>">
+              <%= link_to school_class_students_path(grade.student.school_class) do %>
+                <div class="item-name">
+                  <%= grade.student.first_name + " " + grade.student.last_name %>
+                </div>
+              <% end %>
+              <% if grade.earned_points.nil? %>
+                <div class="points-wrapper hidden">
+                  <div class="points">
 
-  <ul class="list-group">
-    <% @grades.each do |grade| %>
-      <li class= "list-group-item" data-id="<%= grade.id %>">
-        <%= link_to school_class_students_path(grade.student.school_class) do %>
-          <div class="item-name">
-            <%= grade.student.first_name + " " + grade.student.last_name %>
-          </div>
-        <% end %>
-        <% if grade.earned_points.nil? %>
-          <div class="points-wrapper hidden">
-            <div class="points">
-
-            </div>
-            <div class="edit hidden">
-              <i class='fa fa-pencil grade' aria-hidden='true'></i>
-            </div>
-          </div>
-          <button class="btn edu-button add-points">Add Points</button>
-        <% else %>
-          <div class="points-wrapper">
-            <div class="points">
-              <%= grade.earned_points %> / <%= grade.assignment.max_points %>
-            </div>
-            <div class="edit hidden">
-              <i class='fa fa-pencil grade' aria-hidden='true'></i>
-            </div>
-          </div>
-        <% end %>
-        <%= render 'grades/gradeform', grade: grade %>
-      </li>
-    <% end %>
-  </ul>
+                  </div>
+                  <div class="edit hidden">
+                    <i class='fa fa-pencil grade' aria-hidden='true'></i>
+                  </div>
+                </div>
+                <button class="btn edu-button add-points">Add Points</button>
+              <% else %>
+                <div class="points-wrapper">
+                  <div class="points">
+                    <%= grade.earned_points %> / <%= grade.assignment.max_points %>
+                  </div>
+                  <div class="edit hidden">
+                    <i class='fa fa-pencil grade' aria-hidden='true'></i>
+                  </div>
+                </div>
+              <% end %>
+              <%= render 'grades/gradeform', grade: grade %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>

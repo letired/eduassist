@@ -86,7 +86,7 @@ student_attributes = [
     last_name: "Ransome-Kuti",
     bio: "Beko wants to be a surgeon. He has already tried to practice his surgery on one of his classmates - leading to a reprimand from the headmaster.",
     birthday: Faker::Date.birthday(6, 12),
-    school_class: class2
+    school_class: class1
     },
   {
     first_name: "Olikoye",
@@ -106,7 +106,7 @@ assignment_attributes = [
     name: "Homework 1",
     category: "Math",
     date: Time.now,
-    max_points: 50,
+    max_points: 30,
     weight: 1,
     school_class: class1
     },
@@ -114,7 +114,7 @@ assignment_attributes = [
     name: "Homework 2",
     category: "Math",
     date: Time.now,
-    max_points: 40,
+    max_points: 30,
     weight: 1,
     school_class: class1
   },
@@ -123,14 +123,14 @@ assignment_attributes = [
     category: "Math",
     date: Time.now,
     max_points: 100,
-    weight: 2,
+    weight: 1,
     school_class: class1
   },
   {
     name: "Worksheet 1",
     category: "English",
     date: Time.now,
-    max_points: 30,
+    max_points: 40,
     weight: 1,
     school_class: class1
   },
@@ -160,7 +160,7 @@ puts "Adding a grade to each assignment for each student..."
 Assignment.where(school_class: class1).each do |assignment|
   Student.where(school_class: class1).each do |student|
     Grade.create(
-      earned_points: rand(assignment.max_points-20..assignment.max_points),
+      earned_points: rand(10..assignment.max_points),
       student_id: student.id,
       assignment_id: assignment.id
       )
