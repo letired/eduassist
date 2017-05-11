@@ -1,7 +1,7 @@
 <%= form_tag path, form_options do %>
 <h4>Swipe left for absent, swipe right for present!</h4>
   <div class="attendance">
-    <% @attendances.each do |attendance| %>
+    <% @attendances.each_with_index do |attendance, index| %>
       <%= fields_for 'attendances[]', attendance do |f| %>
         <div class="attendance-card <%= set_background_color(attendance) %>" data-id="<%= attendance.student.id %>">
           <div class="student-name">
@@ -13,8 +13,10 @@
             <% elsif attendance.present == false %>
               <div class="student-absent"><i class="fa fa-times color-red" aria-hidden="true"></i></div>
             <% else %>
-              <div class="swipe-instructions-left"><i class="fa fa-hand-o-left color-red floating-horizontal-left" aria-hidden="true"></i></i></div>
-              <div class="swipe-instructions-right"><i class="fa fa-hand-o-right color-green floating-horizontal-right" aria-hidden="true"></i></div>
+              <% if index == 0 %>
+                <div class="swipe-instructions-left"><i class="fa fa-hand-o-left color-red floating-horizontal-left" aria-hidden="true"></i></i></div>
+                <div class="swipe-instructions-right"><i class="fa fa-hand-o-right color-green floating-horizontal-right" aria-hidden="true"></i></div>
+              <% end %>
             <% end %>
           </div>
           <%= f.text_field :present, type: 'hidden'%>
