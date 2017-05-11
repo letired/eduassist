@@ -16,23 +16,23 @@
                   <%= assignment.name %>
                 </div>
                 <% if assignment.category == "Math" %>
-                  <div class="item-attribute bg-red" id="assignment-category">
+                  <div class="item-attribute bg-red text-center">
                     <%= assignment.category %>
                   </div>
                 <% elsif assignment.category == "English" %>
-                  <div class="item-attribute bg-blue" id="assignment-category">
+                  <div class="item-attribute bg-blue text-center">
                     <%= assignment.category %>
                   </div>
                 <% elsif assignment.category == "Social Studies" %>
-                  <div class="item-attribute bg-orange" id="assignment-category">
+                  <div class="item-attribute bg-orange text-center">
                     <%= assignment.category %>
                   </div>
                 <% elsif assignment.category == "Science" %>
-                  <div class="item-attribute bg-green" id="assignment-category">
+                  <div class="item-attribute bg-green text-center">
                     <%= assignment.category %>
                   </div>
                 <% else %>
-                  <div class="item-attribute bg-grey" id="assignment-category">
+                  <div class="item-attribute bg-grey text-center">
                     <%= assignment.category %>
                   </div>
                 <% end %>

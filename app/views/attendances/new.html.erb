@@ -6,12 +6,15 @@
       <% end %>
 
       <div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
-        <h2><%= Date.today.strftime("%A, %-d %B %Y") %></h2>
+        <div class="headline">
+          <h3><%= Date.today.strftime("%A, %-d %B %Y") %></h3>
+        </div>
+        <div class="list-group">
+          <% path = attendances_path %>
+          <% form_options = { id: 'attendance' }%>
 
-        <% path = attendances_path %>
-        <% form_options = { id: 'attendance' }%>
-
-        <%= render 'form', path: path, form_options: form_options %>
+          <%= render 'form', path: path, form_options: form_options %>
+        </div>
       </div>
     </div>
   </div>

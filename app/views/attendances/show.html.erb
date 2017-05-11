@@ -5,8 +5,10 @@
         View attendance for <%= @date.strftime("%A, %-d %B %Y") %> on eduAssist.me
       <% end %>
 
-      <div class="card-wrapper list-wrapper">
-        <h2><%= @date.strftime("%A, %-d %B %Y") %></h2>
+      <div class="headline">
+        <h3><%= @date.strftime("%A, %-d %B %Y") %></h3>
+      </div>
+
         <div class="text-center">
           <% unless @attendances.empty? %>
             <%= link_to 'Edit', edit_attendance_school_class_path(id: @school_class, date: @date)%> |
@@ -16,25 +18,30 @@
             | <%= link_to 'Following Day',  attendance_school_class_path(id: @school_class, date: @date + 1)%>
           <% end %>
         </div>
-        <% if @attendances.empty? %>
-          <h3>No Attendance Taken</h3>
-        <% else %>
-          <% @attendances.each do |attendance| %>
-            <div class="attendance-card-show">
-              <div class="student-name">
-                <%= attendance.student.first_name %>
-                <%= attendance.student.last_name.first %>.
-              </div>
-              <div class="student-present">
-                <% if attendance.present %>
-                  <i class="fa fa-check color-green" aria-hidden="true"></i>
-                <% else %>
-                  <i class="fa fa-times color-red" aria-hidden="true"></i>
-                <% end %>
-              </div>
+
+        <div class="list-group">
+          <% if @attendances.empty? %>
+            <div class="headline">
+              <h3>No Attendance Taken</h3>
             </div>
+          <% else %>
+            <% @attendances.each do |attendance| %>
+              <div class="attendance-card-show">
+                <div class="student-name">
+                  <%= attendance.student.first_name %>
+                  <%= attendance.student.last_name.first %>.
+                </div>
+                <div class="student-present">
+                  <% if attendance.present %>
+                    <i class="fa fa-check color-green" aria-hidden="true"></i>
+                  <% else %>
+                    <i class="fa fa-times color-red" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
