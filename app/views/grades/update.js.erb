@@ -1,2 +1,7 @@
-$('[data-id=<%= @grade.id %>] .student-grade').html("<%= @grade.earned_points %>");
+$('[data-id=<%= @grade.id %>] div.points').html("<%= @grade.earned_points%> / <%= @grade.assignment.max_points%> ").parent().removeClass("hidden");
+$('[data-id=<%= @grade.id %>] .student-grade').addClass('hidden');
+$('[data-id=<%= @grade.id %>] .edit').addClass('hidden');
+$('[data-id=<%= @grade.id %>] .add-points').remove();
+$('#class-average').html("Class Average: <%= average(@grade.assignment) %> / <%= @grade.assignment.max_points %>");
+
 

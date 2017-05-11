@@ -15,86 +15,159 @@ Student.destroy_all
 SchoolClass.destroy_all
 User.destroy_all
 
-puts "Building users..."
+puts "Building user..."
 
-User.create(
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: "test@test.com",
-  password: "password!",
-  password_confirmation: "password!"
+spencer = User.create(
+  first_name: "Spencer",
+  last_name: "Bray",
+  email: "spencer@teacher.com",
+  password: "password",
+  password_confirmation: "password"
   )
 
-u = 1
-4.times do
-  User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: "test#{u}@test.com",
-    password: "password!",
-    password_confirmation: "password!"
-    )
-  u += 1
-end
-
-puts "Users built!"
+puts "User built!"
 puts "Building classes..."
 
-i = 1
-g = 1
-5.times do
-  2.times do
-    SchoolClass.create(
-      name: "Grade #{g}",
-      description: Faker::StarWars.quote,
-      user_id: i
+
+class1 = SchoolClass.create(
+      name: "Grade 3",
+      description: "Half the students were transferred this year as their old school was closed. Remember they're new in town!
+      Need extra attention in Math.",
+      user: spencer
       )
-    g += 1
-  end
-  i += 1
-end
+
+class2 = SchoolClass.create(
+      name: "Grade 5",
+      description: "Really rowdy group, remember your classroom control techniques.
+      They absolutely love stories about famous Nigerians in history!",
+      user: spencer
+  )
 
 puts "Classes built!"
 
+student_attributes = [
+  {
+    first_name: "Bisi",
+    last_name: "Adeleye-Fayemi",
+    bio: "Bisi comes from a small village in the rural north, she's really shy but very bright.",
+    birthday: Faker::Date.birthday(6, 12),
+    school_class: class1
+    },
+  {
+    first_name: "Olisa",
+    last_name: "Agbakoba",
+    bio: "Olisa has trouble focusing during class. She tends to bother other students and can be a distraction. She is very good at math.",
+    birthday: Faker::Date.birthday(6, 12),
+    school_class: class1
+    },
+  {
+    first_name: "Ayodele",
+    last_name: "Awojobi",
+    bio: "Ayodele loves reading. His parents were recently divorced, so he has been acting out in class.",
+    birthday: Faker::Date.birthday(6, 12),
+    school_class: class1
+    },
+  {
+    first_name: "Gani",
+    last_name: "Fawehinmi",
+    bio: "Gani is an exceptionally good student who loves science.  He always talks about wanting to become a doctor. Encourage him!",
+    birthday: Faker::Date.birthday(6, 12),
+    school_class: class2
+    },
+  {
+    first_name: "Dele",
+    last_name: "Giwa",
+    bio: "Dele is an animal lover. Make sure to remember that his dog's name is 'Billy'!",
+    birthday: Faker::Date.birthday(6, 12),
+    school_class: class1
+    },
+  {
+    first_name: "Beko",
+    last_name: "Ransome-Kuti",
+    bio: "Beko wants to be a surgeon. He has already tried to practice his surgery on one of his classmates - leading to a reprimand from the headmaster.",
+    birthday: Faker::Date.birthday(6, 12),
+    school_class: class2
+    },
+  {
+    first_name: "Olikoye",
+    last_name: "Ransome-Kuti",
+    bio: "Olikoye's parents are extremely poor, he comes to class hungry most days. Bringing an extra snack for him will help keep him focused.",
+    birthday: Faker::Date.birthday(6, 12),
+    school_class: class1
+    },
+]
 
-SchoolClass.all.each_with_index do |school_class, index|
-  puts "Adding students to class #{index + 1}..."
-  rand(18..21).times do
-    Student.create(
-      first_name: Faker::Name.first_name,
-      last_name: Faker::Name.last_name,
-      bio: Faker::HarryPotter.quote,
-      birthday: Faker::Date.birthday(6, 12),
-      school_class_id: school_class.id
+Student.create!(student_attributes)
+
+puts "Students added!"
+
+assignment_attributes = [
+  {
+    name: "Homework 1",
+    category: "Math",
+    date: Time.now,
+    max_points: 100,
+    weight: 1,
+    school_class: class1
+    },
+  {
+    name: "Homework 2",
+    category: "Math",
+    date: Time.now,
+    max_points: 100,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Test 1",
+    category: "Math",
+    date: Time.now,
+    max_points: 100,
+    weight: 2,
+    school_class: class1
+  },
+  {
+    name: "Worksheet 1",
+    category: "English",
+    date: Time.now,
+    max_points: 100,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Worksheet 2",
+    category: "English",
+    date: Time.now,
+    max_points: 100,
+    weight: 1,
+    school_class: class1
+  },
+  {
+    name: "Midterm Eval",
+    category: "Math",
+    date: Time.now,
+    max_points: 100,
+    weight: 1,
+    school_class: class1
+  }
+]
+
+puts "Adding assignments to classes..."
+Assignment.create!(assignment_attributes)
+puts "Assignments added!"
+
+puts "Adding a grade to each assignment for each student..."
+Assignment.where(school_class: class1).each do |assignment|
+  Student.where(school_class: class1).each do |student|
+    Grade.create(
+      earned_points: rand(assignment.max_points-20..assignment.max_points),
+      student_id: student.id,
+      assignment_id: assignment.id
       )
   end
-  puts "Students added!"
-
-  puts "Adding assignments to class #{index + 1}..."
-  10.times do
-    Assignment.create(
-      name: Faker::Educator.course,
-      category: ["Math", "English", "Science", "Art", "Sports"].sample,
-      date: Time.now,
-      max_points: rand(60..90),
-      weight: rand(10..100),
-      school_class_id: school_class.id
-      )
-  end
-  puts "Assignments added!"
-
-  puts "Adding a grade to each assignment for each student..."
-    Assignment.where(school_class_id: school_class.id).each do |assignment|
-      Student.where(school_class_id: school_class.id).each do |student|
-        Grade.create(
-          earned_points: rand(1..assignment.max_points),
-          student_id: student.id,
-          assignment_id: assignment.id
-          )
-      end
-    end
-  puts "Grades added!"
 end
+
+puts "Grades added!"
 
 date_range = []
 i = 0
@@ -104,18 +177,17 @@ i = 0
 end
 
 puts "For all classes but first: Adding an attendance for each student for past 10 days..."
-SchoolClass.last(9).each do |school_class|
-  Student.where(school_class_id: school_class.id).each do |student|
-    date_range.each do |date|
-      new_attendance = Attendance.new(student_id: student.id, date: date)
-      new_attendance.present = [true, true, true, false].sample
-      new_attendance.save
-    end
+Student.where(school_class: class2).each do |student|
+  date_range.each do |date|
+    new_attendance = Attendance.new(student_id: student.id, date: date)
+    new_attendance.present = [true, true, true, false].sample
+    new_attendance.save
   end
 end
+
 puts "Attendances added for all classes but first!"
 
-puts "For 'Grade 1' (@first test user) only!! Adding an attendance for each student for past 10 days except today..."
+puts "For first class only!! Adding an attendance for each student for past 10 days except today..."
 school_class = SchoolClass.first
 Student.where(school_class_id: school_class.id).each do |student|
   date_range.last(9).each do |date|

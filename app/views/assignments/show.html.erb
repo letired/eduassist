@@ -4,7 +4,6 @@
       <% content_for(:title_tag) do %>
         Grades for <%= @assignment.name %> on eduAssist.me
       <% end %>
-
       <div class="card-wrapper list-wrapper">
         <h1><%= @assignment.name %>
           <%= link_to edit_assignment_path(@assignment) do %>
@@ -12,21 +11,39 @@
           <% end %>
         </h1>
         <h3><%= @assignment.category %></h3>
-        <h4><%= @assignment.date %></h4>
+        <h4><%= @assignment.date.strftime("%A, %d %B %Y") %></h4>
+        <h4 id="class-average">Class Average: <%= average(@assignment) %> / <%= @assignment.max_points %></h4>
 
 
         <ul class="list-group">
           <% @grades.each do |grade| %>
             <li class= "list-group-item" data-id="<%= grade.id %>">
-              <%= link_to student_path(grade.student.id) do %>
+              <%= link_to school_class_students_path(grade.student.school_class) do %>
                 <div class="item-name">
                   <%= grade.student.first_name + " " + grade.student.last_name %>
                 </div>
               <% end %>
+              <% if grade.earned_points.nil? %>
+                <div class="points-wrapper hidden">
+                  <div class="points">
+
+                  </div>
+                  <div class="edit hidden">
+                    <i class='fa fa-pencil grade' aria-hidden='true'></i>
+                  </div>
+                </div>
+                <button class="btn edu-button add-points">Add Points</button>
+              <% else %>
+                <div class="points-wrapper">
+                  <div class="points">
+                    <%= grade.earned_points %> / <%= grade.assignment.max_points %>
+                  </div>
+                  <div class="edit hidden">
+                    <i class='fa fa-pencil grade' aria-hidden='true'></i>
+                  </div>
+                </div>
+              <% end %>
               <%= render 'grades/gradeform', grade: grade %>
-              <div class="item-attribute">
-                / <%= grade.assignment.max_points %>
-              </div>
             </li>
           <% end %>
         </ul>
@@ -36,16 +53,44 @@
 </div>
 
 <script>
-  var edit = function() {
-    $('.earned-points').on("focus", function(event){
-      var id = $(this).parent().parent().parent().parent().attr('data-id');
-      console.log(id);
-      $('.submit-button').addClass('hidden');
-      $('[data-id=' + id + '] .submit-button' ).removeClass("hidden");
+  var addPoints = function() {
+    $('.add-points').on('click', function(){
+      cleanView();
+      var id = $(this).parent().attr('data-id');
+      $(this).addClass('hidden');
+      $('[data-id=' + id + '] .student-grade').removeClass('hidden');
+      $('[data-id=' + id + '] .student-grade input').focus();
     });
   };
 
+  var edit = function() {
+    $('.fa-pencil.grade').on('click', function(){
+      var id = $(this).parent().parent().parent().attr('data-id');
+      $(this).parent().parent().addClass('hidden');
+      $('[data-id=' + id + '] .student-grade').removeClass('hidden');
+      $('[data-id=' + id + '] .student-grade input').select();
+    });
+  };
+
+  var showEdit = function() {
+    $('.points').on('click', function(){
+      cleanView();
+      var id = $(this).parent().parent().attr('data-id');
+      $('[data-id=' + id + '] .edit').removeClass('hidden');
+    });
+  };
+
+  var cleanView = function() {
+    $('.student-grade').addClass('hidden');
+    $('.add-points').removeClass('hidden');
+    $('.edit').addClass('hidden');
+    $('.points-wrapper').removeClass('hidden');
+
+  };
+
   $(document).ready(function(){
+    addPoints();
     edit();
+    showEdit();
   });
 </script>
