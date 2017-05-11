@@ -11,6 +11,10 @@
 .color-red {
   color: $red;
 }
+
+.color-blue {
+  color: $blue;
+}
 // Underline Styling - put me in a div below your text, also use the class fadeIn!
 .text-underline-green {
   border-bottom: 2px solid $green;
@@ -63,8 +67,17 @@ body {
   background: #aeaeae;
 }
 .bg-blue {
-  background: #00a3e1;
+  background: $blue;
 }
 .bg-dark-blue {
   background: #3b5998;
+}
+
+// Misc
+.edit {
+  padding-right: 10px;
+}
+
+.points-wrapper {
+  display: flex;
 }
