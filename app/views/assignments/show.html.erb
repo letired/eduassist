@@ -4,13 +4,13 @@
       <% content_for(:title_tag) do %>
         Grades for <%= @assignment.name %> on eduAssist.me
       <% end %>
-      <div class="wrapper-with-sticky-footer">
+      <div class="wrapper-with-sticky-footer text-center">
         <h1><%= @assignment.name %>
           <%= link_to edit_assignment_path(@assignment) do %>
             <i class="fa fa-pencil" aria-hidden="true"></i>
           <% end %>
         </h1>
-        <h3><%= @assignment.category %></h3>
+        <h4><%= @assignment.category %></h4>
         <h4><%= @assignment.date.strftime("%A, %d %B %Y") %></h4>
         <h4 id="class-average">Class Average:
           <% if average(@assignment).nan? %>
