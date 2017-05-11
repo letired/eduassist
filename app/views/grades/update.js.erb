@@ -5,3 +5,11 @@ $('[data-id=<%= @grade.id %>] .add-points').remove();
 $('#class-average').html("Class Average: <%= average(@grade.assignment) %> / <%= @grade.assignment.max_points %>");
 
 
+<% graph = [] %>
+<% @grade.assignment.grades.each do |grade| %>
+  <% if grade.earned_points %>
+    <% graph << [grade.student.first_name, grade.earned_points] %>
+  <% end %>
+<% end %>
+
+new Chartkick.ColumnChart("chart-1", <%= raw graph.to_json %>, {"max":null});
