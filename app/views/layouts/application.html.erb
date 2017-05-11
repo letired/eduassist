@@ -30,14 +30,10 @@
     <%= javascript_include_tag 'application' %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+    <% unless action_name == "home" %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>

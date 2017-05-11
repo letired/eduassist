@@ -1,12 +1,18 @@
-<% content_for(:title_tag) do %>
-  Edit attendance records for <%= @date.strftime("%A, %d %B %Y") %> on eduAssist.me
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        Edit attendance records for <%= @date.strftime("%A, %-d %B %Y") %> on eduAssist.me
+      <% end %>
 
-<div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
-  <h2><%= @date.strftime("%A, %d %B %Y") %></h2>
+      <div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
+        <h2><%= @date.strftime("%A, %-d %B %Y") %></h2>
 
-  <% path = update_attendance_school_class_path %>
-  <% form_options = { method: :patch, id: 'attendance' } %>
+        <% path = update_attendance_school_class_path %>
+        <% form_options = { method: :patch, id: 'attendance' } %>
 
-  <%= render 'form', path: path, form_options: form_options %>
+        <%= render 'form', path: path, form_options: form_options %>
+      </div>
+    </div>
+  </div>
 </div>

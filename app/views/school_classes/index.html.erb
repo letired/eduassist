@@ -1,22 +1,28 @@
-<% content_for(:title_tag) do %>
-  View all of your classes on eduAssist.me
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        View all of your classes on eduAssist.me
+      <% end %>
 
-<div class="card-wrapper list-wrapper">
-  <h1>Your classes</h1>
+      <div class="card-wrapper list-wrapper">
+        <h1>Your classes</h1>
 
-  <ul class="list-group">
-    <% @school_classes.each do |school_class| %>
-      <li class="list-group-item">
-        <%= link_to school_class.name, school_class_path(school_class) %>
-      </li>
-    <% end %>
-  </ul>
+        <ul class="list-group">
+          <% @school_classes.each do |school_class| %>
+            <li class="list-group-item">
+              <%= link_to school_class.name, school_class_path(school_class) %>
+            </li>
+          <% end %>
+        </ul>
 
-  <% if policy(SchoolClass).create? %>
-    <%=link_to new_school_class_path, class: 'btn edu-button' do %>
-      Create a Class
-      <div class="text-underline-green"></div>
-    <% end %>
-  <% end %>
+        <% if policy(SchoolClass).create? %>
+          <%=link_to new_school_class_path, class: 'btn edu-button' do %>
+            Create a Class
+            <div class="text-underline-green"></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
