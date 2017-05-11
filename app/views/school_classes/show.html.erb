@@ -12,7 +12,7 @@
             <div class="card" id="struggling-students">
               <% if @assignment %>
               <p>Lowest 3 scores on <%= @assignment.name %></p>
-              <%= column_chart(@graph_array,height: "150px", max: @max_points) %>
+              <%= column_chart(@graph_array,height: "150px", max: @max_points, colors: ['#9EB25D']) %>
               <% end %>
               <br>
               <%= link_to school_class_students_path(@school_class) do %>

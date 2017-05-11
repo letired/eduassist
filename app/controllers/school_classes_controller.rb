@@ -9,7 +9,9 @@ class SchoolClassesController < ApplicationController
     @school_class = SchoolClass.find(params[:id])
     authorize @school_class
     session[:current_class] = params[:id]
-    @assignment = @school_class.assignments.last
+    @assignment = Assignment.where(school_class: @school_class).order(:date, :created_at).select do |assignment|
+      assignment.grades.all? { |grade| !grade.earned_points.nil? }
+    end.last
     unless @assignment.nil?
       average = @assignment.grades.average(:earned_points).to_f.round(1)
       @graph_array = []
