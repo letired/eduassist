@@ -4,8 +4,7 @@
       <% content_for(:title_tag) do %>
         All assignments for <%= @school_class.name %> on eduAssist.me
       <% end %>
-
-      <div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
+      <div class="wrapper-with-sticky-footer">
         <h1><%= @school_class.name %> Assignments</h1>
         <ul class="list-group">
           <% @assignments.each do |assignment| %>

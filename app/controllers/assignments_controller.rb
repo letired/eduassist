@@ -7,9 +7,19 @@ class AssignmentsController < ApplicationController
   end
 
   def show
+    @students = Student.where(school_class_id: params[:school_class_id])
     @assignment = Assignment.find(params[:id])
     authorize @assignment
     @grades = @assignment.grades.joins(:student).order("students.first_name")
+
+    unless @assignment.nil?
+      @graph = []
+      @grades.each do |grade|
+        if grade.earned_points
+          @graph << [grade.student.first_name, grade.earned_points]
+        end
+      end
+    end
   end
 
   def index_students
@@ -32,6 +42,7 @@ class AssignmentsController < ApplicationController
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     authorize @school_class
     @assignment.school_class = @school_class
+    @assignment.category = @assignment.category.squish
     if @assignment.save
       @school_class.students.each do |student|
         Grade.create(assignment: @assignment, student: student)

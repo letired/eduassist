@@ -1,4 +1,4 @@
-$('[data-id=<%= @grade.id %>] div.points').html("<%= @grade.earned_points%> / <%= @grade.assignment.max_points%> ").parent().removeClass("hidden");
+$('[data-id=<%= @grade.id %>] div.points').html("<%= @grade.earned_points%> / <%= @grade.assignment.max_points%><div class='text-underline-blue'></div>").parent().removeClass("hidden");
 $('[data-id=<%= @grade.id %>] .student-grade').addClass('hidden');
 $('[data-id=<%= @grade.id %>] .edit').addClass('hidden');
 $('[data-id=<%= @grade.id %>] .add-points').remove();
