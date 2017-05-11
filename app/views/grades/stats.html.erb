@@ -25,6 +25,7 @@
                 <% end %>
               <% else %>
                 <tr>
+                  <td></td>
                   <td class="to-right"> nothing here to view yet! </td>
                 </tr>
               <% end %>
@@ -35,10 +36,15 @@
           <table class="table table-curved">
             <thead>
               <tr>
+              <% if @run %>
                 <td>Name</td>
                 <td>Category</td>
                 <td class="to-right"> Average </td>
               </tr>
+              <% else %>
+                <td>Name</td>
+                <td class="to-right"> Average </td>
+              <% end %>
             </thead>
             <tbody>
               <% if @run %>
@@ -84,7 +90,8 @@
                 <% end %>
               <% else %>
                 <tr>
-                  <td> nothing here to view yet! </td>
+                  <td></td>
+                  <td class="to-right"> nothing here to view yet! </td>
                 </tr>
               <% end %>
             </tbody>
