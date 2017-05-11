@@ -34,7 +34,7 @@
       <tr>
         <td>Name</td>
         <td>Category</td>
-        <td>Average Grade</td>
+        <td class="to-right">Average Grade</td>
       </tr>
     </thead>
     <tbody>
@@ -49,7 +49,7 @@
           <td>
             <%= assignment.category %>
           </td>
-          <td data-id="<%= assignment.id %>" >
+          <td class="to-right" data-id="<%= assignment.id %>" >
             <% total = [] %>
             <% assignment.grades.each do |pts| %>
             <% total << pts.earned_points %>
