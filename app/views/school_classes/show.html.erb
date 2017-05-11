@@ -11,16 +11,10 @@
 
             <div class="col-xs-12">
               <div class="card">
-                <h3>Requiring attention</h3>
-                <p id="struggling-students">
-                  <% show_three_lowest_scoring(@school_class).each do |hash| %>
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <%= link_to assignments_student_path(hash[:id]) do%>
-                      <%= hash[:name] + " - average: " + hash[:average] %>
-                    <% end %>
-                    <br>
-                  <% end %>
-                </p>
+                <% if @assignment %>
+                <p>Lowest 3 scores on <%= @assignment.name %></p>
+                <%= column_chart(@graph_array,height: "150px", max: @max_points) %>
+                <% end %>
                 <br>
                 <%= link_to school_class_students_path(@school_class) do %>
                   <p>View All Students</p>

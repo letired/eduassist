@@ -9,6 +9,16 @@ class SchoolClassesController < ApplicationController
     @school_class = SchoolClass.find(params[:id])
     authorize @school_class
     session[:current_class] = params[:id]
+    @assignment = @school_class.assignments.last
+    unless @assignment.nil?
+      average = @assignment.grades.average(:earned_points).to_f.round(1)
+      @graph_array = []
+      @assignment.grades.order(:earned_points).first(3).each do |grade|
+        @graph_array << [grade.student.first_name, grade.earned_points]
+      end
+      @graph_array << ["Average", average]
+      @max_points = @assignment.max_points
+    end
   end
 
   def new
