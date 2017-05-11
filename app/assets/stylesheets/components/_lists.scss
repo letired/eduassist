@@ -18,7 +18,7 @@
 }
 
 .list-group-item:hover{
-  background-color: #f7f4f4;
+  background-color: white;
 }
 
 .list-group:last-child {
@@ -118,4 +118,14 @@ a {
 .show-grades {
   position: relative;
   text-align: center;
+}
+
+ul {
+  .btn {
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 1px dimgrey;
+    margin: 0 3vmax 2vmax 0;
+  }
 }

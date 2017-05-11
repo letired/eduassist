@@ -6,7 +6,9 @@
       <% end %>
 
       <div class="wrapper-with-sticky-footer">
-        <h1><%= @school_class.name %></h1>
+        <div class="headline">
+          <h1><%= @school_class.name %></h1>
+        </div>
         <ul class="list-group">
           <% @students.each do |student| %>
             <li class= "list-group-item" id="student-index">

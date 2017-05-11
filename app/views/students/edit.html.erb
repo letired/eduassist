@@ -5,7 +5,10 @@
         Edit <%= @student.first_name %>'s details on eduAssist.me
       <% end %>
 
-      <div class="card-wrapper form-wrapper">
+      <div class="headline form-headline">
+        <h3>Edit <%= @student.first_name %>'s information</h3>
+      </div>
+      <div >
         <%= simple_form_for @student do |f| %>
           <%= f.input :first_name, label: false, placeholder: "First Name"  %>
           <%= f.input :last_name, label: false, placeholder: "Last Name" %>
@@ -13,8 +16,8 @@
           <%= f.input :birthday, as: :date, start_year: Date.today.year - 20,
                                       end_year: Date.today.year,
                                       order: [:day, :month, :year] %>
-          <ul class="list-inline">
-            <li><%= f.button :button, class: "btn edu-button" do %> Update Student<div class="text-underline-blue"></div><% end %></li>
+          <ul class="list-inline text-center">
+            <li><%= f.button :button, class: "btn btn-success" do %> Update Student<div class="text-underline-blue"></div><% end %></li>
             <li>
               <button type="button" class="btn edu-button-danger" data-toggle="modal" data-target="#deleteModal">Delete Student <div class="text-underline-red"></div></button>
             </li>

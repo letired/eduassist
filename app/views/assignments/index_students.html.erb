@@ -5,7 +5,10 @@
         All <%= @student.first_name %>'s assignments on eduAssist.me
       <% end %>
       <div class="card-wrapper list-wrapper">
-      <h1><%= @student.first_name %> <%= @student.last_name %></h1>
+      <div class="headline">
+        <h1><%= @student.first_name %> <%= @student.last_name %></h1>
+      </div>
+
         <ul class="list-group">
           <% @grades.each do |grade| %>
             <li class="list-group-item" data-id="<%= grade.id %>">

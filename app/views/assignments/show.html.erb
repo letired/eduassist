@@ -5,7 +5,9 @@
         Grades for <%= @assignment.name %> on eduAssist.me
       <% end %>
       <div class="wrapper-with-sticky-footer">
-        <h1><%= @assignment.name %>
+        <div class="headline">
+          <h1><%= @assignment.name %>
+        </div>
           <%= link_to edit_assignment_path(@assignment) do %>
             <i class="fa fa-pencil" aria-hidden="true"></i>
           <% end %>

@@ -1,6 +1,8 @@
 #calendar {
   margin: 0.2em;
   min-height: 500px;
+  background-color: white;
+  padding: 4px;
 
   .fc-left {
     h2 {
@@ -11,12 +13,6 @@
   .fc-button {
     font-size: 0.9em;
   }
-  table {
-    // min-height: 500px;
-  }
-  // .fc-scroller {
-  //   overflow-y: hidden !important;
-  // }
 
   .fc-day-grid-container.fc-scroller {
     height: auto!important;
