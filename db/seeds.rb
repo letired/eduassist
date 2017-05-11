@@ -106,7 +106,7 @@ assignment_attributes = [
     name: "Homework 1",
     category: "Math",
     date: Time.now,
-    max_points: 50,
+    max_points: 100,
     weight: 1,
     school_class: class1
     },
@@ -114,7 +114,7 @@ assignment_attributes = [
     name: "Homework 2",
     category: "Math",
     date: Time.now,
-    max_points: 40,
+    max_points: 100,
     weight: 1,
     school_class: class1
   },
@@ -130,7 +130,7 @@ assignment_attributes = [
     name: "Worksheet 1",
     category: "English",
     date: Time.now,
-    max_points: 30,
+    max_points: 100,
     weight: 1,
     school_class: class1
   },
@@ -138,7 +138,7 @@ assignment_attributes = [
     name: "Worksheet 2",
     category: "English",
     date: Time.now,
-    max_points: 40,
+    max_points: 100,
     weight: 1,
     school_class: class1
   },
@@ -146,7 +146,7 @@ assignment_attributes = [
     name: "Midterm Eval",
     category: "Math",
     date: Time.now,
-    max_points: 200,
+    max_points: 100,
     weight: 1,
     school_class: class1
   }
