@@ -10,7 +10,27 @@
             <i class="fa fa-pencil" aria-hidden="true"></i>
           <% end %>
         </h1>
-        <h4><%= @assignment.category %></h4>
+        <% if @assignment.category == "Math" %>
+          <div class="background-red limited">
+            <%= @assignment.category %>
+          </div>
+        <% elsif @assignment.category == "English" %>
+          <div class="background-blue limited">
+            <%= @assignment.category %>
+          </div>
+        <% elsif @assignment.category == "Religion" %>
+          <div class="background-orange limited">
+            <%= @assignment.category %>
+          </div>
+        <% elsif @assignment.category == "Science" %>
+          <div class="background-green limited">
+            <%= @assignment.category %>
+          </div>
+        <% else %>
+          <div class="background-grey limited">
+            <%= @assignment.category %>
+          </div>
+        <% end %>
         <h4><%= @assignment.date.strftime("%A, %d %B %Y") %></h4>
         <h4 id="class-average">Class Average:
           <% if average(@assignment).nan? %>

@@ -54,11 +54,11 @@ body {
 }
 
 .attendance-green {
-  background: #D2DCB5;
+  background: #D2DCB5 !important;
 }
 
 .attendance-red {
-  background: #E7ADAD;
+  background: #E7ADAD !important;
 }
 
 .bg-black {
@@ -81,4 +81,11 @@ body {
 
 .points-wrapper {
   display: flex;
+}
+
+.limited {
+  width: 50%;
+  margin: 0 auto;
+  opacity: 0.7;
+  color: white;
 }
