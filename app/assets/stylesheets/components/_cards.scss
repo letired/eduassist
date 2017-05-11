@@ -1,60 +1,33 @@
-.card-wrapper {
-  background-color: white;
-  margin: 2vmax 1vmax;
-  padding: 0.5vmax;
-  border-radius: 8px;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-
-  h1, h2, h3 {
-    font-weight: bold;
-    text-align: center;
-    color: black;
-  }
-
-  h1 {
-    font-size: 3.8vmax;
-    margin-top: 1.7vmax;
-  }
-
-  h2 {
-    font-size: 3.3vmax;
-  }
-
-  h3 {
-    font-size: 3vmax;
-    margin-top: 1.3vmax;
-  }
-
-  p {
-    margin-bottom: 2px;
-    text-align: justify;
-    font-size: 2.8vmax;
-    color: $eduassist-gray;
-  }
-
-  a {
-    text-decoration: none;
-    color: $eduassist-gray;
-  }
-}
-.card {
-  border: 1px solid $eduassist-gray;
-  border-radius: 8px;
-  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
-  padding: 1.5vmax 1.5vmax;
-  margin: 1.7vmax 0;
+.headline {
   text-align: center;
 
+  h1 {
+  font-size: 5vmax;
+  margin-top: 1.7vmax;
+  color: black;
+  }
+}
+
+.card {
+  border: 1px solid $blue;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 2vmax 2vmax;
+  margin: 1.5vmax 0;
+  text-align: center;
+  background-color: white;
+  text-decoration: none;
+
   a {
-    text-decoration: none;
-    color: $eduassist-gray;
     font-size: 2.8vmax;
+    text-decoration: none;
   }
 
   p {
     margin-bottom: 0;
     font-size: 3vmax;
     text-align: center;
+    color: $eduassist-gray;
   }
 
   .bottom-border {
@@ -63,23 +36,22 @@
 }
 
 .card:hover {
-  border: 1px solid $eduassist-gray;
+  border: 1px solid $blue;
   border-radius: 8px;
   box-shadow: inset 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
-  padding: 1.5vmax 1.5vmax;
-  margin: 1.7vmax 0;
+  padding: 2vmax 2vmax;
+  margin: 1.5vmax 0;
   text-align: center;
   background-color: #f9f9f9;
+  text-decoration: none;
+
+  p {
+    text-decoration: none;
+  }
 }
 
 #struggling-students {
-  font-size: 2.2vmax;
-  text-align: left;
-  color: $eduassist-gray;
-  i {
-    padding-right: 20px;
-    color: $red;
-  }
+  margin-top: 0;
 }
 .card-image {
   width: 60%;

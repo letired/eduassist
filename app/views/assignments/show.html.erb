@@ -4,7 +4,7 @@
       <% content_for(:title_tag) do %>
         Grades for <%= @assignment.name %> on eduAssist.me
       <% end %>
-      <div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
+      <div class="wrapper-with-sticky-footer">
         <h1><%= @assignment.name %>
           <%= link_to edit_assignment_path(@assignment) do %>
             <i class="fa fa-pencil" aria-hidden="true"></i>
