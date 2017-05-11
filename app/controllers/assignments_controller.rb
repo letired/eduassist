@@ -42,6 +42,7 @@ class AssignmentsController < ApplicationController
     @school_class = policy_scope(SchoolClass).find(params[:school_class_id])
     authorize @school_class
     @assignment.school_class = @school_class
+    @assignment.category = @assignment.category.squish
     if @assignment.save
       @school_class.students.each do |student|
         Grade.create(assignment: @assignment, student: student)
