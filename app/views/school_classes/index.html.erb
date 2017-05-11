@@ -5,7 +5,7 @@
         View all of your classes on eduAssist.me
       <% end %>
 
-      <div class="card-wrapper list-wrapper">
+      <div class="card-wrapper list-wrapper wrapper-with-sticky-footer">
         <h1>Your classes</h1>
 
         <ul class="list-group">
@@ -15,7 +15,8 @@
             </li>
           <% end %>
         </ul>
-
+      </div>
+      <div class="sticky-footer">
         <% if policy(SchoolClass).create? %>
           <%=link_to new_school_class_path, class: 'btn edu-button' do %>
             Create a Class

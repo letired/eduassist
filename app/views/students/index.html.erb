@@ -14,18 +14,18 @@
                 <i class="fa fa-caret-down" aria-hidden="true"></i>
                 <div class="student-info hidden">
                   <ul class="list-inline">
-                  <li><h4>Birthday:</h4></li>
+                  <li><p>Birthday:</p></li>
                     <% if student.birthday %>
-                      <li><p><%= student.birthday.strftime("%B %-d, %Y") %></p></li>
+                      <li><h4><%= student.birthday.strftime("%B %-d, %Y") %></h4></li>
                     <% else %>
-                      <li><p> not provided </p></li>
+                      <li><h4> not provided </h4></li>
                       <% end %>
                   </ul>
-                  <h4>Important Information:</h4>
+                  <p>Important Information:</p>
                     <% if student.bio %>
-                      <p><%= student.bio %></p>
+                      <h4><%= student.bio %></h4>
                     <% else %>
-                      <p> not provided </p>
+                      <h4> not provided </h4>
                     <% end %>
                   <ul class="list-inline text-center">
                     <li>
