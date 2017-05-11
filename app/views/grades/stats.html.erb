@@ -1,92 +1,98 @@
- <div class="card-wrapper list-table-wrapper">
-  <h1><%= @school_class.name %></h1>
-  <table class="table table-curved">
-    <thead>
-      <tr>
-        <td>Category</td>
-        <td class="to-right">Overall Average</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% if @run %>
-        <% @answer.each do |k, v|%>
-        <tr>
-          <td>
-            <%= k %><br>
-          </td>
-          <td class="to-right">
-            <%= v.to_s + ' %' %>
-          </td>
-        </tr>
-        <% end %>
-      <% else %>
-        <tr>
-          <td class="to-right"> nothing here to view yet! </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<div class="card-wrapper list-table-wrapper">
-  <table class="table table-curved">
-    <thead>
-      <tr>
-        <td>Name</td>
-        <td>Category</td>
-        <td class="to-right"> Average Grade </td>
-      </tr>
-    </thead>
-    <tbody>
-      <% if @run %>
-        <% @assignments.each do |assignment| %>
-        <tr>
-          <td>
-            <%= link_to assignment do %>
-            <%= assignment.name %>
-          </td>
-          <% end %>
-          <td>
-            <%= assignment.category %>
-          </td>
-          <td class="to-right" data-id="<%= assignment.id %>" >
-            <% total = [] %>
-            <% assignment.grades.each do |pts| %>
-            <% total << pts.earned_points %>
-            <% end %>
-            <% total = total.compact %>
-            <% av = total.reduce(:+) %>
-            <% size = total.length %>
-
-            <div class="toggle-views" data-id="<%= assignment.id %>" >
-              <div class="points">
-                <% if av %>
-                <%= (av / size.to_f).round(2).to_s + " / " + (assignment.max_points).to_s %>
-                <% else %>
-                  <p> not enough data yet! </p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="card-wrapper list-table-wrapper">
+          <h1><%= @school_class.name %></h1>
+          <table class="table table-curved">
+            <thead>
+              <tr>
+                <td>Category</td>
+                <td class="to-right">Overall Average</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% if @run %>
+                <% @answer.each do |k, v|%>
+                <tr>
+                  <td>
+                    <%= k %><br>
+                  </td>
+                  <td class="to-right">
+                    <%= v.to_s + ' %' %>
+                  </td>
+                </tr>
                 <% end %>
-              </div>
+              <% else %>
+                <tr>
+                  <td class="to-right"> nothing here to view yet! </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
 
-              <div  class="ppoints hidden"  >
-                <% if av %>
-                  <%= ((((av / size.to_f) / assignment.max_points) * 100).floor).to_s + " %"%>
-                <% else %>
-                  <p> not enough data yet! </p>
+        <div class="card-wrapper list-table-wrapper">
+          <table class="table table-curved">
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>Category</td>
+                <td class="to-right"> Average Grade </td>
+              </tr>
+            </thead>
+            <tbody>
+              <% if @run %>
+                <% @assignments.each do |assignment| %>
+                <tr>
+                  <td>
+                    <%= link_to assignment do %>
+                    <%= assignment.name %>
+                  </td>
+                  <% end %>
+                  <td>
+                    <%= assignment.category %>
+                  </td>
+                  <td class="to-right" data-id="<%= assignment.id %>" >
+                    <% total = [] %>
+                    <% assignment.grades.each do |pts| %>
+                    <% total << pts.earned_points %>
+                    <% end %>
+                    <% total = total.compact %>
+                    <% av = total.reduce(:+) %>
+                    <% size = total.length %>
+
+                    <div class="toggle-views" data-id="<%= assignment.id %>" >
+                      <div class="points">
+                        <% if av %>
+                        <%= (av / size.to_f).round(2).to_s + " / " + (assignment.max_points).to_s %>
+                        <% else %>
+                          <p> not enough data yet! </p>
+                        <% end %>
+                      </div>
+
+                      <div  class="ppoints hidden"  >
+                        <% if av %>
+                          <%= ((((av / size.to_f) / assignment.max_points) * 100).floor).to_s + " %"%>
+                        <% else %>
+                          <p> not enough data yet! </p>
+                        <% end %>
+                      </div>
+
+                    </div>
+                  </td>
                 <% end %>
-              </div>
-
-            </div>
-          </td>
-        <% end %>
-        </tr>
-      <% else %>
-        <tr>
-          <td> nothing here to view yet! </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+                </tr>
+              <% else %>
+                <tr>
+                  <td> nothing here to view yet! </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script>
   $(document).ready(function() {
