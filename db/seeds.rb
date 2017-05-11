@@ -82,16 +82,16 @@ student_attributes = [
     school_class: class1
     },
   {
-    first_name: "Beko",
-    last_name: "Ransome-Kuti",
-    bio: "Beko wants to be a surgeon. He has already tried to practice his surgery on one of his classmates - leading to a reprimand from the headmaster.",
+    first_name: "Pascal",
+    last_name: "Kress",
+    bio: "Pascal wants to be a surgeon. He has already tried to practice his surgery on one of his classmates - leading to a reprimand from the headmaster.",
     birthday: Faker::Date.birthday(6, 12),
     school_class: class1
     },
   {
-    first_name: "Olikoye",
-    last_name: "Ransome-Kuti",
-    bio: "Olikoye's parents are extremely poor, he comes to class hungry most days. Bringing an extra snack for him will help keep him focused.",
+    first_name: "Patrick",
+    last_name: "Scheuchzer",
+    bio: "Patrick's parents are extremely poor, he comes to class hungry most days. Bringing an extra snack for him will help keep him focused.",
     birthday: Faker::Date.birthday(6, 12),
     school_class: class1
     },
