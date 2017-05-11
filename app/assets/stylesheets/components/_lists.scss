@@ -49,6 +49,7 @@
 
   .item-name {
     flex: 2 1 auto;
+    width: 39vmax;
   }
 
   .item-attribute {
@@ -96,4 +97,9 @@
     text-align: right;
     margin-right: 1em;
   }
+}
+
+.show-grades {
+  position: relative;
+  text-align: center;
 }
