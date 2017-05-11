@@ -7,9 +7,19 @@ class AssignmentsController < ApplicationController
   end
 
   def show
+    @students = Student.where(school_class_id: params[:school_class_id])
     @assignment = Assignment.find(params[:id])
     authorize @assignment
     @grades = @assignment.grades.joins(:student).order("students.first_name")
+
+    unless @assignment.nil?
+      @graph = []
+      @grades.each do |grade|
+        if grade.earned_points
+          @graph << [grade.student.first_name, grade.earned_points]
+        end
+      end
+    end
   end
 
   def index_students
