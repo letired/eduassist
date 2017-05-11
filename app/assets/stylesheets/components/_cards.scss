@@ -1,32 +1,35 @@
 .card-wrapper {
   background-color: white;
   margin: 2vmax 1vmax;
-  padding: .25vmax;
+  padding: 0.5vmax;
   border-radius: 8px;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 
   h1, h2, h3 {
     font-weight: bold;
     text-align: center;
-    color: $eduassist-gray;
+    color: black;
   }
 
   h1 {
-    font-size: 3.5vmax;
+    font-size: 3.8vmax;
+    margin-top: 1.7vmax;
   }
 
   h2 {
-    font-size: 3vmax;
+    font-size: 3.3vmax;
   }
 
   h3 {
-    font-size: 2.5vmax;
+    font-size: 3vmax;
+    margin-top: 1.3vmax;
   }
 
   p {
     margin-bottom: 2px;
     text-align: justify;
-    font-size: 1.8vmax;
+    font-size: 2.8vmax;
+    color: $eduassist-gray;
   }
 
   a {
@@ -38,18 +41,19 @@
   border: 1px solid $eduassist-gray;
   border-radius: 8px;
   box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
-  padding: 1.5vmax 3vmax;
+  padding: 1.5vmax 1.5vmax;
   margin: 1.7vmax 0;
   text-align: center;
 
   a {
     text-decoration: none;
     color: $eduassist-gray;
+    font-size: 2.8vmax;
   }
 
   p {
     margin-bottom: 0;
-    font-size: 2.5vmax;
+    font-size: 3vmax;
     text-align: center;
   }
 

@@ -1,5 +1,5 @@
 <%= form_tag path, form_options do %>
-<h4>Swipe left for absent, swipe right for present!</h4>
+<h4>Swipe left for absent, right for present!</h4>
   <div class="attendance">
     <% @attendances.each_with_index do |attendance, index| %>
       <%= fields_for 'attendances[]', attendance do |f| %>
