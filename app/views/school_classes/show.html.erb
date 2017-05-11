@@ -6,7 +6,7 @@
       <% end %>
       <div class="card-wrapper">
         <h1><%= @school_class.name %></h1>
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
 
             <div class="col-xs-12">
@@ -36,45 +36,44 @@
             </div>
 
             <div class="col-xs-6">
-              <div class="card">
-                <%= link_to new_attendance_path(@school_class) do %>
+              <%= link_to new_attendance_path(@school_class) do %>
+                <div class="card">
                   <%= image_tag "attendance.png", class: "card-image" %>
                   <p>Attendance</p>
                   <div class="bottom-border"></div>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
 
             <div class="col-xs-6">
-              <div class="card">
-                <%= link_to school_class_assignments_path(@school_class) do %>
+              <%= link_to school_class_assignments_path(@school_class) do %>
+                <div class="card">
                   <%= image_tag "gradebook.png", class: "card-image" %>
                   <p>Gradebook</p>
                   <div class="bottom-border"></div>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
 
             <div class="col-xs-6">
-              <div class="card">
-                <%= link_to stats_school_class_path(@school_class) do %>
+              <%= link_to stats_school_class_path(@school_class) do %>
+                <div class="card">
                   <%= image_tag "class-stats.png", class: "card-image" %>
                   <p>Class Stats</p>
                   <div class="bottom-border"></div>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
 
             <div class="col-xs-6">
-              <div class="card">
-                <%= link_to edit_school_class_path(@school_class) do %>
+              <%= link_to edit_school_class_path(@school_class) do %>
+                <div class="card">
                   <%= image_tag "edit-class.png", class: "card-image" %>
                   <p>Edit Class</p>
                   <div class="bottom-border"></div>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
-
           </div>
         </div>
       </div>
