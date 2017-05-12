@@ -40,7 +40,7 @@
           <% end %>
         </h4>
         <% if @graph.first %>
-          <%= column_chart(@graph, height: "150px", max: @max_points) %>
+          <%= column_chart(@graph, height: "150px", max: @max_points, colors: ['#9EB25D']) %>
         <% end %>
         <ul class="list-group">
           <% @grades.each do |grade| %>
