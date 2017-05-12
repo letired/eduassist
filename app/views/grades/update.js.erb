@@ -12,4 +12,4 @@ $('#class-average').html("Class Average: <%= average(@grade.assignment) %> / <%=
   <% end %>
 <% end %>
 
-new Chartkick.ColumnChart("chart-1", <%= raw graph.to_json %>, {"max":null});
+new Chartkick.ColumnChart("chart-1", <%= raw graph.to_json %>, {"max":null, "colors":['#9EB25D']});

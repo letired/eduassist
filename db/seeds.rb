@@ -60,13 +60,13 @@ student_attributes = [
     birthday: Faker::Date.birthday(6, 12),
     school_class: class1
     },
-  {
-    first_name: "Ayodele",
-    last_name: "Awojobi",
-    bio: "Ayodele loves reading. His parents were recently divorced, so he has been acting out in class.",
-    birthday: Faker::Date.birthday(6, 12),
-    school_class: class1
-    },
+  # {
+  #   first_name: "Ayodele",
+  #   last_name: "Awojobi",
+  #   bio: "Ayodele loves reading. His parents were recently divorced, so he has been acting out in class.",
+  #   birthday: Faker::Date.birthday(6, 12),
+  #   school_class: class1
+  #   },
   {
     first_name: "Gani",
     last_name: "Fawehinmi",
@@ -75,22 +75,22 @@ student_attributes = [
     school_class: class2
     },
   {
-    first_name: "Dele",
+    first_name: "Pauline",
     last_name: "Giwa",
     bio: "Dele is an animal lover. Make sure to remember that his dog's name is 'Billy'!",
     birthday: Faker::Date.birthday(6, 12),
     school_class: class1
     },
   {
-    first_name: "Pascal",
-    last_name: "Kress",
+    first_name: "Pasquale",
+    last_name: "Adebisi",
     bio: "Pascal wants to be a surgeon. He has already tried to practice his surgery on one of his classmates - leading to a reprimand from the headmaster.",
     birthday: Faker::Date.birthday(6, 12),
     school_class: class1
     },
   {
     first_name: "Patrick",
-    last_name: "Scheuchzer",
+    last_name: "Shagaya",
     bio: "Patrick's parents are extremely poor, he comes to class hungry most days. Bringing an extra snack for him will help keep him focused.",
     birthday: Faker::Date.birthday(6, 12),
     school_class: class1
@@ -208,7 +208,7 @@ puts "Adding a grade to each assignment for each student..."
 Assignment.where(school_class: class1).each do |assignment|
   Student.where(school_class: class1).each do |student|
     Grade.create(
-      earned_points: rand(20..assignment.max_points),
+      earned_points: rand(5..assignment.max_points),
       student_id: student.id,
       assignment_id: assignment.id
       )
@@ -219,7 +219,7 @@ puts "Grades added!"
 
 date_range = []
 i = 0
-10.times do
+14.times do
   date_range << Date.today - i
   i += 1
 end
@@ -235,12 +235,16 @@ end
 
 puts "Attendances added for all classes but first!"
 
-puts "For first class only!! Adding an attendance for each student for past 10 days except today..."
+puts "For first class only!! Adding an attendance for each student for past 14 days except today..."
 school_class = SchoolClass.first
 Student.where(school_class_id: school_class.id).each do |student|
-  date_range.last(9).each do |date|
+  date_range.last(13).each do |date|
     new_attendance = Attendance.new(student_id: student.id, date: date)
-    new_attendance.present = [true, true, true, false].sample
+    if student.first_name == 'Pasquale'
+      new_attendance.present = [false, false, true].sample
+    else
+      new_attendance.present = [true, true, true, false].sample
+    end
     new_attendance.save
   end
 end
@@ -250,3 +254,19 @@ puts "Deleting weekend attendance records!"
 
 Attendance.where(date: "7 May 2017").destroy_all
 Attendance.where(date: "6 May 2017").destroy_all
+
+g = Grade.where(assignment_id: 12, student_id: 2).first
+g.earned_points = 132
+g.save
+g = Grade.where(assignment_id: 12, student_id: 2).first
+g.earned_points = 190
+g.save
+g = Grade.where(assignment_id: 12, student_id: 4).first
+g.earned_points = 45
+g.save
+g = Grade.where(assignment_id: 12, student_id: 5).first
+g.earned_points = 55
+g.save
+g = Grade.where(assignment_id: 12, student_id: 6).first
+g.earned_points = 63
+g.save
