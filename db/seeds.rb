@@ -245,3 +245,8 @@ Student.where(school_class_id: school_class.id).each do |student|
   end
 end
 puts "Attendances added for 'Grade 1'!"
+
+puts "Deleting weekend attendance records!"
+
+Attendance.where(date: "7 May 2017").destroy_all
+Attendance.where(date: "6 May 2017").destroy_all
