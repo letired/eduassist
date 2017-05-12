@@ -43,7 +43,7 @@
               <tr>
               <% if @run %>
                 <td>Name</td>
-                <td>Category</td>
+                <td class="text-center">Category</td>
                 <td class="to-right"> Average </td>
               </tr>
               <% else %>
@@ -61,7 +61,27 @@
                     </td>
                     <% end %>
                     <td>
-                      <%= assignment.category %>
+                    <% if assignment.category == "Math" %>
+                      <div class="background-red limited-stats">
+                        <%= assignment.category %>
+                      </div>
+                    <% elsif assignment.category == "English" %>
+                      <div class="background-blue limited-stats">
+                        <%= assignment.category %>
+                      </div>
+                    <% elsif assignment.category == "Religion" %>
+                      <div class="background-orange limited-stats">
+                        <%= assignment.category %>
+                      </div>
+                    <% elsif assignment.category == "Science" %>
+                      <div class="background-green limited-stats">
+                        <%= assignment.category %>
+                      </div>
+                    <% else %>
+                      <div class="background-grey limited-stats">
+                        <%= assignment.category %>
+                      </div>
+                    <% end %>
                     </td>
                     <td class="to-right" data-id="<%= assignment.id %>" >
 
