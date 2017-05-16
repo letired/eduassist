@@ -1,4 +1,3 @@
-// Your footer style
 .sticky-footer {
   position: fixed;
   bottom: 0px;
@@ -7,4 +6,14 @@
   width: 100%;
   padding: 2vmax 3vmax;
   text-align: right;
+}
+
+.footer {
+  margin-top: 50px;
+
+  i {
+    margin-top: 5px;
+    font-size: 100px;
+  }
+
 }

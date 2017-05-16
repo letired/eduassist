@@ -30,10 +30,23 @@
     <%= javascript_include_tag 'application' %>
   </head>
   <body>
-    <% unless action_name == "home" %>
-      <%= render 'shared/navbar' %>
-    <% end %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="container">
+      <div class="hidden-xs hidden-sm hidden-md text-center padded">
+        <h1>eduAssist.me was designed specifically for use on mobile.  Please check us out using your mobile phone!</h1>
+        <p>Or you can preview the site using the window below...</p>
+        <%= yield(:non_mobile) %>
+        <div class="footer">
+        <p>Software developer? Would you like to contribute? We'd love to have your help!</p>
+        <%= link_to "https://github.com/letired/eduassist" do %><i class="fa fa-github" aria-hidden="true"></i><% end %>
+        </div>
+      </div>
+    </div>
+    <div class="hidden-lg">
+      <% unless action_name == "home" %>
+        <%= render 'shared/navbar' %>
+      <% end %>
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
