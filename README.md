@@ -8,5 +8,11 @@ eduAssist.me is a mobile-friendly education webapp designed and developed by [Pa
 * Simple - no bloated features. Get started right away. Quick statistics on your student's performance without any prior configuration.
 * Free - we wanted to build a piece of software that could help low-income teachers, not to make a profit.
 
+### Test:
+Wanna check it out with a dummy account? Feel free to login with these credentials:
+* Login: `spencer@teacher.com`
+* Password: `password`
+Just like a national park - please it like you found it! We'll be setting up guest user account system shortly.
+
 ### Contribute:
 We'd love to collaborate with software developers of any skill level to help bring the best experience to our users.  Please don't hesitate to jump onboard!
