@@ -34,10 +34,12 @@
       <div class="hidden-xs hidden-sm hidden-md text-center padded">
         <h1>eduAssist.me was designed specifically for use on mobile.  Please check us out using your mobile phone!</h1>
         <p>Or you can preview the site using the window below...</p>
-        <% if client_browser_name == 'Mozilla' %>
-          <script>
-            window.alert("Hi, It seems you are using Firefox. PLease press: ctrl + shift + m,\n or cmd + option + m if you are on a mac, and possibly resize the window to see this page correctly");
-          </script>
+        <% unless user_signed_in? %>
+          <% if client_browser_name == 'Mozilla' %>
+            <script>
+              window.alert("Hi, It seems you are using Firefox. PLease press: ctrl + shift + m,\n or cmd + option + m if you are on a mac, and possibly resize the window to see this page correctly");
+            </script>
+          <% end %>
         <% end %>
         <%= yield(:non_mobile) %>
         <div class="footer">
