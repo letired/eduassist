@@ -5,7 +5,7 @@ module DetectBrowserHelper
       "Internet Explorer"
     elsif user_agent =~ /konqueror/i
       "Konqueror"
-    elsif user_agent =~ /gecko/i
+    elsif user_agent =~ /firefox/i
       "Mozilla"
     elsif user_agent =~ /opera/i
       "Opera"
