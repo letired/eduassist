@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   end
   resources :assignments, only: [ :show, :update, :destroy, :edit ]
   resources :grades, only: [ :update ]
+
+  namespace :api, defaults: { format: :json } do
+     namespace :v1 do
+       resources :school_classes, only: [ :index, :show, :update, :create, :destroy ]
+     end
+   end
   # resources :assignments
   # resources :grades, only: [ :create, :update, :destroy ]
   # resources :attendances,
