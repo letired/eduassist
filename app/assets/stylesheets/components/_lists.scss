@@ -1,0 +1,139 @@
+.list-group {
+  // border: 1px solid $blue;
+  // border-radius: 8px;
+  // box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
+  margin: 1.5vmax 0;
+  background-color: white;
+  text-decoration: none;
+}
+
+.list-group-item {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2.8vmax;
+  border-bottom: 1px ;
+  padding: 0 auto;
+}
+
+.list-group-item:hover{
+  background-color: #f7f4f4;
+}
+
+.list-group:last-child {
+  border-bottom: 0;
+}
+h3 {
+  margin: 5px 0
+}
+
+h4 {
+  text-align: center;
+  color: $eduassist-gray;
+  font-size: 2.8vmax;
+  margin-bottom: 0;
+}
+
+a {
+  color: $eduassist-gray;
+  text-decoration: none;
+  font-size: 2.8vmax;
+  font-weight: bold;
+}
+
+// ul > a:first-child {
+//   li {
+//     border-top-left-radius: 5px;
+//     border-top-right-radius: 5px;
+//   }
+// }
+
+// ul > a:last-child {
+//   li {
+//     border-bottom-left-radius: 5px;
+//     border-bottom-right-radius: 5px;
+//   }
+// }
+
+.item-name {
+  flex: 2 1 auto;
+}
+
+.item-attribute {
+  flex: 0 1 30%;
+  color: white;
+  border-radius: 2px;
+  padding: 1px 2px;
+  font-weight: lighter;
+  font-size: 2.2vmax;
+  opacity: 0.7;
+}
+.background-green {
+  background-color: $green;
+}
+
+.background-red {
+  background-color: $red;
+}
+
+.background-blue {
+  background-color: $blue;
+}
+
+.background-orange {
+  background-color: $orange;
+}
+
+.background-grey {
+  background-color: $eduassist-gray;
+}
+
+#assignment-category {
+  text-align:center;
+}
+
+.student-grade {
+  text-align: right;
+}
+
+#student-index {
+  display: block;
+  font-size: 2.8vmax;
+  i {
+    padding: 15px;
+    color: $eduassist-gray;
+  }
+
+  h4 {
+    font-size: 2.8vmax;
+    text-align: left;
+    margin-top: 0.9vmax;
+  }
+
+  p {
+    margin-top: 0.9vmax;
+    font-size: 2.8vmax;
+  }
+  .btn {
+    padding: 2px 10px 6px 10px;
+    font-size: 2.8vmax;
+    margin: 14px 1px 2px 1px;
+  }
+}
+
+.table>tbody>tr>td {
+    padding: 8px 5px;
+  }
+  td {
+    font-size: 2.8vmax;
+  }
+  .to-right {
+    text-align: right;
+    margin-right: 1em;
+}
+
+.show-grades {
+  position: relative;
+  text-align: center;
+}

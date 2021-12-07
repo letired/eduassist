@@ -1,0 +1,40 @@
+<% content_for(:non_mobile) do %>
+  <div class="banner-large hidden-xs hidden-sm" style="background-image: url('<%= image_path ("eduAssist.png")%>')">
+    <div class="devise-links homepage-large hidden-xs hidden-sm">
+      <ul class="list-inline">
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn edu-button") %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to('Sign Up', new_user_registration_path, class: "btn btn-success")%>
+          </li>
+          <li>
+          <%= link_to('Login', new_user_session_path, class: "btn edu-button")  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <% unless user_signed_in? %>
+    <% if client_browser_name == 'Mozilla' %>
+      <script>
+        window.alert("Hi! It seems you are using Firefox. \nPlease press: ctrl + shift + m,\nor cmd + option + m \nto simulate a mobile device.");
+      </script>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="banner-small hidden-md hidden-lg" style="background-image: url('<%= image_path ("eduassist-mobile2.png")%>')">
+  <div class="devise-links homepage-small">
+    <ul>
+      <% if user_signed_in? %>
+        <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn edu-button") %></li>
+      <% else %>
+        <li><%= link_to('Sign Up', new_user_registration_path, class: "btn btn-success")%><li>
+        <li><%= link_to('Login', new_user_session_path, class: "btn edu-button")  %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

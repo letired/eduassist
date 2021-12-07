@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="devise-form">
+        <h2>Forgot your password?</h2>
+
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+         <%= f.input :email, required: true, autofocus: true %>
+        </div>
+
+        <div class="form-actions">
+         <%= f.button :submit, "Send me reset password instructions", class: "btn edu-button" %>
+        </div>
+        <% end %>
+
+        <div class="devise-links">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

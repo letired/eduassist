@@ -1,0 +1,132 @@
+.headline {
+  text-align: center;
+
+  h1 {
+  font-size: 5vmax;
+  margin-top: 1.7vmax;
+  color: black;
+  }
+}
+
+.card {
+  border: 1px solid $blue;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 2vmax 2vmax;
+  margin: 1.5vmax 0;
+  text-align: center;
+  background-color: white;
+  text-decoration: none;
+
+  a {
+    font-size: 2.8vmax;
+    text-decoration: none;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 3vmax;
+    text-align: center;
+    color: $eduassist-gray;
+  }
+
+  .bottom-border {
+    border-bottom: 2px solid $green;
+  }
+}
+
+#struggling-students {
+  margin-top: 0;
+}
+.card-image {
+  width: 60%;
+  margin-bottom: 1vmax;
+}
+
+.attendance-card-show {
+  position: relative;
+  height: 6vh;
+  border: 1px solid $eduassist-gray;
+  border-radius: 8px;
+  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 1.5vmax 3vmax;
+  margin: .8vmax 0;
+
+  .student-name {
+    position: absolute;
+    top: 1vh;
+    left: 1vh;
+    font-size: 3vmax;
+  }
+
+  .student-present {
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    font-size: 3vmax;
+  }
+}
+
+.attendance-card {
+  position: relative;
+  height: 20vh;
+  border: 1px solid $eduassist-gray;
+  border-radius: 8px;
+  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  padding: 1.5vmax 3vmax;
+  margin: 1.7vmax 0;
+  background-color: white;
+
+  .student-name {
+    position: absolute;
+    top: 10%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%);
+    color: $eduassist-gray;
+
+    h4 {
+      font-size: 4vmax;
+    }
+  }
+
+  .student-present {
+    position: absolute;
+    bottom: 1vh;
+    right: 1vh;
+    font-size: 10vmax;
+  }
+
+  .student-absent {
+    position: absolute;
+    bottom: 1vh;
+    left: 1vh;
+    font-size: 10vmax;
+  }
+
+  .swipe-instructions-left {
+    position: absolute;
+    bottom: 2vh;
+    left: 1vh;
+    font-size: 3vmax;
+
+    i {
+      font-size: 5vmax;
+      // text-shadow: 0px 2px 2px $eduassist-gray;
+    }
+  }
+
+  .swipe-instructions-right {
+    position: absolute;
+    bottom: 2vh;
+    right: 1vh;
+    font-size: 3vmax;
+
+    i {
+      font-size: 5vmax;
+      // text-shadow: 0px 2px 2px $eduassist-gray;
+    }
+  }
+}
+.wrapper-with-sticky-footer {
+  margin-bottom: 13vmax;
+}

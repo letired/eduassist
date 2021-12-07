@@ -1,0 +1,39 @@
+/* -------------------------------------
+ * Fonts
+ * ------------------------------------- */
+// Google fonts
+@import url("https://fonts.googleapis.com/css?family=Didact+Gothic|Open+Sans:300");
+$base-font: "Didact Gothic", "Helvetica", "sans-serif";
+$header-font: "Open Sans", "Helvetica", "sans-serif";
+
+// Local fonts (uncomment following lines)
+// @font-face {
+//   font-family: "Font Name";
+//   src: font-url('FontFile.eot');
+//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
+//        font-url('FontFile.woff') format('woff'),
+//        font-url('FontFile.ttf') format('truetype')
+// }
+// $my-font: "Font Name";
+
+// Font-size and line-height
+$base-size: 16px;
+$base-height: 1.4;
+
+/* -------------------------------------
+ * Colors
+ * ------------------------------------- */
+// Scheme
+$brand-color: #D23333;
+
+
+$blue: #A09EBB;
+$red: #CC4B4B;
+$yellow: #FDB631;
+$orange: #E67E22;
+$green: #9EB25D;
+$pink: #EFA8B8;
+$gray: #000000;
+
+// custom colors
+$eduassist-gray: #757171;

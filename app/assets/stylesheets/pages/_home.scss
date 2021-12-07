@@ -1,0 +1,70 @@
+/* -------------------------------------
+ * CSS code specific to home page
+ * (margin/padding adjustments)
+ * ------------------------------------- */
+.banner-large {
+  color: white;
+  text-align: center;
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  height: 110vh;
+  position: relative;
+}
+.homepage-large {
+  position: absolute;
+  bottom: 0;
+  left: 5vmax;
+  right: 5vmax;
+  padding-top: 1vmax 0;
+  .btn {
+    width: 15vmax;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 1px dimgrey;
+    margin: 0 3vmax 2vmax 0;
+  }
+}
+.banner-small{
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+}
+.homepage-small {
+  background-color: white;
+  position: absolute;
+  bottom: 14vmax;
+  left: 3vmax;
+  ul {
+    list-style: none;
+  }
+  .btn {
+    width: 20vmax;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 1px dimgrey;
+    margin: 0 3vmax 3vmax 0;
+  }
+}
+
+.banner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.banner p {
+  font-size: 20px;
+  font-weight: lighter;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+}
+

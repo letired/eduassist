@@ -1,0 +1,100 @@
+/* -------------------------------------
+ * Utilities classes
+ * These are examples of utilities classes
+ * Feel free to change them and create your own
+ * ------------------------------------- */
+// Text Colors
+.color-green {
+  color: $green;
+}
+
+.color-red {
+  color: $red;
+}
+
+.color-blue {
+  color: $blue;
+}
+// Underline Styling - put me in a div below your text, also use the class fadeIn!
+.text-underline-green {
+  border-bottom: 2px solid $green;
+}
+
+.text-underline-red {
+  border-bottom: 2px solid $red;
+}
+
+.text-underline-blue {
+  border-bottom: 2px solid $blue;
+}
+
+.text-underline-black {
+  border-bottom: 2px solid black;
+}
+
+.text-underline-pink {
+  border-bottom: 2px solid $pink;
+}
+// Paddings
+.padded {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+// Margin
+.margin {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+// Backgrounds
+body {
+  background: #f7f7f7;
+  a:hover, a:focus {text-decoration: none !important;}
+}
+
+.attendance-green {
+  background: #D2DCB5 !important;
+}
+
+.attendance-red {
+  background: #E7ADAD !important;
+}
+
+.bg-black {
+  background: #4a4a4a;
+}
+.bg-grey {
+  background: #aeaeae;
+}
+.bg-blue {
+  background: $blue;
+}
+.bg-dark-blue {
+  background: #3b5998;
+}
+
+// Misc
+.edit {
+  padding-right: 10px;
+}
+
+.points-wrapper {
+  display: flex;
+}
+
+.limited {
+  width: 50%;
+  margin: 0 auto;
+  opacity: 0.7;
+  color: white;
+}
+
+.limited-stats {
+  width: 100%;
+  margin: 0 auto;
+  opacity: 0.7;
+  color: white;
+  text-align: center;
+  padding: 1px;
+}

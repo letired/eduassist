@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        <%= @student.first_name %>'s attendance records on eduAssist.me
+      <% end %>
+
+
+      <div class="card-wrapper list-wrapper">
+        <h1><%= @student.first_name %>'s attendance record</h1>
+        <hr>
+        <div id="calendar">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+  $(document).ready(function() {
+    var calHeight = 345;
+
+    $('#calendar').fullCalendar({
+      firstDay: 1,
+      theme: false,
+      events:
+        [ <% @events.each do  |event| %>
+         { start: "<%= event[:start] %>",
+          title: "<%= event[:title] %>",
+          rendering: "<%= event[:rendering] %>",
+          backgroundColor: "<%= event[:backgroundColor] %>"
+         },
+         <% end %> ]
+        });
+    });
+</script>

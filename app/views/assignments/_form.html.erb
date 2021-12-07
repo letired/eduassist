@@ -1,0 +1,13 @@
+<%= simple_form_for([school_class, assignment]) do |f| %>
+  <%= f.input :name, label: false, placeholder: "Title: Homework 1" %>
+  <%= f.input :category, label: false, collection: Assignment::SUBJECTS, prompt: "Subject:" %>
+  <%= f.input :date, as: :date, label: "Due Date:", start_year: Date.today.year - 1,
+                              end_year: Date.today.year,
+                              order: [:day, :month, :year] %>
+  <%= f.input :max_points, label: false, placeholder: "Highest grade possible (eg: 10)" %>
+  <%= f.input :weight, as: :hidden, input_html:{ value: "1"}, label: false, placeholder: "Assignment weight" %>
+  <%= f.button :button, class: "btn btn-success" do %>
+    Add Assignment
+    <div class="text-underline-green fadeIn"></div>
+  <% end %>
+<% end %>

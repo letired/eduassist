@@ -1,0 +1,11 @@
+<%= simple_form_for @school_class do |f| %>
+  <%= f.input :name, label: false, placeholder: "Class name" %>
+  <%= f.input :description, label: false, placeholder: "Class description" %>
+  <ul class="list-inline">
+  <li>
+    <%= f.button :button, class: "btn btn-success" do %>
+    Submit
+    <div class="text-underline-green"></div>
+    <% end %>
+  </li>
+<% end %>

@@ -1,0 +1,67 @@
+<%= form_tag path, form_options do %>
+<h4>Swipe left for absent, right for present!</h4>
+  <div class="attendance">
+    <% @attendances.each_with_index do |attendance, index| %>
+      <%= fields_for 'attendances[]', attendance do |f| %>
+        <div class="attendance-card <%= set_background_color(attendance) %>" data-id="<%= attendance.student.id %>">
+          <div class="student-name">
+            <h4><%= attendance.student.first_name %> <%= attendance.student.last_name.first %>.</h4>
+          </div>
+          <div class="attendance-status">
+            <% if attendance.present %>
+              <div class="student-present"><i class="fa fa-check color-green" aria-hidden="true"></i></div>
+            <% elsif attendance.present == false %>
+              <div class="student-absent"><i class="fa fa-times color-red" aria-hidden="true"></i></div>
+            <% else %>
+              <% if index == 0 %>
+                <div class="swipe-instructions-left"><i class="fa fa-hand-o-left color-red floating-horizontal-left" aria-hidden="true"></i></i></div>
+                <div class="swipe-instructions-right"><i class="fa fa-hand-o-right color-green floating-horizontal-right" aria-hidden="true"></i></div>
+              <% end %>
+            <% end %>
+          </div>
+          <%= f.text_field :present, type: 'hidden'%>
+          <%= f.text_field :student_id, type: 'hidden'%>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="sticky-footer">
+    <input class='btn edu-button' type="submit" value="Submit" form="attendance">
+  </div>
+<% end %>
+
+
+<script>
+  var swipe_present = function() {
+    $('.attendance-card').hammer().bind("swiperight", function(event){
+      var id = $(this).attr('data-id');
+      $('[data-id=' + id + '] input').first().val('true');
+      var $student = $('[data-id=' + id + '].attendance-card');
+      $student.removeClass("attendance-red");
+      $student.addClass("attendance-green");
+      $('[data-id=' + id + '] .attendance-status').html('<div class="student-present"><i class="fa fa-check color-green" aria-hidden="true"></i></div>');
+      $student.hide("slide", {direction: "right"}, 200, function(){
+        $student.appendTo('.attendance').show();
+      });
+    });
+  };
+
+  var swipe_absent = function(){
+    $('.attendance-card').hammer().bind("swipeleft", function(event){
+      var id = $(this).attr('data-id');
+      $('[data-id=' + id + '] input').first().val('false');
+      var $student = $('[data-id=' + id + '].attendance-card');
+      $student.removeClass("attendance-green");
+      $student.addClass("attendance-red");
+      $('[data-id=' + id + '] .attendance-status').html('<div class="student-absent"><i class="fa fa-times color-red" aria-hidden="true"></i></div>');
+      $student.hide("slide", {direction: "left"}, 200, function(){
+        $student.appendTo('.attendance').show();
+      });
+    });
+  };
+
+  $(document).ready(function(){
+    swipe_present();
+    swipe_absent();
+  });
+</script>

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        Add a new student to <%= @school_class.name %> on eduAssist.me
+      <% end %>
+
+      <div class="card-wrapper form-wrapper">
+        <h4>Let's add students to <%= @school_class.name %></h4>
+        <%= render 'form', school_class: @school_class, student: @student %>
+
+        <ol>
+          <div id="student">
+            <% @students.each do |student| %>
+              <%= render 'students/indexshow', student: student %>
+            <% end %>
+          </div>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

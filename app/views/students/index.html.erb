@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        All of your students in <%= @school_class.name %> on eduAssist.me
+      <% end %>
+
+      <div class="wrapper-with-sticky-footer">
+        <h1><%= @school_class.name %></h1>
+        <ul class="list-group">
+          <% @students.each do |student| %>
+            <li class= "list-group-item" id="student-index">
+              <%= student.first_name %> <%= display_last_name(student) %>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="student-info hidden">
+                  <ul class="list-inline">
+                  <li><p>Birthday:</p></li>
+                    <% if student.birthday %>
+                      <li><h4><%= student.birthday.strftime("%B %-d, %Y") %></h4></li>
+                    <% else %>
+                      <li><h4> not provided </h4></li>
+                      <% end %>
+                  </ul>
+                  <p>Important Information:</p>
+                    <% if student.bio %>
+                      <h4><%= student.bio %></h4>
+                    <% else %>
+                      <h4> not provided </h4>
+                    <% end %>
+                  <ul class="list-inline text-center">
+                    <li>
+                      <%= link_to assignments_student_path(student), class: "btn edu-button" do %>
+                        Grades
+                        <div class="text-underline-green"></div>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to attendances_student_path(student), class: "btn edu-button" do %>
+                        Attendance
+                        <div class="text-underline-blue"></div>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to edit_student_path(student), class: "btn edu-button" do %>
+                        Edit
+                        <div class="text-underline-black"></div>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="sticky-footer">
+        <div>
+          <%= link_to new_school_class_student_path(@school_class), class: "btn edu-button" do  %>
+            New Student?
+            <div class="text-underline-green"></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('li').on("click", function(event){
+      event.preventDefault();
+      $('li').not(this).find('.student-info').addClass("hidden");
+      $(this).find('.student-info').toggleClass("hidden");
+    });
+    $('a').on("click", function(event){
+      event.stopPropagation();
+    });
+  });
+</script>

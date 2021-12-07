@@ -1,0 +1,16 @@
+<div class="item-attribute student-grade hidden">
+  <%= simple_form_for grade, remote: true, url: grade_path do |f| %>
+  <%= f.input :earned_points, label: false, input_html: {class: "earned-points"} %>
+  <%= f.input :id, as: :hidden, value: grade.id %>
+  <div class="submit-button">
+    <%= f.button :button, class: "btn edu-button" do %>
+      <% if grade.earned_points.nil? %>
+        Save Points
+      <% else %>
+        Edit Points
+      <% end %>
+      <div class="text-underline-green"></div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

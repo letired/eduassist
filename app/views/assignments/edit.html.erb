@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        Edit <%= @assignment.name %> on eduAssist.me
+      <% end %>
+      <div class="card-wrapper form-wrapper">
+        <%= simple_form_for @assignment do |f| %>
+          <%= f.input :name %>
+          <%= f.input :category %>
+          <%= f.input :date %>
+          <%= f.input :max_points %>
+          <ul class="list-inline">
+            <li>
+              <%= f.button :button, class: "btn btn-success" do %>
+              Update!
+              <div class="text-underline-blue"></div>
+              <% end %>
+            </li>
+            <li>
+              <button type="button" class="btn edu-button-danger" data-toggle="modal" data-target="#deleteModal">Delete Assignment</button>
+            </li>
+          </ul>
+        <% end %>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header delete-modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Important Notice!</h4>
+              </div>
+              <div class="modal-body">
+                You are about to delete this assignment permanently.<br>
+                This means all associated data of this assignment will be deleted as well.<br>
+                Only select 'Delete' if you really want to do this.
+              </div>
+              <div class="modal-footer">
+                <%= button_to "Delete Assignment", { action: "destroy", id: @assignment.id }, method: :delete, class: 'btn edu-button-danger' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

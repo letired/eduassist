@@ -1,0 +1,102 @@
+#brand-name {
+  h3 {
+    margin: 0px;
+    padding: 0 10px;
+  }
+}
+
+/* Main class */
+.navbar-eduassist {
+  background: white;
+  transition: all 0.3s ease;
+  display: flex;
+  height: 70px;
+  padding: 0px 20px;
+  align-items: center;
+  justify-content: space-between;
+  color: #757171;
+}
+
+/* Navbar logo */
+.navbar-eduassist-brand img {
+  height: 40px;
+  opacity: 0.8;
+  padding-right: 10px;
+}
+
+/* Navbar right section (with form, links, button) */
+.navbar-eduassist-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Navbar item */
+.navbar-eduassist-item {
+  flex: 0 1 auto;
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+/* Navbar standard link */
+.navbar-eduassist-link {
+  color: #616668;
+  font-size: 14px;
+}
+.navbar-eduassist-link:hover {
+  color: #da552f;
+  text-decoration: none;
+}
+
+/* Navbar right button */
+.navbar-eduassist-button {
+  margin-left: 10px;
+  padding: 0 20px;
+  border-radius: 20em;
+  line-height: 40px;
+  background-color: #D23333;
+  color: white;
+  font-size: 14px;
+  border: 2px solid #D23333;
+}
+.navbar-eduassist-button:hover {
+  color: white;
+  background: #D23333;
+  border-color: #ac2626;
+}
+
+/* Navbar dropdown menu */
+.navbar-eduassist-dropdown-menu {
+  margin-top: 15px;
+  box-shadow: 1px 1px 4px #E6E6E6;
+  border-color: #E6E6E6;
+}
+.navbar-eduassist-dropdown-menu li > a {
+  transition: color 0.3s ease;
+  font-weight: lighter !important;
+  color: #999999 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  padding: 10px 20px;
+}
+.navbar-eduassist-dropdown-menu li > a:hover {
+  background: transparent !important;
+  color: black !important;
+}
+.navbar-eduassist-dropdown-menu:before {
+  content: ' ';
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  right: 10px;
+  top: -6px;
+  background-color: white;
+  transform: rotate(45deg);
+  border-left: 1px solid #E6E6E6;
+  border-top: 1px solid #E6E6E6;
+}
+.dropdown img {
+  height: 30px;
+  opacity: 0.5;
+  padding-left: 10px;
+}

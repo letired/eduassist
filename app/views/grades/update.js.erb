@@ -1,0 +1,15 @@
+$('[data-id=<%= @grade.id %>] div.points').html("<%= @grade.earned_points%> / <%= @grade.assignment.max_points%><div class='text-underline-blue'></div>").parent().removeClass("hidden");
+$('[data-id=<%= @grade.id %>] .student-grade').addClass('hidden');
+$('[data-id=<%= @grade.id %>] .edit').addClass('hidden');
+$('[data-id=<%= @grade.id %>] .add-points').remove();
+$('#class-average').html("Class Average: <%= average(@grade.assignment) %> / <%= @grade.assignment.max_points %>");
+
+
+<% graph = [] %>
+<% @grade.assignment.grades.each do |grade| %>
+  <% if grade.earned_points %>
+    <% graph << [grade.student.first_name, grade.earned_points] %>
+  <% end %>
+<% end %>
+
+new Chartkick.ColumnChart("chart-1", <%= raw graph.to_json %>, {"max":null, "colors":['#9EB25D']});

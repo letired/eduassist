@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <% content_for(:title_tag) do %>
+        All assignments for <%= @school_class.name %> on eduAssist.me
+      <% end %>
+      <div class="wrapper-with-sticky-footer">
+        <div class="headline">
+        <h1><%= @school_class.name %> Assignments</h1>
+        </div>
+        <ul class="list-group">
+          <% @assignments.each do |assignment| %>
+            <%= link_to assignment do %>
+              <li class= "list-group-item">
+                <div class="item-name">
+                  <%= assignment.name %>
+                </div>
+                <% if assignment.category == "Math" %>
+                  <div class="item-attribute background-red" id="assignment-category">
+                    <%= assignment.category %>
+                  </div>
+                <% elsif assignment.category == "English" %>
+                  <div class="item-attribute background-blue" id="assignment-category">
+                    <%= assignment.category %>
+                  </div>
+                <% elsif assignment.category == "Religion" %>
+                  <div class="item-attribute background-orange" id="assignment-category">
+                    <%= assignment.category %>
+                  </div>
+                <% elsif assignment.category == "Science" %>
+                  <div class="item-attribute background-green" id="assignment-category">
+                    <%= assignment.category %>
+                  </div>
+                <% else %>
+                  <div class="item-attribute background-grey" id="assignment-category">
+                    <%= assignment.category %>
+                  </div>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="sticky-footer">
+        <%= link_to new_school_class_assignment_path(@school_class), class: "btn edu-button" do  %>
+        New Assignment?
+        <div class="text-underline-green"></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
