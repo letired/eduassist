@@ -1,7 +1,7 @@
 # [eduAssist.me](https://eduassist.herokuapp.com)
 
 ### About:
-eduAssist.me is a mobile-friendly education webapp designed and developed by [Patrick Scheuchzer](https://github.com/patrick-scheuchzer), [Pascal Kress](https://github.com/wabi69sabi), [Pauline Gaget](https://github.com/lupiane), and [Spencer Bray](https://github.com/letired).
+eduAssist.me is a mobile-friendly education webapp designed and developed in 2017 by [Patrick Scheuchzer](https://github.com/patrick-scheuchzer), [Pascal Kress](https://github.com/wabi69sabi), [Pauline Gaget](https://github.com/lupiane), and [Spencer Bray](https://github.com/letired).
 
 ### Goals:
 * Mobile-first - our target audience doesn't have access to a desktop or laptop computer.  Most education software is designed for use on a large format screen with a keyboard and mouse, eduAssist is intended to be used on a handheld touchscreen device without a mouse or keyboard.
